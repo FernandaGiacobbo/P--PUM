@@ -1,0 +1,15 @@
+CREATE DATABASE papum;
+
+use papum;
+
+create table tb_tarefa(
+	id_tarefa INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(50),
+    detalhamento VARCHAR(500),
+    data_tarefa DATETIME,
+    prazo DATE,
+    status_tarefa VARCHAR(50)
+    
+);
+
+select * from tb_tarefa;
