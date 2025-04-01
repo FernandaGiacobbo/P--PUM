@@ -15,14 +15,14 @@
 <br>
 <br>
 
-  <section class="containernome">
-    <h2>Olá, Fernanda!</h2>
+  <section id="containernome">
+    <h2 class="nomem">Olá, Fernanda!</h2>
 
-    <div class="tarefasConcluidas">
+    <div class="caixa">
       <h3 class="mostrartarefas"> Você tem 10 tarefas concluídas</h3>
     </div>
 
-    <div class="tarefasPendentes">
+    <div class="caixa">
     <h3 class="mostrartarefas"> Você tem 3 tarefas pendentes</h3>
     </div>
 
