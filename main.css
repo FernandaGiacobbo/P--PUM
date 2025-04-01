@@ -1,0 +1,31 @@
+    .containernome{
+        background-color: #F3EDBD ;
+        height: 8em;
+        width: 25em;
+        border-radius: 10px;
+        display:flex;
+        flex-direction: row;
+        justify-content: space-between;
+        
+    }
+
+    h2{
+        font-family: monospace;
+        padding-left: 20px;
+        padding-top: 42px;
+    }
+
+    .mostrartarefas{
+        font-family: monospace;
+        height: 8em;
+        width: 8em;
+        background-color: #f3edbd;
+        border-radius: 10px;
+    }
+
+    .tarefasConcluidas{
+        height: 5px;
+        width: 500px;
+        background-color: #f3edbd;
+        border-radius: 10px;
+    }

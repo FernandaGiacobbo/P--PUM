@@ -4,15 +4,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="main.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <title>Papum</title>
 </head>
 <body>
+
+<div class="container">
+
+<br>
+<br>
+
+  <section class="containernome">
+    <h2>Olá, Fernanda!</h2>
+
+    <div class="tarefasConcluidas">
+      <h3 class="mostrartarefas"> Você tem 10 tarefas concluídas</h3>
+    </div>
+
+    <div class="tarefasPendentes">
+    <h3 class="mostrartarefas"> Você tem 3 tarefas pendentes</h3>
+    </div>
+
+  </section>
   
+  <br>
+
   <div class="table-responsive">
 
     <h3>Meus Afazeres</h3>
+    <br>
+
     <button class="btn btn-primary" onclick="window.location.href='index.php?page=1'">Adicionar Tarefa</button>
+
+    <br>
+    <br>
 
     <table class="table table-striped">
       <thead>
@@ -63,6 +89,10 @@
 
       </tbody>
     </table>
+
+    
+    </div>
+
 
   </div>
 

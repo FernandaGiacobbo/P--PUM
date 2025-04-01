@@ -18,7 +18,7 @@
         .sidebar {
             width: 150px;
             height: 100vh;
-            background: linear-gradient(45deg,rgb(31, 100, 96),rgb(68, 165, 160));
+            background: linear-gradient(45deg, #BBB7E5, #DAE9FA);
             color: white;
             padding-top: 20px;
             display: flex;
@@ -36,6 +36,7 @@
             margin: 15px 0;
             font-size: 18px;
             transition: all 0.3s;
+            font-family: monospace;
         }
 
         .sidebar a:hover {
