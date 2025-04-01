@@ -27,7 +27,7 @@ if(isset($_POST['id_tarefa'])){
 </head>
 <body>
 
-    <h1>Inserir Tarefas - ID tarefa: <?php echo $_GET['id_tarefa'];?></h1>
+    <h1>Alterar Tarefa - ID tarefa: <?php echo $_GET['id_tarefa'];?></h1>
 
     <div>
 
