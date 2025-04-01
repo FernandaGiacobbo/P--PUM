@@ -1,23 +1,39 @@
 <?php
 
-if(isset($_POST['id_tarefa'])){
-    $oMysql = conecta_db();
-    $query = "UPDATE tb_tarefa SET 
-              nome = '" . $_POST['nomet'] . "', 
-              detalhamento = '" . $_POST['detalhamento'] . "', 
-              data_tarefa = '" . $_POST['data'] . "', 
-              prazo = '" . $_POST['prazo'] . "', 
-              status_tarefa = '" . $_POST['status'] . "' 
-              WHERE id_tarefa = " . $_GET['id_tarefa'];
-              
-    $resultado = $oMysql->query($query);
-    header('location: index.php');
-}
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_tarefa'])) {
+    $id_tarefa = $_POST['id_tarefa'];
+    $nome = $_POST['nomet'] ;
+    $detalhamento = $_POST['detalhamento'];
+    $data_tarefa = $_POST['data'];
+    $prazo = $_POST['prazo'];
+    $status_tarefa = $_POST['status'];
+
+    $oMysql = conecta_db();
+    
+    if ($oMysql) {
+        $query = "UPDATE tb_tarefa SET nome = ?, detalhamento = ?, data_tarefa = ?, prazo = ?, status_tarefa = ? WHERE id_tarefa = ?";
+        $stmt = $oMysql->prepare($query);
+        $stmt->bind_param("sssssi", $nome, $detalhamento, $data_tarefa, $prazo, $status_tarefa, $id_tarefa);
+        
+        if ($stmt->execute()) {
+            header('Location: index.php');
+            exit();
+        } else {
+            echo "Erro ao atualizar a tarefa: " . $stmt->error;
+        }
+        
+        $stmt->close();
+        $oMysql->close();
+    } else {
+        echo "Erro na conexão com o banco de dados.";
+    }
+}
 ?>
 
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +43,7 @@ if(isset($_POST['id_tarefa'])){
 </head>
 <body>
 
-    <h1>Alterar Tarefa - ID tarefa: <?php echo $_GET['id_tarefa'];?></h1>
+    <h1>Inserir Tarefas - ID tarefa: <?php echo $_GET['id_tarefa'];?></h1>
 
     <div>
 
@@ -73,17 +89,7 @@ if(isset($_POST['id_tarefa'])){
             <button class="btn btn-primary" type="submit">Adicionar</button>
 
         </form>
-
     </div>
-
-    <style>
-        .formulario {
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 300px;
-        }
-    </style>
-
 </body>
 </html>
+
