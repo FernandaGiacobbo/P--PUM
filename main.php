@@ -10,6 +10,8 @@
 </head>
 <body>
 
+<section class="home">
+
 <div class="container">
 
 <br>
@@ -95,6 +97,8 @@
 
 
   </div>
+
+  </section>
 
 </body>
 </html>
