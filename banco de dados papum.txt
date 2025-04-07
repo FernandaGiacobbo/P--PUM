@@ -9,7 +9,10 @@ create table tb_tarefa(
     data_tarefa DATETIME,
     prazo DATE,
     status_tarefa VARCHAR(50)
-    
+);
+create table musicas_tb(
+    id_musica INT PRIMARY KEY AUTO_INCREMENT,
+    nome_musica VARCHAR(50)
 );
 
 select * from tb_tarefa;
