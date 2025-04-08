@@ -15,4 +15,12 @@ create table musicas_tb(
     nome_musica VARCHAR(50)
 );
 
+create table postits (
+    id_postit INT AUTO_INCREMENT PRIMARY KEY,
+    texto_postit VARCHAR(255),
+    cor_postit VARCHAR(20),
+    posicaoX INT,
+    posicaoY INT
+);
+
 select * from tb_tarefa;
