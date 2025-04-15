@@ -37,7 +37,7 @@
     <h3>Meus Afazeres</h3>
     <br>
 
-    <button class="btn btn-primary" onclick="window.location.href='index.php?page=1'">Adicionar Tarefa</button>
+    <button class="btn btn-primary" onclick="window.location.href='principal.php?page=1'">Adicionar Tarefa</button>
 
     <br>
     <br>
@@ -67,8 +67,8 @@
               while($linha = $resultado->fetch_object()){
 
                   $botoes = "<a 
-                      class='btn btn-success' href='index.php?page=2&id_tarefa=".$linha->id_tarefa."'> Alterar </a>";
-                  $botoes .= "<a class='btn btn-danger' href='index.php?page=3&id_tarefa=".$linha->id_tarefa."'> Excluir </a>";
+                      class='btn btn-success' href='principal.php?page=2&id_tarefa=".$linha->id_tarefa."'> Alterar </a>";
+                  $botoes .= "<a class='btn btn-danger' href='principal.php?page=3&id_tarefa=".$linha->id_tarefa."'> Excluir </a>";
                   
 
                   $html = "<tr>";

@@ -4,7 +4,7 @@
         $oMysql = conecta_db();
         $query = "INSERT INTO tb_tarefa (nome, detalhamento, data_tarefa, prazo, status_tarefa) VALUES ('".$_POST['nomet']."', '".$_POST['detalhamento']."', '".$_POST['data']."', '".$_POST['prazo']."', '".$_POST['status']."')";
         $resultado = $oMysql->query($query);
-        header('location: index.php');
+        header('location: principal.php');
     }
 
 ?>
@@ -32,7 +32,7 @@
     <br>
 
     
-        <form method="POST" action="index.php?page=1" class="formulario">
+        <form method="POST" action="principal.php?page=1" class="formulario">
             <p>Insira o nome da tarefa</p>
             <input type="text" class="form-control" name="nomet" placeholder="digite">
 

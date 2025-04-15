@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['id_tarefa'])) {
         $stmt->bind_param("sssssi", $nome, $detalhamento, $data_tarefa, $prazo, $status_tarefa, $id_tarefa);
         
         if ($stmt->execute()) {
-            header('Location: index.php');
+            header('Location: principal.php');
             exit();
         } else {
             echo "Erro ao atualizar a tarefa: " . $stmt->error;
@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['id_tarefa'])) {
     <br>
 
     
-        <form method="POST" action="index.php?page=2&id_tarefa=<?php echo $_GET['id_tarefa'];?>" class="formulario">
+        <form method="POST" action="principal.php?page=2&id_tarefa=<?php echo $_GET['id_tarefa'];?>" class="formulario">
             <p>Insira o nome da tarefa</p>
             <input type="text" class="form-control" name="nomet" placeholder="digite">
 

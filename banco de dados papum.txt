@@ -23,4 +23,9 @@ create table postits (
     posicaoY INT
 );
 
+create table tb_usuario (
+    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+    nome_usuario VARCHAR
+);
+
 select * from tb_tarefa;
