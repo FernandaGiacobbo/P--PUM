@@ -18,7 +18,7 @@
 <br>
 
   <section id="containernome">
-    <h2 class="nomem">Olá, Fernanda!</h2>
+  <h2 class="nomem">Olá, <?php echo $logado;?></h2>
 
     <div class="caixa">
       <h3 class="mostrartarefas"> Você tem 10 tarefas concluídas</h3>
