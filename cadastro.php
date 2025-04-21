@@ -43,13 +43,13 @@ if(isset($_POST['submit'])){
             $resultado = $oMysql->query($query);
         
     
-            $id = $oMysql->insert_id;
+            $id_usuario = $oMysql->insert_id;
       
             //alterado o meio de pegar o ID
       
             $_SESSION['nome'] = $nome;
             $_SESSION['email'] =$email;
-            $_SESSION['id'] = $id;
+            $_SESSION['id'] = $id_usuario;
             $_SESSION['senha'] =$senha;
       
             echo "<script>alert('Usuário cadastrado com sucesso');</script>";

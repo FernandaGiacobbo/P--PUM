@@ -17,15 +17,42 @@
 <br>
 <br>
 
+  <?php
+    $oMysql = conecta_db();
+    $query1 = "SELECT status_tarefa FROM tb_tarefa where usuario_id = $id_us";
+    $resultado1 = $oMysql->query($query1);
+
+    $concluido = 0;
+    $pendente = 0;
+
+    $cont_linhas = mysqli_num_rows($resultado1);
+
+    for($i = 0; $i < $cont_linhas; $i++){
+
+        $status = mysqli_fetch_assoc($resultado1);
+
+        if ($status['status_tarefa'] != 'Completo') {
+          $pendente += 1;
+        } else {
+          $concluido += 1;
+        }
+     
+      
+    }
+
+    //pegando as infos dos status 
+
+  ?>
+
   <section id="containernome">
   <h2 class="nomem">Olá, <?php echo $logado;?></h2>
 
     <div class="caixa">
-      <h3 class="mostrartarefas"> Você tem 10 tarefas concluídas</h3>
+      <h3 class="mostrartarefas"> Você tem <?php echo $concluido;?> tarefas concluídas</h3>
     </div>
 
     <div class="caixa">
-    <h3 class="mostrartarefas"> Você tem 3 tarefas pendentes</h3>
+    <h3 class="mostrartarefas"> Você tem <?php echo $pendente;?> tarefas pendentes</h3>
     </div>
 
   </section>
@@ -58,10 +85,8 @@
       <tbody>
 
         <?php
-
-        
-          $oMysql = conecta_db();
-          $query = "SELECT * FROM tb_tarefa";
+          
+          $query = "SELECT * FROM tb_tarefa where usuario_id = $id_us";
           $resultado = $oMysql->query($query);
           if($resultado) {
               while($linha = $resultado->fetch_object()){

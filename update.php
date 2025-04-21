@@ -12,9 +12,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['id_tarefa'])) {
     $oMysql = conecta_db();
     
     if ($oMysql) {
-        $query = "UPDATE tb_tarefa SET nome = ?, detalhamento = ?, data_tarefa = ?, prazo = ?, status_tarefa = ? WHERE id_tarefa = ?";
+        $query = "UPDATE tb_tarefa SET nome = ?, detalhamento = ?, data_tarefa = ?, prazo = ?, status_tarefa = ?, usuario_id = ? WHERE id_tarefa = ?";
         $stmt = $oMysql->prepare($query);
-        $stmt->bind_param("sssssi", $nome, $detalhamento, $data_tarefa, $prazo, $status_tarefa, $id_tarefa);
+        $stmt->bind_param("sssssi", $nome, $detalhamento, $data_tarefa, $prazo, $status_tarefa, $id_tarefa, $id_us);
         
         if ($stmt->execute()) {
             header('Location: principal.php');
