@@ -2,17 +2,25 @@ CREATE DATABASE papum;
 
 use papum;
 
+create table tb_usuario(	
+    id_usuario INT PRIMARY KEY AUTO_INCREMENT,	
+    nome_usuario VARCHAR(100),	
+    email_usuario VARCHAR(100),	
+    senha_usuario VARCHAR(30));
+
 create table tb_tarefa(
 	id_tarefa INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(50),
-    detalhamento VARCHAR(500),
-    data_tarefa DATETIME,
-    prazo DATE,
-    status_tarefa VARCHAR(50)
+   	nome VARCHAR(50),
+    	detalhamento VARCHAR(500),
+    	data_tarefa DATETIME,
+    	prazo DATE,
+    	status_tarefa VARCHAR(50),
+		usuario_id INT,
+	FOREIGN KEY  (usuario_id) REFERENCES tb_usuario(id_usuario)
 );
 create table musicas_tb(
-    id_musica INT PRIMARY KEY AUTO_INCREMENT,
-    nome_musica VARCHAR(50)
+    	id_musica INT PRIMARY KEY AUTO_INCREMENT,
+    	nome_musica VARCHAR(50)
 );
 
 create table postits (
@@ -23,9 +31,3 @@ create table postits (
     posicaoY INT
 );
 
-create table tb_usuario (
-    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
-    nome_usuario VARCHAR
-);
-
-select * from tb_tarefa;
