@@ -10,8 +10,12 @@ session_start();
     include_once('conecta_db.php');
     $oMysql = conecta_db();
 
+    $query2 = "DELETE FROM tb_tarefa WHERE usuario_id = $id_us";
     $query = "DELETE FROM tb_usuario WHERE id_usuario = $id_us";
-    $resultado = $resultado2 = $oMysql->query($query);
+    $resultado2 = $oMysql->query($query2);
+    $resultado = $oMysql->query($query);
+    
+
 
     unset($_SESSION['email']);
     unset($_SESSION['senha']);
