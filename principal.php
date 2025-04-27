@@ -1,11 +1,20 @@
 <?php
 
-    include 'conecta_db.php';
-    include 'header.php';
+session_start();
+
+    if (!isset($_SESSION['id'])) {
+        header('Location: index.php');
+        exit();
+    }
+
+    include 'conecta_db.php';   
 
     if((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true)) {
         header('location: index.php');
      } 
+
+        
+
         include_once('conecta_db.php');
         $oMysql = conecta_db();
     

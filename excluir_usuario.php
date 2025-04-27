@@ -10,9 +10,12 @@ session_start();
     include_once('conecta_db.php');
     $oMysql = conecta_db();
 
-    $query2 = "DELETE FROM tb_tarefa WHERE usuario_id = $id_us";
+    $queryTarefa = "DELETE FROM tb_tarefa WHERE usuario_id = $id_us";
+    $queryDaily = "DELETE FROM tb_daily WHERE usuario_id = $id_us";
     $query = "DELETE FROM tb_usuario WHERE id_usuario = $id_us";
-    $resultado2 = $oMysql->query($query2);
+    
+    $resultadoTarefa = $oMysql->query($queryTarefa);
+    $resultadoDaily = $oMysql->query($queryDaily);  
     $resultado = $oMysql->query($query);
     
 

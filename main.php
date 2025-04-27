@@ -9,7 +9,7 @@
   <title>Papum</title>
 </head>
 <body>
-
+<?php include 'header.php'; ?>
 <section class="home">
 
 <div class="container">
