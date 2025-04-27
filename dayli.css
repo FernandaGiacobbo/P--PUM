@@ -151,8 +151,9 @@ dialog form {
 
   .cartao-editar{
     width: 100%;
-    height: 400px;
+    height: auto;
     background-color: #fbf9f9;
+    padding: 5px;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
@@ -161,7 +162,7 @@ dialog form {
   }
 
   .cartao-editar form {
-    align-self:flex-start;
+    align-self:center;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -183,8 +184,8 @@ dialog form {
     border: 1px solid #ccc;
     border-radius: 8px;
     font-family: "Poppins" ,sans-serif;
-    height: 90px;
-    width: 1040px;
+    height: 150px;
+    width: 63rem;
     resize: vertical;
   }
 
@@ -197,13 +198,21 @@ dialog form {
       border-radius: 10px; 
       font-size: 1rem;
       cursor: pointer;
-      width: 90%;
-      margin: 4px 20px;
+      width: 10%;
+      margin: 1px 0;
     }
 
-    #SairEditar{
-      margin-left: 40px;
-      width: 935px;
+    .botao12{
+      align-self: flex-start;
+      position: relative;
+      margin-left: 30px;
+      margin-bottom: 20px; 
+      background-color: #F9D57F;
+      color: rgb(25, 18, 18);
+      border: none;
+      border-radius: 10px; 
+      cursor: pointer;
+      left: 0;
     }
   
   

@@ -1,6 +1,8 @@
 <?php
 
-include 'header.php';
+session_start();
+
+
 
     $senha_log = $_SESSION['senha'];
     $email_log = $_SESSION['email'];
@@ -28,6 +30,7 @@ if(isset($_POST['subimit'])){
 
 
 <!DOCTYPE html>
+<?php include 'header.php';?>
 <html lang="en">
 <head>
   <title>Bootstrap Example</title>

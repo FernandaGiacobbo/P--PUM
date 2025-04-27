@@ -1,6 +1,3 @@
-<?php
- session_start();
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -45,9 +42,15 @@
                         </a>
                     </li>
                     <li class="nav-link">
+                        <a href="perfil.php">
+                            <i class='bx bx-user icon'></i>
+                            <span class="text nav-text">Perfil</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
                         <a href="dayli.php">
                             <i class='bx bx-notepad icon'></i>
-                            <span class="text nav-text">Perfil</span>
+                            <span class="text nav-text">Daily</span>
                         </a>
                     </li>
                     <li class="nav-link">
@@ -63,7 +66,7 @@
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="calendario.php">
                             <i class='bx bxs-calendar icon'></i>
                             <span class="text nav-text">Calendário</span>
                         </a>

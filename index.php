@@ -12,6 +12,9 @@ if(isset($_POST['submit']) && !empty($_POST['email']) && !empty($_POST['senha'])
     $query = "SELECT * from tb_usuario WHERE email_usuario = '$email' and senha_usuario = '$senha'";
     $resultado = $oMysql->query($query);
 
+    echo "Query: " . $query . "<br>";
+    echo "Resultados: " . mysqli_num_rows($resultado) . "<br>";
+
     if(mysqli_num_rows($resultado) < 1){
         
         echo "<script>alert('Usuário ou senha incorretos!');</script>";
@@ -22,10 +25,12 @@ if(isset($_POST['submit']) && !empty($_POST['email']) && !empty($_POST['senha'])
         $usuario = mysqli_fetch_assoc($resultado);
 
         $_SESSION['nome'] = $usuario['nome_usuario'];
-        $_SESSION['email'] =$email;
+        $_SESSION['email'] = $usuario['email_usuario'];
         $_SESSION['id'] = $usuario['id_usuario'];
-        $_SESSION['senha'] =$senha;
-        header('location: principal.php');
+        $_SESSION['senha'] = $usuario['senha_usuario'];
+        
+        header('Location: principal.php');
+        exit();
     }
 
 }
