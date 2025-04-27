@@ -89,12 +89,7 @@
                             <span class="text nav-text">Feedback</span>
                         </a>
                     </li>
-                    <li class="nav-link">
-                        <a href="perfil.php">
-                            <i class='bx bx-user icon'></i>
-                            <span class="text nav-text">Perfil</span>
-                        </a>
-                    </li>
+
 
                     <br>
                     <br>
