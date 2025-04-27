@@ -63,7 +63,7 @@
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="calendario.php">
                             <i class='bx bxs-calendar icon'></i>
                             <span class="text nav-text">Calendário</span>
                         </a>
