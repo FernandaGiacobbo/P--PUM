@@ -33,7 +33,7 @@ $postits = buscar_postits();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mural de Post-its</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="mural.css">
 </head>
 <body>
     <div class="mural">
@@ -52,5 +52,8 @@ $postits = buscar_postits();
     </form>
 
     <script src="main.js"></script>
+
+    <script src="mural.js"></script>
+
 </body>
 </html>
