@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 include 'header.php';
 
     $senha_log = $_SESSION['senha'];

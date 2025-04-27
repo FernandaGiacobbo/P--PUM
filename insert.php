@@ -1,10 +1,12 @@
 <?php
 
     if(isset($_POST['detalhamento'])){
+        include_once('conecta_db.php');
         $oMysql = conecta_db();
         $query = "INSERT INTO tb_tarefa (nome, detalhamento, data_tarefa, prazo, status_tarefa, usuario_id) VALUES ('".$_POST['nomet']."', '".$_POST['detalhamento']."', '".$_POST['data']."', '".$_POST['prazo']."', '".$_POST['status']."', '".$_SESSION['id']."')";
         $resultado = $oMysql->query($query);
         header('location: principal.php');
+        exit(); 
     }
 
 ?>
@@ -20,7 +22,7 @@
     <title>Inserir Tarefa</title>
 </head>
 <body>
-
+<?php include 'header.php'; ?>
     <section class="home">
 
 

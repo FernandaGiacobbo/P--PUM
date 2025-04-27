@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 include 'header.php';
 include_once('conecta_db.php');
 $oMysql = conecta_db();
@@ -37,7 +39,7 @@ $id_us = $_SESSION['id'];
         $resultado = $oMysql->query($query);
         if($resultado) {
             while($linha = $resultado->fetch_object()){ 
-            
+                
                 ?>
                 <div class="cartao">
                     <div class="titulo">
@@ -49,7 +51,10 @@ $id_us = $_SESSION['id'];
                         <hr>
                         <?php echo $linha->texto_daily;?>
                         <br>
-                        <a href="Dailyeditar.php"><button class="Editar">Editar</button></a>
+                        <?php echo "<a href='Dailyeditar.php?id_daily=$linha->id_daily'><button class='Editar'>Editar</button></a>";
+
+
+                        ?>
                     </div>
                     
                 </div>
