@@ -1,3 +1,4 @@
+// Definindo constantes para montar o calendário
 const monthYear = document.getElementById("month-year");
 const datesContainer = document.getElementById("calendar-dates");
 const prevBtn = document.getElementById("prev");
@@ -5,7 +6,7 @@ const nextBtn = document.getElementById("next");
 const hoje = new Date();
 let currentDate = new Date();
 
-// FUNÇÃO DE RENDERIZAR CALENDÁRIO
+// Função de renderizar calendário
 function renderizarCalendario() {
   const ano = currentDate.getFullYear();
   const mes = currentDate.getMonth();
@@ -44,7 +45,7 @@ function renderizarCalendario() {
   }
 }
 
-// BOTÕES DE MUDAR MÊS
+// Botões de trocar o mês
 prevBtn.onclick = () => {
   currentDate.setMonth(currentDate.getMonth() - 1);
   renderizarCalendario();
@@ -55,26 +56,66 @@ nextBtn.onclick = () => {
   renderizarCalendario();
 };
 
-// MODAL
-const modal = document.getElementById("modal");
+// Inicializa o calendário
+renderizarCalendario();
+
+// Modais de insert, delete e update
+const modalAdd = document.getElementById("modal");
+const modalEdit = document.getElementById("modal-edit");
+
 const openModalBtn = document.getElementById("openModal");
-const closeBtn = document.querySelector(".close");
+const closeAdd = modalAdd.querySelector(".close"); 
+const closeEdit = modalEdit.querySelector("#close-edit"); 
 
-openModalBtn.onclick = () => {
-  modal.style.display = "flex";
-};
+// Abrir modal de adicionar
+openModalBtn.addEventListener('click', () => {
+  modalAdd.style.display = "flex";
+});
 
-closeBtn.onclick = () => {
-  modal.style.display = "none";
-};
+// Fechar modal de adicionar
+closeAdd.addEventListener('click', () => {
+  modalAdd.style.display = "none";
+});
 
-window.onclick = (e) => {
-  if (e.target === modal) {
-    modal.style.display = "none";
+// Fechar modal de editar
+closeEdit.addEventListener('click', () => {
+  modalEdit.style.display = "none";
+});
+
+// Fechar clicando fora dos modais
+window.addEventListener('click', (e) => {
+  if (e.target === modalAdd) {
+    modalAdd.style.display = "none";
   }
-};
+  if (e.target === modalEdit) {
+    modalEdit.style.display = "none";
+  }
+});
 
-// BUSCAR EVENTOS NO DIA CLICADO
+// Abrir modal de edição ao clicar num evento
+document.addEventListener('click', function (e) {
+  const eventCard = e.target.closest('.event-card');
+
+  if (eventCard) {
+    const idEvento = eventCard.getAttribute('data-id');
+    const titulo = eventCard.querySelector('h3')?.textContent || '';
+    const inicio = eventCard.querySelector('p:nth-child(2)')?.textContent.replace('Início: ', '') || '';
+    const fim = eventCard.querySelector('p:nth-child(3)')?.textContent.replace('Término: ', '') || '';
+    const descricao = eventCard.querySelector('p:nth-child(4)')?.textContent.replace('Descrição: ', '') || '';
+
+    modalEdit.style.display = "flex";
+
+    document.getElementById('titulo-edit').value = titulo;
+    document.getElementById('datai-edit').value = inicio.split(' ')[0];
+    document.getElementById('horai-edit').value = inicio.split(' ')[1];
+    document.getElementById('datat-edit').value = fim.split(' ')[0];
+    document.getElementById('horat-edit').value = fim.split(' ')[1];
+    document.getElementById('descricao-edit').value = descricao;
+    document.getElementById('id-edit').value = idEvento;
+  }
+});
+
+// Buscar eventos quando clica no dia
 datesContainer.addEventListener("click", async (e) => {
   if (e.target.tagName === "DIV" && e.target.textContent.trim() !== "") {
     const dia = e.target.textContent.padStart(2, '0');
@@ -94,7 +135,7 @@ datesContainer.addEventListener("click", async (e) => {
       } else {
         eventos.forEach(ev => {
           containerEventos.innerHTML += `
-            <div class="event-card">
+            <div class="event-card" data-id="${ev.id_evento}">
               <h3>${ev.titulo_evento}</h3>
               <p><strong>Início:</strong> ${ev.data_evento} ${ev.horario_evento}</p>
               <p><strong>Término:</strong> ${ev.data_prazo} ${ev.hora_prazo}</p>
@@ -108,91 +149,3 @@ datesContainer.addEventListener("click", async (e) => {
     }
   }
 });
-
-
-// INICIALIZA CALENDÁRIO NA PÁGINA
-renderizarCalendario();
-
-document.addEventListener('DOMContentLoaded', function () {
-
-  const modalAdd = document.getElementById("modal-add");
-  const modalEdit = document.getElementById("modal-edit");
-  const closeAdd = document.getElementById("close-add");
-  const closeEdit = document.getElementById("close-edit");
-  // Abrir modal de edição ao clicar no evento
-  document.addEventListener('click', function (e) {
-    const eventCard = e.target.closest('.event-card');
-  
-    if (eventCard) {
-      const idEvento = eventCard.getAttribute('data-id');
-      const titulo = eventCard.querySelector('h3')?.textContent || '';
-      const inicio = eventCard.querySelector('p:nth-child(2)')?.textContent.replace('Início: ', '') || '';
-      const fim = eventCard.querySelector('p:nth-child(3)')?.textContent.replace('Término: ', '') || '';
-      const descricao = eventCard.querySelector('p:nth-child(4)')?.textContent.replace('Descrição: ', '') || '';
-  
-      modalEdit.style.display = "flex";
-  
-      document.getElementById('titulo-edit').value = titulo;
-      document.getElementById('datai-edit').value = inicio.split(' ')[0];
-      document.getElementById('horai-edit').value = inicio.split(' ')[1];
-      document.getElementById('datat-edit').value = fim.split(' ')[0];
-      document.getElementById('horat-edit').value = fim.split(' ')[1];
-      document.getElementById('descricao-edit').value = descricao;
-      document.getElementById('id-edit').value = idEvento; // <-- adiciona aqui o ID no campo hidden
-    }
-  });
-
-  eventos.forEach(ev => {
-    containerEventos.innerHTML += `
-      <div class="event-card" data-id="${ev.id_evento}">
-        <h3>${ev.titulo_evento}</h3>
-        <p><strong>Início:</strong> ${ev.data_evento} ${ev.horario_evento}</p>
-        <p><strong>Término:</strong> ${ev.data_prazo} ${ev.hora_prazo}</p>
-        <p><strong>Descrição:</strong> ${ev.descricao}</p>
-      </div>
-    `;
-  });
-  
-  
-
-  document.getElementById("botao-deletar").addEventListener("click", async function () {
-    const id = this.dataset.id;
-  
-    if (confirm("Tem certeza que quer apagar esse evento?")) {
-      try {
-        await fetch(`deletar_evento.php?id=${id}`, { method: 'POST' });
-        alert("Evento deletado com sucesso!");
-        modalEdit.style.display = "none";
-        renderizarCalendario(); // recarrega eventos, se quiser
-      } catch (error) {
-        console.error("Erro ao deletar evento:", error);
-        alert("Erro ao deletar evento.");
-      }
-    }
-  });
-  
-
-  // Fechar o modal de adicionar
-  closeAdd.addEventListener('click', function () {
-    modalAdd.style.display = "none";
-  });
-
-  // Fechar o modal de editar
-  closeEdit.addEventListener('click', function () {
-    modalEdit.style.display = "none";
-  });
-
-  // Fecha clicando fora dos modais
-  window.addEventListener('click', function (e) {
-    if (e.target == modalAdd) {
-      modalAdd.style.display = "none";
-    }
-    if (e.target == modalEdit) {
-      modalEdit.style.display = "none";
-    }
-  });
-
-});
-
-
-

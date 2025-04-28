@@ -112,8 +112,8 @@ if (
             <textarea id="descricao-edit" name="descricao" placeholder="Escreva uma descrição..."></textarea>
 
             <input type="hidden" id="id-edit" name="id_evento">
-            <button type="submit" name="delete-evento" class="delete-evento">Deletar</button>
-            <button type="submit" name="edit-evento" class="edit-evento">Alterar</button>
+            <button type="button" name="delete-evento" class="delete-evento">Deletar</button>
+            <button type="button" name="edit-evento" class="edit-evento">Alterar</button>
           </form>
         </div>
       </div>
