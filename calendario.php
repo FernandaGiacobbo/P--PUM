@@ -52,13 +52,13 @@ if (
           <div>DOM</div><div>SEG</div><div>TER</div><div>QUA</div>
           <div>QUI</div><div>SEX</div><div>SÁB</div>
         </div>
-        <div class="calendar-dates" id="calendar-dates"></div>
+      <div class="calendar-dates" id="calendar-dates"></div>
         <div class="botao-add">
         <button id="openModal" class="add-event-btn">Adicionar Evento</button>
       </div>
       </div>
 
-      <!-- Modal Adicionar-->
+<!-- Modal Adicionar-->
       <div id="modal" class="modal">
         <div class="modal-content">
           <span class="close">&times;</span>
@@ -88,37 +88,36 @@ if (
         </div>
       </div>
 
-      <!-- Modal Editar e Deletar -->
-      <!-- Modal Editar e Deletar -->
-<div id="modal-edit" class="modal">
-  <div class="modal-content">
-    <span class="close" id="close-edit">&times;</span>
-    <h2>Editar Evento</h2>
+<!-- Modal Editar e Deletar -->
+    <div id="modal-edit" class="modal">
+      <div class="modal-content">
+        <span class="close" id="close-edit">&times;</span>
+        <h2>Editar Evento</h2>
 
-    <div class="modal-form">
-      <form action="deletar_evento.php" method="POST" class="modal-form">
+        <div class="modal-form">
+          <form action="deletar_evento.php" method="POST" class="modal-form">
 
-        <label>Título</label>
-        <input id="titulo-edit" name="titulo_evento" type="text" placeholder="Título do evento">
+            <label>Título</label>
+            <input id="titulo-edit" name="titulo_evento" type="text" placeholder="Título do evento">
 
-        <label>Data de início</label>
-        <input id="datai-edit" name="data_evento" type="date">
-        <input id="horai-edit" name="horario_evento" type="time">
+            <label>Data de início</label>
+            <input id="datai-edit" name="data_evento" type="date">
+            <input id="horai-edit" name="horario_evento" type="time">
 
-        <label>Data de término</label>
-        <input id="datat-edit" name="data_prazo" type="date">
-        <input id="horat-edit" name="hora_prazo" type="time">
+            <label>Data de término</label>
+            <input id="datat-edit" name="data_prazo" type="date">
+            <input id="horat-edit" name="hora_prazo" type="time">
 
-        <label>Descrição</label>
-        <textarea id="descricao-edit" name="descricao" placeholder="Escreva uma descrição..."></textarea>
+            <label>Descrição</label>
+            <textarea id="descricao-edit" name="descricao" placeholder="Escreva uma descrição..."></textarea>
 
-        <input type="hidden" id="id-edit" name="id_evento">
-        <button type="submit" name="delete-evento" class="delete-evento">Deletar</button>
-        <button type="submit" name="edit-evento" class="edit-evento">Alterar</button>
-      </form>
+            <input type="hidden" id="id-edit" name="id_evento">
+            <button type="submit" name="delete-evento" class="delete-evento">Deletar</button>
+            <button type="submit" name="edit-evento" class="edit-evento">Alterar</button>
+          </form>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
 
 
