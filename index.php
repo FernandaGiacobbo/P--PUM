@@ -22,15 +22,31 @@ if(isset($_POST['submit']) && !empty($_POST['email']) && !empty($_POST['senha'])
 
     } else {
 
-        $usuario = mysqli_fetch_assoc($resultado);
+      $usuario = mysqli_fetch_assoc($resultado);
 
-        $_SESSION['nome'] = $usuario['nome_usuario'];
-        $_SESSION['email'] = $usuario['email_usuario'];
-        $_SESSION['id'] = $usuario['id_usuario'];
-        $_SESSION['senha'] = $usuario['senha_usuario'];
+      $_SESSION['nome'] = $usuario['nome_usuario'];
+      $_SESSION['email'] = $usuario['email_usuario'];
+      $_SESSION['id'] = $usuario['id_usuario'];
+      $_SESSION['senha'] = $usuario['senha_usuario'];
+      $_SESSION['cargo'] = $usuario['cargo_usuario'];
         
-        header('Location: principal.php');
-        exit();
+      switch ($usuario['cargo_usuario']) {
+        case 'estudante':
+          header('Location: principal.php');
+          exit();
+        case 'gerente':
+          header('Location: main_gerente.php');
+          exit();
+        case 'admin':
+          header('Location: painel_admin.php');
+          exit();
+        default:
+          echo "<script>
+                alert('Cargo inválido! Contate o suporte.');
+                window.location.href = 'index.php';
+              </script>";
+          exit();
+        }
     }
 
 }

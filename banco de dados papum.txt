@@ -6,7 +6,10 @@ create table tb_usuario(
     id_usuario INT PRIMARY KEY AUTO_INCREMENT,	
     nome_usuario VARCHAR(100),	
     email_usuario VARCHAR(100),	
-    senha_usuario VARCHAR(30));
+    senha_usuario VARCHAR(30), 
+    cargo VARCHAR(20) NOTNULL DEFAULT 'estudante'
+    
+);
 
 create table tb_tarefa(
 	id_tarefa INT PRIMARY KEY AUTO_INCREMENT,
@@ -26,7 +29,7 @@ create table tb_daily(
     usuario_id INT,
     mooday_daily VARCHAR(30),
     FOREIGN KEY tb_daily(usuario_id) REFERENCES tb_usuario(id_usuario)
-)
+);
 
 create table musicas_tb(
     	id_musica INT PRIMARY KEY AUTO_INCREMENT,
