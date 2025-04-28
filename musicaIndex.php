@@ -7,20 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="insert.css">
+    <link rel="stylesheet" href="musicaIndex.css">
     <title>Upload Musica</title>
 </head>
 <body>
     <H1>Upload Musica:</H1>
 
-    <form action="musicaUpload.php" method="POST" enctype="multipart/form-data">
-        <input type="file" name="audiofile"/>
-        <input type="submit" value="Upload" name="save_audio"/>
+    <form id="formulario" action="musicaUpload.php" method="POST" enctype="multipart/form-data">
+        <input id="botoes" type="file" name="audiofile"/>
+        <input id="botoes" type="submit" value="Upload" name="save_audio"/>
 
     </form>
-    
-</body>
-</html>
 
 <?php
 require_once 'conecta_db.php';
@@ -55,4 +52,9 @@ function listarMusicas() {
 }
 
 listarMusicas();
+
 ?>
+    
+</body>
+</html>
+

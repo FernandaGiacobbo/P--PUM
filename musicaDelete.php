@@ -23,4 +23,5 @@ if (isset($_GET['id'])) {
 } else {
     echo 'ID da música não encontrado.';
 }
+
 ?>

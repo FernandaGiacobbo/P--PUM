@@ -34,7 +34,7 @@ if (isset($_GET['id'])) {
         $linha = $resultado->fetch_assoc();
         $nomeMusica = $linha['nome_musica'];
     } else {
-        echo 'Música não encontrada.';
+        echo 'Música não encontrada';
         exit;
     }
 
