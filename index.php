@@ -28,17 +28,17 @@ if(isset($_POST['submit']) && !empty($_POST['email']) && !empty($_POST['senha'])
       $_SESSION['email'] = $usuario['email_usuario'];
       $_SESSION['id'] = $usuario['id_usuario'];
       $_SESSION['senha'] = $usuario['senha_usuario'];
-      $_SESSION['cargo'] = $usuario['cargo_usuario'];
+      $_SESSION['cargo'] = $usuario['cargo'];
         
-      switch ($usuario['cargo_usuario']) {
+      switch ($usuario['cargo']) {
         case 'estudante':
           header('Location: principal.php');
           exit();
         case 'gerente':
-          header('Location: main_gerente.php');
+          header('Location: header_gerente.php');
           exit();
         case 'admin':
-          header('Location: painel_admin.php');
+          header('Location: home_admin.php');
           exit();
         default:
           echo "<script>
@@ -69,7 +69,7 @@ if(isset($_POST['submit']) && !empty($_POST['email']) && !empty($_POST['senha'])
 
 <div class="well" >
   <h2>PaPum</h2>      
-  <p>Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI,</p>
+  <p>Entre em sua conta se você já possui cadastro!</p>
 </div>
 
 <div class="container">

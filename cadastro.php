@@ -10,7 +10,7 @@ if(isset($_POST['submit'])){
     $email = $_POST['email'];
     $nome = $_POST['nome'];
     $senha = $_POST['senha'];
-    $cargo = $_POST['cargo'];
+    $cargo = 'etudante';
 
 
     $query2 = "SELECT id_usuario FROM tb_usuario WHERE email_usuario = '$email' ";
@@ -40,7 +40,7 @@ if(isset($_POST['submit'])){
 
           //caminho feliz, cliente é cadastrado com sucesso 
 
-            $query = "INSERT INTO tb_usuario(email_usuario, nome_usuario, senha_usuario, cargo) VALUE ('$email', '$nome', '$senha', '$cargo')";
+            $query = "INSERT INTO tb_usuario(email_usuario, nome_usuario, senha_usuario, cargo) VALUE ('$email', '$nome', '$senha', 'estudante')";
             $resultado = $oMysql->query($query);
         
     
