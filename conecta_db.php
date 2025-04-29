@@ -4,7 +4,7 @@
         $db_name = "papum";
         $user = "root";
         $pass = "";
-        $server = "localhost:3307";
+        $server = "localhost:3306";
     
         $conexao = new mysqli($server, $user, $pass, $db_name);
     
