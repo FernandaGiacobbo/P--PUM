@@ -10,7 +10,7 @@ if(isset($_POST['submit'])){
     $email = $_POST['email'];
     $nome = $_POST['nome'];
     $senha = $_POST['senha'];
-    $cargo = 'etudante';
+    $cargo = 'estudante';
 
 
     $query2 = "SELECT id_usuario FROM tb_usuario WHERE email_usuario = '$email' ";
