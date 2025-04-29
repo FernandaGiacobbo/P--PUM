@@ -37,12 +37,11 @@
                     $botoes = "<a class='btn btn-warning' href='?action=rebaixar&id_usuario=".$linha->id_usuario."'>Rebaixar</a>";
                 }
 
-                $botoes .= "<a class='btn btn-danger' href='index.php?page=3&id_usuario=".$linha->id_usuario."'>Excluir</a>";
+                $botoes .= "<a class='btn btn-danger' href='?action=excluir&id_usuario=".$linha->id_usuario."'>Excluir</a>";
 
                 $html = "<tr>";
                 $html .= "<td>".$botoes."</td>";
                 $html .= "<td>".$linha->id_usuario."</td>";
-                $html .= "<td>".$linha->nome_usuario."</td>";
                 $html .= "<td>".$linha->cargo."</td>";
                 $html .= "</tr>";
                 echo $html;
