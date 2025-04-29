@@ -14,18 +14,24 @@ if(isset($_POST['subimit'])){
     include_once('conecta_db.php');
     $oMysql = conecta_db();
 
-    $nome = $_POST['nome'];
-    $email = $_POST['email'];
-    $senha = $_POST['senha'];
+    
 
-    $query = "UPDATE tb_usuario SET email_usuario = '$email', nome_usuario = '$nome', senha_usuario = '$senha' WHERE id_usuario = '$id_us'";
-    $resultado = $oMysql->query($query);
+            $nome = $_POST['nome'];
+            $email = $_POST['email'];
+            $senha = $_POST['senha'];
 
-     $_SESSION['nome'] = $nome;
+            $query = "UPDATE tb_usuario SET email_usuario = '$email', nome_usuario = '$nome', senha_usuario = '$senha' WHERE id_usuario = '$id_us'";
+            $resultado = $oMysql->query($query);
 
-    header('location: perfil.php');
- // querry funcionando com sucesso
+            $_SESSION['nome'] = $nome;
+            $_SESSION['email'] = $email;
+            $_SESSION['senha'] = $senha;
+
+            header('location: perfil.php');
+ 
 }
+
+
 ?>
 
 

@@ -2,7 +2,7 @@
 
 session_start();
 
-include 'header.php';
+
 include_once('conecta_db.php');
 $oMysql = conecta_db();
 
@@ -14,14 +14,14 @@ $id_us = $_SESSION['id'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Dayli</title>
     <link rel="stylesheet" href="dayli.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 
 <body >
-
+<?php include 'header.php'; ?>
 <section class="home">
 
 <div class="conteiner">
