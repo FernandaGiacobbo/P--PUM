@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-date_default_timezone_set('America/Sao_Paulo');
+date_default_timezone_set('America/Sao_Paulo');//transforma a data padrão para São Paulo 
 
 $id_us = $_SESSION['id'];
 
@@ -18,13 +18,13 @@ if(isset($_POST['submit'])){
 
         $id_day = $res['id_daily'];
         echo "<script>alert('Parece que você já criou um daily hoje: ');</script>";
-        echo "<script>window.location.href = 'Dailyeditar.php?id_daily=$id_day';</script>";
+        echo "<script>window.location.href = 'Dailyeditar.php?id_daily=$id_day';</script>";//levar para a pagina de editar do id da tarfefa daquela data em especifico
         
-        die();
+        die(); 
     } else {
         
         $rotina = $_POST['daylist'];
-        $rotina = mysqli_real_escape_string($oMysql, $rotina);
+        $rotina = mysqli_real_escape_string($oMysql, $rotina); //permite o que o usuario ultilize carcteres 
         $mood = $_POST['mood'];
         $data = date('Y-m-d');
 

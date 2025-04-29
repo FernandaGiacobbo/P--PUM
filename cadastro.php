@@ -44,9 +44,9 @@ if(isset($_POST['submit'])){
             $resultado = $oMysql->query($query);
         
     
-            $id_usuario = $oMysql->insert_id;
+            $id_usuario = $oMysql->insert_id; //retorna o valor que foi gerado para o id criado 
       
-            //alterado o meio de pegar o ID
+            
       
             $_SESSION['nome'] = $nome;
             $_SESSION['email'] =$email;
