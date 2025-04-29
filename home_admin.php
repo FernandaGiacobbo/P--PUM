@@ -58,6 +58,7 @@
                 $query_update = "UPDATE tb_usuario SET cargo = 'gerente' WHERE id_usuario = $id_usuario";
                 if ($oMysql->query($query_update)) {
                     echo "<div class='alert alert-success mt-3'>Usuário promovido para gerente!</div>";
+                    // header("Location: home_admin.php"); chamar pra recarregar e ficar mais funcional
                 } else {
                     echo "<div class='alert alert-danger mt-3'>Erro ao promover usuário.</div>";
                 }
@@ -67,6 +68,14 @@
                     echo "<div class='alert alert-warning mt-3'>Usuário rebaixado para estudante.</div>";
                 } else {
                     echo "<div class='alert alert-danger mt-3'>Erro ao rebaixar usuário.</div>";
+                }
+            }
+            elseif ($action == 'excluir') {
+                $query_delete = "DELETE FROM tb_usuario WHERE id_usuario = $id_usuario";
+                if ($oMysql->query($query_delete)) {
+                    echo "<div class='alert alert-danger mt-3'>Usuário excluído com sucesso!</div>";
+                } else {
+                    echo "<div class='alert alert-danger mt-3'>Erro ao excluir usuário.</div>";
                 }
             }
         }
