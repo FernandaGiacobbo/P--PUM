@@ -44,14 +44,15 @@ create table postits (
     posicaoY INT
 );
 
-CREATE TABLE tb_evento (
-	id_evento INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE tb_evento(
+	id_evento INT AUTO_INCREMENT PRIMARY KEY, 
     titulo_evento VARCHAR(100),
-    data_evento date,
-    horario_evento time,
-    data_prazo date,
-    hora_prazo time,
-    descricao VARCHAR(500)
-    
+    data_evento DATE, 
+    horario_evento TIME,
+    data_prazo DATE,
+    descricao VARCHAR(100),
+    id_estudante INT,
+    hora_prazo TIME,
+    FOREIGN KEY tb_evento(id_estudante) REFERENCES tb_usuario(id_usuario)
 );
 

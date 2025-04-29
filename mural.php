@@ -53,6 +53,10 @@ $postits = buscar_postits();
     <link rel="stylesheet" href="mural.css">
 </head>
 <body>
+    <?php
+        include('header.php');
+    ?>
+<section class="home">
     <div class="mural">
         <?php foreach ($postits as $postit): ?>
             <div class="postit" style="background-color: <?= $postit['cor_postit']; ?>; top: <?= $postit['posicaoY']; ?>px; left: <?= $postit['posicaoX']; ?>px;" data-id="<?= $postit['id_postit']; ?>">
@@ -72,6 +76,6 @@ $postits = buscar_postits();
     <script src="main.js"></script>
 
     <script src="mural.js"></script>
-
+</section>
 </body>
 </html>

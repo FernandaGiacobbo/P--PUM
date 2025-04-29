@@ -60,7 +60,7 @@
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="mural.php">
                             <i class='bx bx-edit-alt icon'></i>
                             <span class="text nav-text">Anotações</span>
                         </a>
