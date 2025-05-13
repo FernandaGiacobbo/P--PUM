@@ -19,6 +19,7 @@ if (!empty($_GET['id_daily'])) {
             $data = $user_daily['data_daily'];
             $opcao = $user_daily['mooday_daily'];
             $texto = $user_daily['texto_daily'];
+            $tarefas = $user_daily['tarefas_daily'];
         }
 
     } else {
@@ -35,7 +36,7 @@ if (!empty($_GET['id_daily'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="dayli.css">
+    <link rel="stylesheet" href="dailyVisualizar.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
@@ -47,13 +48,16 @@ if (!empty($_GET['id_daily'])) {
 
 <div class="conteiner">
 
-    <div class="conteudo2">
+
 
     <div class="cartao-editar">
-            <form action="Dailyeditar2.php" method="post">
+            <form action="dailyEditar2.php" method="post">
             <label><input type="radio" name="mood" value="Produtivo" <?php echo( $opcao  == 'Produtivo') ? 'checked' : '' ?>>Produtivo</label>
             <label><input type="radio" name="mood" value="Mais ou menos" <?php echo( $opcao  == 'Mais ou menos') ? 'checked' : '' ?>>Mais ou menos</label>
             <label><input type="radio" name="mood" value="Pouco produtivo" <?php echo( $opcao  == 'Pouco produtivo') ? 'checked' : '' ?>>Pouco produtivo</label>
+
+            <label ><input type="radio" name="tarefas" value="Sim" <?php echo( $tarefas  == 'Sim') ? 'checked' : '' ?>>Sim</label>
+            <label ><input type="radio" name="tarefas" value="Nao" <?php echo( $tarefas  == 'Nao') ? 'checked' : '' ?>>Não</label>
 
             <textarea name="texto" class="texto-daily"><?php echo $texto;?></textarea>
 
@@ -61,11 +65,11 @@ if (!empty($_GET['id_daily'])) {
                 <button type="submit"id="Enviar-Editar" name="editar">Enviar</button>
                 
             </form>
-
-            <a href="dayli.php" id="SairEditar" class="botao12">&nbsp;&nbsp;&nbsp;<button  >Sair</button>&nbsp;&nbsp;&nbsp; </a>
-            <?php echo "<a href='DayliExcluir.php?id_daily=$id_d' class='botao12'>&nbsp;<button >Excluir</button></a>"; ?>
+            <br><br><br><br><br>
+            <?php echo "<a href='dailyExcluir.php?id_daily=$id_d' class='botao12'><button >Excluir</button></a>"; ?>
+                <a href="dailyVisualizar.php"  id="SairEditar" class="botao12"><button  >Sair</button></a>
             
-    </div>
+            
 
     </div>
 
