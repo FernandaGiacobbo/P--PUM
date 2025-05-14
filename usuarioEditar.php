@@ -27,7 +27,7 @@ if(isset($_POST['subimit'])){
             $_SESSION['email'] = $email;
             $_SESSION['senha'] = $senha;
 
-            header('location: perfil.php');
+            header('location: usuarioPerfil.php');
  
 }
 

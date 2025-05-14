@@ -11,5 +11,5 @@ $query = "DELETE FROM tb_daily WHERE id_daily = $id_d";
 $resultado = $oMysql->query($query);
 
 
-header('location: dayli.php');
+header('location: dailyVisualizar.php');
 ?>

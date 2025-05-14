@@ -18,20 +18,21 @@ if(isset($_POST['submit'])){
 
         $id_day = $res['id_daily'];
         echo "<script>alert('Parece que você já criou um daily hoje: ');</script>";
-        echo "<script>window.location.href = 'Dailyeditar.php?id_daily=$id_day';</script>";//levar para a pagina de editar do id da tarfefa daquela data em especifico
+        echo "<script>window.location.href = 'dailyEditar.php?id_daily=$id_day';</script>";//levar para a pagina de editar do id da tarfefa daquela data em especifico
         
         die(); 
     } else {
         
-        $rotina = $_POST['daylist'];
+        $rotina = $_POST['daily'];
         $rotina = mysqli_real_escape_string($oMysql, $rotina); //permite o que o usuario ultilize carcteres 
         $mood = $_POST['mood'];
+        $tarefas = $_POST['tarefas'];
         $data = date('Y-m-d');
 
-        $query = "INSERT INTO tb_daily(data_daily, mooday_daily, texto_daily, usuario_id) VALUES ('$data', '$mood', '$rotina', '$id_us')";
+        $query = "INSERT INTO tb_daily(data_daily, mooday_daily, tarefas_daily, texto_daily, usuario_id) VALUES ('$data', '$mood', '$tarefas' , '$rotina', '$id_us')";
         $resultado = $oMysql->query($query);
 
-        header('location: dayli.php');
+        header('location: dailyVisualizar.php');
     }
 
 

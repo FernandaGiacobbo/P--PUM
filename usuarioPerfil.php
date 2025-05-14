@@ -52,8 +52,8 @@ include 'header.php';
                 </div>
             </div>
 
-            <button type="button" class="btn "><a href="editar_usuario.php">Editar</a></button>
-            <button type="submit" class="btn" id="Excluir" name="Excluir"><a href="excluir_usuario.php">Excluir</a></button>
+            <button type="button" class="btn "><a href="usuarioEditar.php">Editar</a></button>
+            <button type="submit" class="btn" id="Excluir" name="Excluir"><a href="usuarioExcluir.php">Excluir</a></button>
             <button type="submit" class="btn" id="Excluir" name="Excluir"><a href="sairsession.php">Sair</a></button>
 
             </section>

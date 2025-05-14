@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="indexLogin.css">
+</head>
+<body>
+
+    <div class="main">
+
+        <div class="conteudo" id="partForm">
+
+            <div class="form">
+
+                <h2>Login:</h2>
+                <form action="indexLogin.php" method="post">
+
+                    <p>Qual seu e-mail? :</p>
+                    <label for="" class="textinput">  
+                        <input type="text" placeholder="Seu e-mail aqui" class="texto" name="email">
+                    </label>
+
+                    <p>Qual sua senha? :</p>
+                    <label for="" class="textinput">
+                        <input type="text" placeholder="Sua senha aqui" class="texto" name="senha">
+                    </label>
+                    
+                    <button type="submit" name="submit" class="entre">Entre</button>
+
+                </form>
+            </div>
+
+        </div>
+    
+        <div class="conteudo" id="partBut">
+
+            <p>Ainda não possui uma conta?</p> <br>
+            <h3>Crie já e seja uma pessoa mais organizada:</h3>
+
+            <button id="modal">Cadastre-se</button>
+    
+        </div>
+
+        <dialog id="abirModal">
+
+            <div class="conteudo">
+
+                <div class="form">
+    
+                    <h2>Login:</h2>
+                    <form action="indexCadastro.php" method="post">
+
+                        <label for="" class="textinput">
+                            <p>Qual seu nome? :</p>
+                            <input type="text" placeholder="Seu nome aqui" class="texto" name="nome">
+                        </label>
+    
+                        <label for="" class="textinput">
+                            <p>Qual seu e-mail? :</p>
+                            <input type="text" placeholder="Seu e-mail aqui" class="texto" name="email">
+                        </label>
+    
+                        <label for="" class="textinput">
+                            <p>Qual sua senha? :</p>
+                            <input type="text" placeholder="Sua senha aqui" class="texto" name="senha">
+                        </label>
+                        
+                        <button type="submit" name="cadastro">Entre</button>
+                        <button type="reset" id="fecharModal">Fechar</button>
+    
+                    </form>
+                </div>
+    
+            </div>
+
+        </dialog>
+
+    </div>
+
+    <script src="indexLogin.js"></script>
+    
+</body>
+</html>

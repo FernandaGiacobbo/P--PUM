@@ -42,13 +42,13 @@
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="perfil.php">
+                        <a href="usuarioPerfil.php">
                             <i class='bx bx-user icon'></i>
                             <span class="text nav-text">Perfil</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="dayli.php">
+                        <a href="dailyVisualizar.php">
                             <i class='bx bx-notepad icon'></i>
                             <span class="text nav-text">Daily</span>
                         </a>
