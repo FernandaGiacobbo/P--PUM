@@ -20,8 +20,7 @@ include 'header.php';
   <title>Perfil</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="usuarioPerfil.css">
 
 
 </head>
@@ -30,32 +29,37 @@ include 'header.php';
 
 <section class="home">
 
-        <h3>Perfil</h3> 
-            <div class="container">
-                <h2>Nome:</h2>
-                <div class="panel panel-default">
-                <div class="panel-body"><?php echo $logado;?></div>
-                </div>
+        <section class="informacoes">
+            <div class="infos">
+            <h3 class="titulo">Perfil</h3> 
+                <div class="container">
+                    <h2>Nome:</h2>
+                    <div class="panel panel-default">
+                    <div class="panel-body"><?php echo $logado;?>
+                    </div>
+                    </div>
+
+                    <div class="container">
+                    <h2>E-mail</h2>
+                    <div class="panel panel-default">
+                    <div class="panel-body"><?php echo $email_log;?></div>
+                    </div>
+                    </div>
+
+                    <div class="container">
+                    <h2>Senha</h2>
+                    <div class="panel panel-default">
+                    <div class="panel-body"><?php echo $senha_log;?></div>
+                    </div>
                 </div>
 
-                <div class="container">
-                <h2>E-mail</h2>
-                <div class="panel panel-default">
-                <div class="panel-body"><?php echo $email_log;?></div>
-                </div>
-                </div>
+                <button type="button" class="btn "><a href="usuarioEditar.php">Editar</a></button>
+                <button type="submit" class="btn" id="Excluir" name="Excluir"><a href="usuarioExcluir.php">Excluir</a></button>
+                <button type="submit" class="btn" id="Excluir" name="Excluir"><a href="sairsession.php">Sair</a></button>
 
-                <div class="container">
-                <h2>Senha</h2>
-                <div class="panel panel-default">
-                <div class="panel-body"><?php echo $senha_log;?></div>
-                </div>
             </div>
 
-            <button type="button" class="btn "><a href="usuarioEditar.php">Editar</a></button>
-            <button type="submit" class="btn" id="Excluir" name="Excluir"><a href="usuarioExcluir.php">Excluir</a></button>
-            <button type="submit" class="btn" id="Excluir" name="Excluir"><a href="sairsession.php">Sair</a></button>
-
+            </section>
             </section>
  
 
