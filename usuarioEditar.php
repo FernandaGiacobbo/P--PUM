@@ -42,43 +42,56 @@ if(isset($_POST['subimit'])){
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="usuarioEditar.css">
 </head>
 <body>
 
 <section class="home">
 
-<div class="container">
-    <div class="jumbotron">
-        <h3>Editar Perfil</h3> 
-        <form action="" method="post">
-            <div class="container">
-                <h2>Nome:</h2>
-                <div class="panel panel-default">
-                <div class="panel-body"><input type="text" class="form-control" id="nome" value="<?php echo $logado;?>" name="nome"></div>
-                </div>
+    <section class="quadro-infos">
+        <h3 class="titulo-caixa">Editar Perfil</h3>
+
+        <div class="infos">
+            <form action="" method="post">
+
+                <div class="nome">
+                    <div class="titulos-labels">
+                        <h2>Nome:</h2>
+                        <div class="panel panel-default">
+                            <div class="panel-body"><input type="text" class="inputs" id="nome" value="<?php echo $logado;?>" name="nome">
+                        </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="container">
-                <h2>E-mail</h2>
-                <div class="panel panel-default">
-                <div class="panel-body"><input type="email" class="form-control" id="email" value="<?php echo $email_log;?>" name="email"></div>
-                </div>
+                <div class="email">
+                    <div class="titulos-labels">
+                        <h2>E-mail</h2>
+                        <div class="panel panel-default">
+                            <div class="panel-body"><input type="email" class="inputs" id="email" value="<?php echo $email_log;?>" name="email">
+                        </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="container">
-                <h2>Senha</h2>
-                <div class="panel panel-default">
-                <div class="panel-body"><input type="password" class="form-control" id="senha" value="<?php echo $senha_log;?>" name="senha"></div>
+                <div class="senha">
+                    <div class="titulos-labels">
+                        <h2>Senha</h2>
+                        <div class="panel panel-default">
+                            <div class="panel-body"><input type="password" class="inputs" id="senha" value="<?php echo $senha_log;?>" name="senha">
+                        </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <button type="submit" class="btn btn-primary" id="submit" name="subimit">Submit</button>
-  </div>
-        </form>
-</div>
+                <br>
 
+                <button type="submit" class="button-submit" id="submit" name="subimit">Submit</button>
+            </form>
+        </div>
+            
+
+    </section>
 </section>
 
 </body>

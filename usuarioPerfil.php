@@ -28,39 +28,40 @@ include 'header.php';
 
 
 <section class="home">
+    <section class="quadro-infos">
+        <h3 class="titulo-caixa">Perfil</h3>
 
-        <section class="informacoes">
-            <div class="infos">
-            <h3 class="titulo">Perfil</h3> 
-                <div class="container">
-                    <h2>Nome:</h2>
-                    <div class="panel panel-default">
-                    <div class="panel-body"><?php echo $logado;?>
-                    </div>
-                    </div>
 
-                    <div class="container">
-                    <h2>E-mail</h2>
-                    <div class="panel panel-default">
-                    <div class="panel-body"><?php echo $email_log;?></div>
-                    </div>
-                    </div>
-
-                    <div class="container">
-                    <h2>Senha</h2>
-                    <div class="panel panel-default">
-                    <div class="panel-body"><?php echo $senha_log;?></div>
-                    </div>
-                </div>
-
-                <button type="button" class="btn "><a href="usuarioEditar.php">Editar</a></button>
-                <button type="submit" class="btn" id="Excluir" name="Excluir"><a href="usuarioExcluir.php">Excluir</a></button>
-                <button type="submit" class="btn" id="Excluir" name="Excluir"><a href="sairsession.php">Sair</a></button>
-
+        <div class="nome">
+            <div class="titulos-labels">
+                <h1>Nome:</h1>
+                <div class="placeholder"><?php echo $logado;?></div>
             </div>
+        </div>
 
-            </section>
-            </section>
+        <div class="email">
+            <div class="titulos-labels">
+                <h1>E-mail:</h1>
+                <div class="placeholder"><?php echo $email_log;?></div>
+            </div>
+        </div>
+
+        <div class="senha">
+            <div class="titulos-labels">
+                <h1>Senha:</h1>
+                <div class="placeholder"><?php echo $senha_log;?></div>
+            </div>
+        </div>
+
+        <br>
+        
+            <button type="button" class="edit "><a href="usuarioEditar.php">Editar</a></button>
+            <button type="submit" class="delete" id="Excluir" name="Excluir"><a href="usuarioExcluir.php">Excluir</a></button>
+            <button type="submit" class="logout" id="Excluir" name="Excluir"><a href="sairsession.php">Sair</a></button>
+
+
+    </section>
+</section>
  
 
 
