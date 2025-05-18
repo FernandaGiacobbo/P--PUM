@@ -1,0 +1,52 @@
+
+
+.cartao-editar {
+    background-color: #fff;
+    width: 60%;
+    height: 60x;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    box-shadow: 0 8px 8px rgba(0,0,0.3,0.6);
+}
+
+.cartao-editar form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1em;
+    gap: 0.5em;
+}
+
+.cartao-editar p {
+    margin-top: 2em;
+}
+
+.cartao-editar .texto {
+    border: none;
+    width: 60%;
+    height: auto;
+
+}
+
+.cartao-editar .textarea {
+    border: black solid 1px;
+    width: 100%;
+}
+
+.cartao-editar button {
+    border: none;
+    width: 10em;
+    height: 40px ;
+    margin: 3em;
+    border-radius: 25em;
+    cursor: pointer;
+    background-color: #f9d57f;
+    font-weight: 700;
+    font-style: italic;
+}
+
+

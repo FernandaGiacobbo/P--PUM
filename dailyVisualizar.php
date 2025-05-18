@@ -68,59 +68,7 @@ $id_us = $_SESSION['id'];
 
         <?php } }?>
 
-            <div class="cartao">
-                <div class="cabeca">
-                    <h3>12/12/2022</h3>
-                </div>
-                <div class="corpo">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore odit explicabo quidem laudantium commodi eos hic dolor iusto assumenda error ratione, ab corporis enim eius at officiis, nobis et laboriosam.
-                </div>
-                <button>Editar</button>
-            </div>
-
-            <div class="cartao">
-                <div class="cabeca">
-                    <h3>13/12/2022</h3>
-                </div>
-                <div class="corpo">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore odit explicabo quidem laudantium commodi eos hic dolor iusto assumenda error ratione, ab corporis enim eius at officiis, nobis et laboriosam.
-                </div>
-                <button>Editar</button>
-            </div>
-
-            <div class="cartao">
-                <div class="cabeca">
-                    <h3>14/12/2022</h3>
-                </div>
-                <div class="corpo">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore odit explicabo quidem laudantium commodi eos hic dolor iusto assumenda error ratione, ab corporis enim eius at officiis, nobis et laboriosam.
-                </div>
-                <button>Editar</button>
-            </div>
-
-            <div class="cartao">
-                <div class="cabeca">
-                    <h3>15/12/2022</h3>
-                </div>
-                <div class="corpo">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore odit explicabo quidem laudantium commodi eos hic dolor iusto assumenda error ratione, ab corporis enim eius at officiis, nobis et laboriosam.
-                </div>
-                <button>Editar</button>
-            </div>
-
-
-            <div class="cartao">
-                <div class="cabeca">
-                    <h3>16/12/2022</h3>
-                </div>
-                <div class="corpo">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore odit explicabo quidem laudantium commodi eos hic dolor iusto assumenda error ratione, ab corporis enim eius at officiis, nobis et laboriosam.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique veniam velit soluta facere voluptatem veritatis possimus. Harum, recusandae. Obcaecati eveniet sequi odio animi in! Odit hic saepe commodi nobis totam!
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, hic. Hic nemo exercitationem deserunt ipsa suscipit sed unde molestias? Recusandae tempora vitae quis natus adipisci porro amet at, hic cum.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore quia voluptates rem illum corrupti eum, recusandae in dicta quibusdam accusamus labore! Sunt at doloremque sit ducimus tempore provident voluptatem quis.
-                </div>
-                <button>Editar</button>
-            </div>
+            
         </div>
 
         <dialog id="modal"> 

@@ -3,7 +3,7 @@
 session_start();
 
 if (!empty($_GET['id_daily'])) {
-    include 'header.php';
+    
     include_once('conecta_db.php');
     $oMysql = conecta_db();
 
@@ -22,6 +22,8 @@ if (!empty($_GET['id_daily'])) {
             $tarefas = $user_daily['tarefas_daily'];
         }
 
+        
+
     } else {
         header('Location: dayli.php');
     }
@@ -36,38 +38,60 @@ if (!empty($_GET['id_daily'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="dailyVisualizar.css">
+    <link rel="stylesheet" href="dailyEditar.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 
 <body >
 
+<?php include 'header.php'; ?>
+
 <section class="home">
 
 
-<div class="conteiner">
+<div class="conteinerEDITAR">
 
 
 
     <div class="cartao-editar">
-            <form action="dailyEditar2.php" method="post">
-            <label><input type="radio" name="mood" value="Produtivo" <?php echo( $opcao  == 'Produtivo') ? 'checked' : '' ?>>Produtivo</label>
-            <label><input type="radio" name="mood" value="Mais ou menos" <?php echo( $opcao  == 'Mais ou menos') ? 'checked' : '' ?>>Mais ou menos</label>
-            <label><input type="radio" name="mood" value="Pouco produtivo" <?php echo( $opcao  == 'Pouco produtivo') ? 'checked' : '' ?>>Pouco produtivo</label>
+           <form action="dailyEditar2.php" method="post">
 
-            <label ><input type="radio" name="tarefas" value="Sim" <?php echo( $tarefas  == 'Sim') ? 'checked' : '' ?>>Sim</label>
-            <label ><input type="radio" name="tarefas" value="Nao" <?php echo( $tarefas  == 'Nao') ? 'checked' : '' ?>>Não</label>
+                <h2>Editar</h2>
+                <h2>Registre seu dia:</h2>
 
-            <textarea name="texto" class="texto-daily"><?php echo $texto;?></textarea>
+                <p>Você considera que seu dia foi:</p>
+                <label for="">
+                    <input type="radio" name="mood" value="Produtivo" <?php echo( $opcao  == 'Produtivo') ? 'checked' : '' ?>> Produtivo
+                    <input type="radio" name="mood" value="Poderia ser melhor" <?php echo( $opcao  == 'Poderia ser melhor') ? 'checked' : '' ?>> Poderia ser melhor
+                    <input type="radio" name="mood" value="Pouco produtivo" <?php echo( $opcao  == 'Pouco produtivo') ? 'checked' : '' ?>> Pouco produtivo
+                </label>
 
+                
+                <p>Você conseguiu concluir suas tarefas?</p>
+                <label for="">
+                    <input type="radio" name="tarefas" value="Sim" <?php echo( $tarefas  == 'Sim') ? 'checked' : '' ?>> Sim
+                    <input type="radio" name="tarefas" value="Não" <?php echo( $tarefas  == 'Não') ? 'checked' : '' ?>> Não
+                </label>
+                
 
-                <button type="submit"id="Enviar-Editar" name="editar">Enviar</button>
+                <p>Conte um pouco sobre seu dia:</p>
+                <label for="" class="texto">
+                    <textarea name="daily" id="" ><?php echo $texto;?></textarea>
+                </label>
+                
+                <label for="" >
+                    <button type="submit"id="Enviar-Editar" name="editar">Enviar</button>
+                </label>
+                
                 
             </form>
+                <label for="" >
+                    <a href="dailyExcluir.php?id_daily=<?php echo $id_d; ?>"  ><button>Excluir</button></a>
+                    <a href="dailyVisualizar.php"  ><button  >Cancelar</button></a>
+                </label>
             <br><br><br><br><br>
-            <?php echo "<a href='dailyExcluir.php?id_daily=$id_d' class='botao12'><button >Excluir</button></a>"; ?>
-                <a href="dailyVisualizar.php"  id="SairEditar" class="botao12"><button  >Sair</button></a>
+
             
             
 
