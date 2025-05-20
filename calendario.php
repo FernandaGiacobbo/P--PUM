@@ -121,6 +121,7 @@ if (
         </div>
     </div>
 
+    <!-- Modal confirmar exclusão -->
     <div id="modalDelete" class="modal-deletar">
       <div class="modal-content">
         <span class="close-delete"></span>
@@ -133,13 +134,14 @@ if (
       </div>
     </div>
 
-      <div id="modalEditar" class="modal-editar">
+    <!-- Modal confirmar edição -->
+    <div id="modalEditar" class="modal-editar">
       <div class="modal-content">
-        <span class="close-delete"></span>
-        <h2>Confirmar Exclusão</h2>
-        <p>Tem certeza que deseja deletar este evento?</p>
+        <span class="close-edit"></span>
+        <h2>Confirmar Alterações</h2>
+        <p>Tem certeza que deseja alterar este evento?</p>
         <div class="modal-buttons">
-          <button id="confirmEdit" class="edit-confirm">Deletar</button>
+          <button id="confirmEdit" class="edit-confirm">Alterar</button>
           <button id="cancelEdit" class="edit-cancel">Cancelar</button>
         </div>
       </div>
