@@ -10,12 +10,16 @@ let currentDate = new Date();
 const modalAdd = document.getElementById("modal");
 const modalEdit = document.getElementById("modal-edit");
 const modalDelete = document.getElementById("modalDelete");
+const modalEditar = document.getElementById("modalEditar");
 const openModalBtn = document.getElementById("openModal");
 const closeAdd = modalAdd.querySelector(".close");
 const closeEdit = modalEdit.querySelector("#close-edit");
 const closeDelete = document.querySelector(".close-delete");
 const confirmDelete = document.getElementById("confirmDelete");
 const cancelDelete = document.getElementById("cancelDelete");
+const closeEditar = document.querySelector(".close-edit");
+const confirmEdit = document.getElementById("confirmEdit");
+const cancelEdit = document.getElementById("cancelEdit");
 
 
 // Variável para armazenar o ID do evento sendo editado
@@ -89,10 +93,19 @@ cancelDelete.addEventListener('click', () => {
   modalDelete.style.display = "none";
 });
 
+closeEditar.addEventListener('click', () => {
+  modalEditar.style.display = "none";
+})
+
+cancelEdit.addEventListener('click', () => {
+  modalEditar.style.display = "none";
+})
+
 window.addEventListener('click', (e) => {
   if (e.target === modalAdd) modalAdd.style.display = "none";
   if (e.target === modalEdit) modalEdit.style.display = "none";
   if (e.target === modalDelete) modalDelete.style.display = "none";
+  if (e.target === modalEditar) modalEditar.style.display = "none"
 });
 
 // GERENCIAMENTO DE EVENTOS
@@ -124,31 +137,6 @@ function abrirModalEdicao(e) {
   modalEdit.style.display = "flex";
 }
 
-async function editarEvento(e) {
-  e.preventDefault();
-  
-  const form = document.querySelector('#modal-edit form');
-  const formData = new FormData(form);
-  
-  try {
-    const response = await fetch('editar_evento.php', {
-      method: 'POST',
-      body: formData
-    });
-    
-    const result = await response.text();
-    
-    if (result.includes("sucesso")) {
-      modalEdit.style.display = "none";
-      await carregarEventosDoDia();
-    } else {
-      throw new Error(result);
-    }
-  } catch (error) {
-    console.error('Erro ao editar:', error);
-  }
-}
-
 async function deletarEvento(e) {
   e.preventDefault();
   modalDelete.style.display = "flex";
@@ -174,6 +162,52 @@ confirmDelete.addEventListener('click', async () => {
     console.error('Erro ao deletar:', error);
     alert('Erro ao deletar evento: ' + error.message);
   }
+});
+
+// Modifique a função editarEvento para abrir o modal de confirmação
+// Substitua as duas funções editarEvento por esta única versão:
+async function editarEvento(e) {
+  e.preventDefault();
+  
+  // Primeiro mostra o modal de confirmação
+  modalEditar.style.display = "flex";
+  
+  // Não fecha o modal de edição ainda, pois o usuário pode cancelar
+  // A submissão real só acontece se confirmar no modalEditar
+}
+
+// Mantenha este listener para o botão de confirmação
+confirmEdit.addEventListener('click', async () => {
+  try {
+    const form = document.querySelector('#modal-edit form');
+    const formData = new FormData(form);
+    
+    const response = await fetch('editar_evento.php', {
+      method: 'POST',
+      body: formData
+    });
+    
+    const result = await response.text();
+    
+    if (result.includes("sucesso")) {
+      modalEditar.style.display = "none";
+      modalEdit.style.display = "none"; // Fecha ambos os modais
+      await carregarEventosDoDia();
+    } else {
+      throw new Error(result);
+    }
+  } catch (error) {
+    console.error('Erro ao editar:', error);
+    modalEditar.style.display = "none";
+    // alert('Erro ao editar evento: ' + error.message);
+  }
+});
+
+// Adicione este listener para o botão de cancelar no modal de edição
+cancelEdit.addEventListener('click', () => {
+  modalEditar.style.display = "none";
+  // Volta para o modal de edição ou fecha tudo, conforme sua preferência
+  modalEdit.style.display = "flex"; // Se quiser voltar para edição
 });
 
 async function carregarEventosDoDia() {
