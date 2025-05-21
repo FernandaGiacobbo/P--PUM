@@ -1,6 +1,3 @@
-<?php 
-  include 'header.php'; 
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,15 +7,20 @@
   <link rel="stylesheet" href="main.css">
   <title>Papum</title>
 </head>
+
 <body>
+
+<?php 
+  include 'header.php'; 
+?>
 
 
 <section class="home">
     
   <div class="container">
 
-  <br>
-  <br>
+  
+  
 
     <?php
       $oMysql = conecta_db();
@@ -47,87 +49,117 @@
 
     ?>
 
-    <section id="containernome">
-    <h2 class="nomem">Olá, <?php echo $logado;?></h2>
-
       <div class="caixa">
-        <h3 class="mostrartarefas"> Você tem <?php echo $concluido;?> tarefas concluídas</h3>
-      </div>
-
-      <div class="caixa">
-      <h3 class="mostrartarefas"> Você tem <?php echo $pendente;?> tarefas pendentes</h3>
-      </div>
-
-    </section>
     
-    <br>
+            <h2 class="nomem">Bom te ver novamente, <?php echo $logado;?>!!</h2>
 
-    <div class="table-responsive">
-
-      <h3>Meus Afazeres</h3>
-      <br>
-
-      <button class="btn btn-primary" onclick="window.location.href='principal.php?page=1'">Adicionar Tarefa</button>
-
-      <br>
-      <br>
-
-    <div class="container">
-
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>ID tarefa</th>
-            <th>Nome</th>
-            <th>Detalhamento</th>
-            <th>Data</th>
-            <th>Prazo</th>
-            <th>Status</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-
-        <tbody>
-
-          <?php
-            
-            $query = "SELECT * FROM tb_tarefa where usuario_id = $id_us";
-            $resultado = $oMysql->query($query);
-            if($resultado) {
-                while($linha = $resultado->fetch_object()){
-
-                    $botoes = "<a 
-                        class='btn btn-success' href='principal.php?page=2&id_tarefa=".$linha->id_tarefa."'> Alterar </a>";
-                    $botoes .= "<a class='btn btn-danger' href='principal.php?page=3&id_tarefa=".$linha->id_tarefa."'> Excluir </a>";
-                    
-
-                    $html = "<tr>";
-
-                    $html .= "<td>".$linha->id_tarefa."</td>";
-                    $html .= "<td>".$linha->nome."</td>";
-                    $html .= "<td>".$linha->detalhamento."</td>";
-                    $html .= "<td>".$linha->data_tarefa."</td>";
-                    $html .= "<td>".$linha->prazo."</td>";
-                    $html .= "<td>".$linha->status_tarefa."</td>";
-                    $html .= "<td>".$botoes."</td>";
-                    $html .= "</tr>";
-
-                    echo $html;
-
-                }
-            }
-
-          ?>
-
-        </tbody>
-      </table>
-    </div>
+            <h3>
+              Você possui <b><?php echo $pendente;?> </b class="vermelho"> tarefas pendentes e <b class="verde"><?php echo $concluido;?> </b>concluidas!
+            </h3>
 
       
       </div>
+    
+    
+    
 
+    <div class="corpo">
 
+      <h3>Meus Afazeres</h3>
+      
+            <div class="tabela">
+
+                  <button class="botao" onclick="window.location.href='principal.php?page=1'">Adicionar Tarefa</button>
+
+                <table class="table">
+                  
+                    <tr>
+                      <th>Nome</th>
+                      <th>Detalhamento</th>
+                      <th>Data</th>
+                      <th>Prazo</th>
+                      <th>Status</th>
+                      <th>Ações</th>
+                    </tr>
+                  
+
+                  
+
+                    <?php
+                      
+                      $query = "SELECT * FROM tb_tarefa where usuario_id = $id_us";
+                      $resultado = $oMysql->query($query);
+                      if($resultado) {
+                          while($linha = $resultado->fetch_object()){
+
+                              $botoes = "<a 
+                                  class='success' href='principal.php?page=2&id_tarefa=".$linha->id_tarefa."'> Alterar </a>";
+                              $botoes .= "<a class='danger' href='principal.php?page=3&id_tarefa=".$linha->id_tarefa."'> Excluir </a>";
+                              
+
+                              $html = "<tr class='corpo_tb'>";
+                              $html .= "<td class='td_dec'>".$linha->nome."</td>";
+                              $html .= "<td class='td_dec'><div class='td_scroll'>".htmlspecialchars($linha->detalhamento)."</div></td>";
+                              $html .= "<td class='td_dec'>".$linha->data_tarefa."</td>";
+                              $html .= "<td class='td_dec'>".$linha->prazo."</td>";
+                              $html .= "<td class='td_dec'>".$linha->status_tarefa."</td>";
+                              $html .= "<td class='td_dec alingbtn'>".$botoes."</td>";
+                              $html .= "</tr>";
+
+                              echo $html;
+
+                          }
+                      }
+
+                    ?>
+
+                  
+                </table>
+            </div>
+
+              
     </div>
+
+
+  </div>
+
+  <dialog>
+    <div class="caixaModal">
+        <form action="dailyCriar.php" method="post">
+
+                <h2>Inserir sua Tarefa:</h2>
+
+                <p>Insira o nome da tarefa</p>
+                <label >
+                    <input type="text" class="form-control" name="nomet" placeholder="digite">
+                </label>
+
+                
+                <p>Insira o detalhamento da tarefa</p>
+                <label >
+                    <input type="text" class="form-control" name="detalhamento" placeholder="digite">
+                </label>
+                
+
+                <p>Insira a data de inserção da tarefa</p>
+                <label class="texto">
+                    <input type="datetime-local" class="form-control" name="data" placeholder="digite">
+                </label>
+
+                <label >
+                    <input type="date" class="form-control" name="prazo" placeholder="digite">
+                </label>
+                
+                <p>Insira o status da tarefa</p>
+                <label >
+                    <option value="Em Andamento">Em andamento</option>
+                    <option value="Não Iniciado">Não iniciado</option>
+                </label>
+                
+
+        </form>                 
+    </div>
+  </dialog>
 
 </section>
 
