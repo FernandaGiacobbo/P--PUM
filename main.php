@@ -69,7 +69,7 @@
       
             <div class="tabela">
 
-                  <button class="botao" onclick="window.location.href='principal.php?page=1'">Adicionar Tarefa</button>
+                  <button class="botao" id="abrir">Adicionar Tarefa</button>
 
                 <table class="table">
                   
@@ -123,38 +123,52 @@
 
   </div>
 
-  <dialog>
+  <dialog id="modal">
     <div class="caixaModal">
-        <form action="dailyCriar.php" method="post">
+        <form action="insert.php" method="post">
 
                 <h2>Inserir sua Tarefa:</h2>
 
-                <p>Insira o nome da tarefa</p>
+                
                 <label >
-                    <input type="text" class="form-control" name="nomet" placeholder="digite">
+                    <p>Insira o nome da tarefa</p>
+                    <input type="text" class="nome" name="nomet" placeholder="digite">
                 </label>
 
                 
-                <p>Insira o detalhamento da tarefa</p>
-                <label >
-                    <input type="text" class="form-control" name="detalhamento" placeholder="digite">
-                </label>
                 
-
-                <p>Insira a data de inserção da tarefa</p>
                 <label class="texto">
-                    <input type="datetime-local" class="form-control" name="data" placeholder="digite">
-                </label>
-
-                <label >
-                    <input type="date" class="form-control" name="prazo" placeholder="digite">
+                  <p>Insira o detalhamento da tarefa</p>
+                    <textarea name="detalhamento"  placeholder="Escreva aqui" class="textarea"></textarea>
                 </label>
                 
-                <p>Insira o status da tarefa</p>
+
+                
+              <div class="datas">
+                    <label>
+                      <p>Começo da tarefa</p>
+                      <input type="date" class="data" name="data_insercao">
+                    </label>
+
+                    <label>
+                      <p>Termino da tarefa</p>
+                      <input type="date" class="data" name="prazo">
+                    </label>
+              </div>
+                
+                
                 <label >
-                    <option value="Em Andamento">Em andamento</option>
-                    <option value="Não Iniciado">Não iniciado</option>
+                  <p>Insira o status da tarefa</p>
+                    <select name="status">
+                        <option value="Em Andamento" >Em andamento</option>
+                        <option value="Não Iniciado">Não iniciado</option>
+                    </select>
                 </label>
+
+                <div class="botoesModal">
+                  <button type="submit" name="submit">Criar</button>
+                  <button type="reset" id="sair">Sair</button>
+                </div>
                 
 
         </form>                 
@@ -162,6 +176,8 @@
   </dialog>
 
 </section>
+
+<script src="principal.js"></script>
 
 </body>
 </html>

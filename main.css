@@ -48,6 +48,15 @@
     gap: 1em;
 }
 
+.tabela {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.table {
+  flex-shrink: 0;
+}
+
 .tabela .botao{
     align-self: baseline;
     margin-left: 3.3em;
@@ -87,22 +96,19 @@
     border: rgba(226, 178, 84, 0.23) solid 1px;
     border-radius: 3px;
     padding: 7px;
+    
 }
 
 .td_scroll {
-  max-height: 7.5em;
-  overflow-y: auto;
-  overflow-x: hidden;
-  white-space: pre-wrap;
-  word-wrap: break-word;
+   overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .success {
     margin: 1px;
     border: none;
     border-radius: 2px;
-    padding: 2.5px;
-    margin: 1px 1em 1px 0.5px;
     height: 2em;
     background-color: #fff;
     border: #3a4a68 solid 1px;
@@ -124,8 +130,6 @@
     margin: 1px;
     border: none;
     border-radius: 2px;
-    padding: 2.5px;
-    margin: 1px 0.5px 1px 1em;
     height: 2em;
     background-color: #3a4a68;
     border: #3a4a68 solid 1px;
@@ -142,5 +146,135 @@
 }
 
 .alingbtn{
-    text-align:center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    flex: 1;
+    gap: 0.5em;
+    border-bottom: 1px;
+    border-left: 1px;
+    border-right: 1px;
+}
+
+
+dialog {
+    width: 90%;
+    height: 90%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+form h2 {
+    font-size: 35px;
+    font-weight: 300;
+    margin-bottom: 1em;
+}
+
+form p {
+    font-size: 17px;
+    margin-bottom: 0.5em;
+}
+
+
+
+.caixaModal{
+    display: flex;
+    width: 90%;
+    margin: 2em;
+    padding: 1em;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    flex-wrap: wrap;
+
+}
+
+.caixaModal form {
+  margin: 2em;  
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 1.5em;
+  width: 100%;
+}
+
+
+
+.datas {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;              
+  justify-content: center;
+  flex-wrap: wrap;       
+  width: 100%;
+}
+
+.botoesModal{
+    display: flex;
+    flex-direction: row;
+    gap: 1em;              
+    justify-content: center;
+    flex-wrap: wrap;       
+    width: 100%;
+}
+
+
+dialog .texto {
+    border: none;
+    width: 60%;
+    height: auto;
+
+}
+
+dialog .textarea {
+    border: #3a4a68 solid 1px;
+    width: 100%;
+    padding: 1em;
+    border-radius: 5px;
+}
+
+dialog .nome {
+    border-radius: 5px;
+    width: 20em;
+    height: 3em;
+    padding: 1em;
+    border: #3a4a68 solid 1px;
+}
+
+dialog .data {
+    border: #3a4a68 solid 1px;
+    width: 15em;
+    height: 3em;
+    padding: 1em;
+}
+
+dialog select {
+    border: #3a4a68 solid 1px;
+    width: 30em;
+    height: 3em;
+    padding: 1em;
+    background-color: #fff;
+}
+
+dialog button {
+    border: none;
+    width: 10em;
+    height: 40px ;
+    margin: 3em;
+    border-radius: 10em;
+    cursor: pointer;
+    background-color: #e2b354;
+    font-weight: 700;
+}
+
+dialog button:hover{
+    border: #3a4a68 solid 1px;
+    background-color: #fff;
+    transition: 0.3s;
 }
