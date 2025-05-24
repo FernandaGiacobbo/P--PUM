@@ -242,6 +242,13 @@ confirmDelete.addEventListener('click', async () => {
     if (result.includes("sucesso")) {
       modalDelete.style.display = "none";
       await carregarEventosDoDia();
+
+      Swal.fire({
+      title: "Evento deletado com sucesso!",
+      icon: "success",
+      draggable: true
+    });
+
     } else {
       throw new Error(result);
     }
@@ -275,6 +282,13 @@ confirmEdit.addEventListener('click', async () => {
       modalEditar.style.display = "none";
       modalEdit.style.display = "none"; // Fecha ambos os modais
       await carregarEventosDoDia();
+
+      Swal.fire({
+      title: "Evento alterado com sucesso!",
+      icon: "success",
+      draggable: true
+    });
+
     } else {
       throw new Error(result);
     }
