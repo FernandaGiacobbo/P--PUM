@@ -1,32 +1,37 @@
 <?php
+  include 'conecta_db.php';
 
-include 'header.php';
-include 'conecta_db.php';
+  if (
+      isset($_POST['titulo_evento']) &&
+      isset($_POST['data_evento']) &&
+      isset($_POST['horario_evento']) &&
+      isset($_POST['data_prazo']) &&
+      isset($_POST['hora_prazo']) &&
+      isset($_POST['descricao'])
+  ) {
+      $oMysql = conecta_db();
 
-if (
-    isset($_POST['titulo_evento']) &&
-    isset($_POST['data_evento']) &&
-    isset($_POST['horario_evento']) &&
-    isset($_POST['data_prazo']) &&
-    isset($_POST['hora_prazo']) &&
-    isset($_POST['descricao'])
-) {
-    $oMysql = conecta_db();
+      // Preparar os dados
+      $titulo = $oMysql->real_escape_string($_POST['titulo_evento']);
+      $datai = $oMysql->real_escape_string($_POST['data_evento']);
+      $horai = $oMysql->real_escape_string($_POST['horario_evento']);
+      $datat = $oMysql->real_escape_string($_POST['data_prazo']);
+      $horat = $oMysql->real_escape_string($_POST['hora_prazo']);
+      $descricao = $oMysql->real_escape_string($_POST['descricao']);
 
-    $titulo = $_POST['titulo_evento'];
-    $datai = $_POST['data_evento'];
-    $horai = $_POST['horario_evento'];
-    $datat = $_POST['data_prazo'];
-    $horat = $_POST['hora_prazo'];
-    $descricao = $_POST['descricao'];
+      // Query de inserção
+      $query = "INSERT INTO tb_evento (titulo_evento, data_evento, horario_evento, data_prazo, hora_prazo, descricao)
+                VALUES ('$titulo', '$datai', '$horai', '$datat', '$horat', '$descricao')";
 
-    $query = "INSERT INTO tb_evento (titulo_evento, data_evento, horario_evento, data_prazo, hora_prazo, descricao)
-              VALUES ('$titulo', '$datai', '$horai', '$datat', '$horat', '$descricao')";
+      // Executar a query
+      $resultado = $oMysql->query($query);
+      
+      // Redirecionar para a mesma página
+      header("Location: ".$_SERVER['PHP_SELF']);
+      exit();
+  }
 
-    $resultado = $oMysql->query($query);
-
-}
-
+    include 'header.php';
 ?>
 
 <!DOCTYPE html>
