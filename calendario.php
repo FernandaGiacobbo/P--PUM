@@ -1,6 +1,11 @@
 <?php
   include 'conecta_db.php';
 
+  
+  session_start();
+  $id_estudante = $_SESSION['id'];
+
+  
   if (
       isset($_POST['titulo_evento']) &&
       isset($_POST['data_evento']) &&
@@ -20,8 +25,8 @@
       $descricao = $oMysql->real_escape_string($_POST['descricao']);
 
       // Query de inserção
-      $query = "INSERT INTO tb_evento (titulo_evento, data_evento, horario_evento, data_prazo, hora_prazo, descricao)
-                VALUES ('$titulo', '$datai', '$horai', '$datat', '$horat', '$descricao')";
+        $query = "INSERT INTO tb_evento (titulo_evento, data_evento, horario_evento, data_prazo, hora_prazo, descricao, id_estudante)
+          VALUES ('$titulo', '$datai', '$horai', '$datat', '$horat', '$descricao', '$id_estudante')";
 
       // Executar a query
       $resultado = $oMysql->query($query);

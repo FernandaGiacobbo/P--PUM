@@ -1,15 +1,21 @@
 <?php
-include 'conecta_db.php';
+    include 'conecta_db.php';
+    session_start();
 
-$oMysql = conecta_db();
-$query = "SELECT * FROM tb_evento";
-$resultado = $oMysql->query($query);
+    $id_estudante = $_SESSION['id'];
+    $oMysql = conecta_db();
 
-$eventos = array();
-while ($row = $resultado->fetch_assoc()) {
-    $eventos[] = $row;
-}
+    $stmt = $oMysql->prepare("SELECT * FROM tb_evento WHERE id_estudante = ?");
+    $stmt->bind_param("i", $id_estudante);
+    $stmt->execute();
 
-header('Content-Type: application/json');
-echo json_encode($eventos);
+    $resultado = $stmt->get_result();
+    $eventos = array();
+
+    while ($row = $resultado->fetch_assoc()) {
+        $eventos[] = $row;
+    }
+
+    header('Content-Type: application/json');
+    echo json_encode($eventos);
 ?>
