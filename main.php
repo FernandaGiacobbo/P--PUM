@@ -26,7 +26,7 @@
 
     <?php
 
-      session_start();
+      
       $id_us = $_SESSION['id'];
       if (!empty($id_us)) {
         $oMysql = conecta_db();
