@@ -72,6 +72,18 @@ nextBtn.onclick = () => {
   renderizarCalendario();
 };
 
+prevBtn.onclick = () => {
+    currentDate.setMonth(currentDate.getMonth() - 1);
+    renderizarCalendario();
+    marcarEventosNoCalendario(); // Adiciona esta linha
+};
+
+nextBtn.onclick = () => {
+    currentDate.setMonth(currentDate.getMonth() + 1);
+    renderizarCalendario();
+    marcarEventosNoCalendario(); // Adiciona esta linha
+};
+
 // GERENCIAMENTO DE MODAIS
 openModalBtn.addEventListener('click', () => {
   modalAdd.style.display = "flex";
@@ -107,6 +119,81 @@ window.addEventListener('click', (e) => {
   if (e.target === modalDelete) modalDelete.style.display = "none";
   if (e.target === modalEditar) modalEditar.style.display = "none"
 });
+
+
+// Adiciona esta função para marcar os eventos no calendário
+async function marcarEventosNoCalendario() {
+    try {
+        const res = await fetch('buscar_todos_eventos.php');
+        const eventos = await res.json();
+        
+        // Remove marcadores antigos
+        document.querySelectorAll('.marcador-evento').forEach(m => m.remove());
+        
+        const dates = document.querySelectorAll('.calendar-dates div:not(:empty)');
+        
+        dates.forEach(dateDiv => {
+            const dia = dateDiv.textContent.trim().padStart(2, '0');
+            const mes = String(currentDate.getMonth() + 1).padStart(2, '0');
+            const ano = currentDate.getFullYear();
+            const dataFormatada = `${ano}-${mes}-${dia}`;
+
+            // Verifica apenas a data de início
+            const temEvento = eventos.some(ev => {
+                const dataInicio = ev.data_evento.split(' ')[0];
+                return dataFormatada === dataInicio;
+            });
+
+            if (temEvento) {
+                const marcador = document.createElement('span');
+                marcador.className = 'marcador-evento';
+                dateDiv.appendChild(marcador);
+            }
+        });
+    } catch (error) {
+        console.error("Erro ao marcar eventos:", error);
+    }
+}
+
+// Modifique a função renderizarCalendario para chamar a marcação de eventos
+function renderizarCalendario() {
+    const ano = currentDate.getFullYear();
+    const mes = currentDate.getMonth();
+    const primeiroDia = new Date(ano, mes, 1).getDay();
+    const totalDiasDoMes = new Date(ano, mes + 1, 0).getDate();
+
+    monthYear.textContent = currentDate.toLocaleDateString("pt-BR", {
+        year: "numeric",
+        month: "long"
+    });
+
+    datesContainer.innerHTML = "";
+
+    for (let i = 0; i < primeiroDia; i++) {
+        datesContainer.innerHTML += "<div></div>";
+    }
+
+    for (let dia = 1; dia <= totalDiasDoMes; dia++) {
+        const hoje = new Date();
+        const dataAtual = new Date(ano, mes, dia);
+        const divDia = document.createElement("div");
+        divDia.textContent = dia;
+
+        if (
+            dataAtual.getDate() === hoje.getDate() &&
+            dataAtual.getMonth() === hoje.getMonth() &&
+            dataAtual.getFullYear() === hoje.getFullYear()
+        ) {
+            divDia.classList.add("hoje");
+        }
+
+        datesContainer.appendChild(divDia);
+    }
+    
+    // Chama a função para marcar os eventos após renderizar o calendário
+    marcarEventosNoCalendario();
+}
+
 
 // GERENCIAMENTO DE EVENTOS
 function abrirModalEdicao(e) {
@@ -155,6 +242,13 @@ confirmDelete.addEventListener('click', async () => {
     if (result.includes("sucesso")) {
       modalDelete.style.display = "none";
       await carregarEventosDoDia();
+
+      Swal.fire({
+      title: "Evento deletado com sucesso!",
+      icon: "success",
+      draggable: true
+    });
+
     } else {
       throw new Error(result);
     }
@@ -164,16 +258,11 @@ confirmDelete.addEventListener('click', async () => {
   }
 });
 
-// Modifique a função editarEvento para abrir o modal de confirmação
-// Substitua as duas funções editarEvento por esta única versão:
+
 async function editarEvento(e) {
   e.preventDefault();
-  
-  // Primeiro mostra o modal de confirmação
   modalEditar.style.display = "flex";
-  
-  // Não fecha o modal de edição ainda, pois o usuário pode cancelar
-  // A submissão real só acontece se confirmar no modalEditar
+
 }
 
 // Mantenha este listener para o botão de confirmação
@@ -193,6 +282,13 @@ confirmEdit.addEventListener('click', async () => {
       modalEditar.style.display = "none";
       modalEdit.style.display = "none"; // Fecha ambos os modais
       await carregarEventosDoDia();
+
+      Swal.fire({
+      title: "Evento alterado com sucesso!",
+      icon: "success",
+      draggable: true
+    });
+
     } else {
       throw new Error(result);
     }

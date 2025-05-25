@@ -1,12 +1,12 @@
 body {
   font-family: Arial, sans-serif;
-  background: #f9f9f9;
+  background: #ffedc8;
   margin-top: 40px;
 }
 
 
 .calendar-container {
-  background: white;
+  background: #FEFEFE;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
   padding: 20px;
@@ -42,18 +42,24 @@ body {
 }
 
 .calendar-dates div:hover {
-  background: #ddd;
+  background: #f8e9cd;
 }
 
 .add-event-btn {
   margin-top: 20px;
   padding: 10px 20px;
-  background-color: #7f5af0;
+  background-color: #3A4A68;
   color: white;
   border: none;
   border-radius: 999px;
   font-size: 16px;
   cursor: pointer;
+}
+
+.add-event-btn:hover{
+  background-color: #EDE5E0;
+  color: black;
+  transition: all 0.3s ease;
 }
 
 .modal {
@@ -104,12 +110,18 @@ body {
 }
 
 .save-event {
-  background-color: #00b894;
+  background-color: #3A4A68;
   color: white;
   padding: 10px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
+}
+
+.save-event:hover{
+  background-color: #EDE5E0;
+  color: black;
+  transition: all 0.2s ease;
 }
 
 .botao-add{
@@ -119,7 +131,7 @@ body {
 .eventos-adicionados{
   height: 42em;
   width: 40em;
-  background-color: #fff;
+  background-color: #fefefe;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -267,8 +279,86 @@ p{
 .modal-editar #confirmDelete {
   background-color: #ff4444;
   color: white;
+  transition: all 0.3s ease;
 }
 
 .modal-editar #cancelDelete {
   background-color: #ccc;
+  transition: all 0.3s ease;
+}
+
+.delete-evento{
+  background-color: #3A4A68;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.edit-evento{
+  background-color: #EDCA85;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.delete-evento:hover{
+  background-color: #EDE5E0;
+  color: black;
+  transition: all 0.3s ease;
+}
+
+.edit-evento:hover{
+  background-color: #EDE5E0;
+  color: black;
+  transition: all 0.3s ease;
+}
+
+
+.marcador-evento {
+    display: inline-block;
+    width: 70px;
+    height: 7px;
+    background-color: #3A4A68;
+    border-radius: 10px;
+    margin-top: 2px;
+}
+
+.calendar-dates div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2em;
+    min-height: 40px;
+}
+
+/* ------------------------------------------------------------------------- */
+
+.swal2-popup {
+  background-color: #FEFEFE;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  font-family: Arial, sans-serif;
+}
+
+.swal2-title {
+  color: #3A4A68;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.swal2-content {
+  color: #555;
+  font-size: 1rem;
+}
+
+.swal2-confirm {
+  background-color: #3A4A68 !important;
+  border: none !important;
+  border-radius: 5px !important;
+  padding: 8px 20px !important;
 }

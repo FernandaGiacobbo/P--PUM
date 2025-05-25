@@ -38,18 +38,18 @@
 }
 
 .button-submit{
-    width: 100px;
-    height: 50px;
+    padding: 10px 40px;
     border-radius: 1em;
     text-decoration: none;
-    background-color: #0f62ce;
+    background-color: #3E6985;
     border: none;
     color: white;
     cursor: pointer;
+    font-weight: bold;
 }
 
 .button-submit:hover{
-    background-color: #b9d1f0;
+    background-color: #0D273D;
     transition: all 0.3s ease;
 }
 

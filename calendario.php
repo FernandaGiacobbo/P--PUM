@@ -1,32 +1,42 @@
 <?php
+  include 'conecta_db.php';
 
-include 'header.php';
-include 'conecta_db.php';
+  
+  session_start();
+  $id_estudante = $_SESSION['id'];
 
-if (
-    isset($_POST['titulo_evento']) &&
-    isset($_POST['data_evento']) &&
-    isset($_POST['horario_evento']) &&
-    isset($_POST['data_prazo']) &&
-    isset($_POST['hora_prazo']) &&
-    isset($_POST['descricao'])
-) {
-    $oMysql = conecta_db();
+  
+  if (
+      isset($_POST['titulo_evento']) &&
+      isset($_POST['data_evento']) &&
+      isset($_POST['horario_evento']) &&
+      isset($_POST['data_prazo']) &&
+      isset($_POST['hora_prazo']) &&
+      isset($_POST['descricao'])
+  ) {
+      $oMysql = conecta_db();
 
-    $titulo = $_POST['titulo_evento'];
-    $datai = $_POST['data_evento'];
-    $horai = $_POST['horario_evento'];
-    $datat = $_POST['data_prazo'];
-    $horat = $_POST['hora_prazo'];
-    $descricao = $_POST['descricao'];
+      // Preparar os dados
+      $titulo = $oMysql->real_escape_string($_POST['titulo_evento']);
+      $datai = $oMysql->real_escape_string($_POST['data_evento']);
+      $horai = $oMysql->real_escape_string($_POST['horario_evento']);
+      $datat = $oMysql->real_escape_string($_POST['data_prazo']);
+      $horat = $oMysql->real_escape_string($_POST['hora_prazo']);
+      $descricao = $oMysql->real_escape_string($_POST['descricao']);
 
-    $query = "INSERT INTO tb_evento (titulo_evento, data_evento, horario_evento, data_prazo, hora_prazo, descricao)
-              VALUES ('$titulo', '$datai', '$horai', '$datat', '$horat', '$descricao')";
+      // Query de inserção
+        $query = "INSERT INTO tb_evento (titulo_evento, data_evento, horario_evento, data_prazo, hora_prazo, descricao, id_estudante)
+          VALUES ('$titulo', '$datai', '$horai', '$datat', '$horat', '$descricao', '$id_estudante')";
 
-    $resultado = $oMysql->query($query);
+      // Executar a query
+      $resultado = $oMysql->query($query);
+      
+      // Redirecionar para a mesma página
+      header("Location: ".$_SERVER['PHP_SELF']);
+      exit();
+  }
 
-}
-
+    include 'header.php';
 ?>
 
 <!DOCTYPE html>
@@ -35,9 +45,11 @@ if (
   <meta charset="UTF-8">
   <title>Calendário</title>
   <link rel="stylesheet" href="calendario.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 <body>
+
 
 
 <section class="home">
@@ -70,18 +82,18 @@ if (
               <form class="modal-form" method="POST">
 
                 <label>Título</label>
-                <input name="titulo_evento" type="text" placeholder="Título do evento">
+                <input name="titulo_evento" type="text" placeholder="Título do evento" required>
 
                 <label>Data de início</label>
-                <input name="data_evento" type="date">
-                <input name="horario_evento" type="time">
+                <input name="data_evento" type="date" required>
+                <input name="horario_evento" type="time" required>
 
                 <label>Data de término</label>
-                <input name="data_prazo" type="date">
-                <input name="hora_prazo" type="time">
+                <input name="data_prazo" type="date" required>
+                <input name="hora_prazo" type="time" required>
 
                 <label>Descrição</label>
-                <textarea name="descricao" placeholder="Escreva uma descrição..."></textarea>
+                <textarea name="descricao" placeholder="Escreva uma descrição..." required></textarea>
 
                 <button type="submit" class="save-event">Salvar</button>
 
@@ -169,6 +181,7 @@ if (
     <script src="calendario.js"></script>
 
   </section>
+
 
 </body>
 </html>
