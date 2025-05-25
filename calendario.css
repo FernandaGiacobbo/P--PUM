@@ -335,3 +335,33 @@ p{
     padding: 2em;
     min-height: 40px;
 }
+
+/* ------------------------------------------------------------------------- */
+
+.swal2-popup {
+  background-color: #FEFEFE;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  font-family: Arial, sans-serif;
+}
+
+/* Título */
+.swal2-title {
+  color: #3A4A68;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Conteúdo de texto */
+.swal2-content {
+  color: #555;
+  font-size: 1rem;
+}
+
+/* Botão de confirmação */
+.swal2-confirm {
+  background-color: #3A4A68 !important;
+  border: none !important;
+  border-radius: 5px !important;
+  padding: 8px 20px !important;
+}

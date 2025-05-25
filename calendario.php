@@ -45,9 +45,11 @@
   <meta charset="UTF-8">
   <title>Calendário</title>
   <link rel="stylesheet" href="calendario.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 <body>
+
 
 
 <section class="home">
@@ -179,6 +181,7 @@
     <script src="calendario.js"></script>
 
   </section>
+
 
 </body>
 </html>
