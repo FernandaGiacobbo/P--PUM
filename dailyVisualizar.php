@@ -25,7 +25,7 @@ if ($resultado_verifica_daily && $resultado_verifica_daily->num_rows > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily</title>
-    <link rel="stylesheet" href="dailyVisualizar.css">
+    <link rel="stylesheet" href="css/dailyVisualizar.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>

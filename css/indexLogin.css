@@ -104,6 +104,8 @@ button{
 
 
 dialog {
+    border: none;
+    border-radius: 10px;
     align-content: center;
     justify-content: center;
     width: 90%;
@@ -111,6 +113,7 @@ dialog {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    
 }
 
 dialog .form{   

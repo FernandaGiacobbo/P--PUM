@@ -25,26 +25,34 @@
   
 
     <?php
-      $oMysql = conecta_db();
-      $query1 = "SELECT status_tarefa FROM tb_tarefa where usuario_tarefa = $id_us";
-      $resultado1 = $oMysql->query($query1);
 
-      $concluido = 0;
-      $pendente = 0;
+      session_start();
+      $id_us = $_SESSION['id'];
+      if (!empty($id_us)) {
+        $oMysql = conecta_db();
+        $query1 = "SELECT status_tarefa FROM tb_tarefa where usuario_tarefa = $id_us";
+        $resultado1 = $oMysql->query($query1);
 
-      $cont_linhas = mysqli_num_rows($resultado1);
+        $concluido = 0;
+        $pendente = 0;
 
-      for($i = 0; $i < $cont_linhas; $i++){
+        $cont_linhas = mysqli_num_rows($resultado1);
 
-          $status = mysqli_fetch_assoc($resultado1);
+        for($i = 0; $i < $cont_linhas; $i++){
 
-          if ($status['status_tarefa'] != 'Completo') {
-            $pendente += 1;
-          } else {
-            $concluido += 1;
-          }
-      
+            $status = mysqli_fetch_assoc($resultado1);
+
+            if ($status['status_tarefa'] != 'Completo') {
+              $pendente += 1;
+            } else {
+              $concluido += 1;
+            }
         
+          
+        }
+      } else {
+          header('Location: index.html');
+          die();
       }
 
       //pegando as infos dos status 

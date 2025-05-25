@@ -4,13 +4,20 @@ session_start();
 $id_usuario = $_SESSION['id'];
 $nome_usuario = $_SESSION['nome'];
 
-date_default_timezone_set('America/Sao_Paulo');
+if (!empty($id_usuario)) {
+    date_default_timezone_set('America/Sao_Paulo');
 
-include_once('conecta_db.php');
-$oMysql = conecta_db();
+    include_once('conecta_db.php');
+    $oMysql = conecta_db();
 
-$query = "SELECT * FROM tb_duvidas WHERE usuario_duvidas = $id_usuario ORDER BY id_duvidas DESC";
-$resultado = $oMysql->query($query);
+    $query = "SELECT * FROM tb_duvidas WHERE usuario_duvidas = $id_usuario ORDER BY id_duvidas DESC";
+    $resultado = $oMysql->query($query);
+} else {
+    header('Location: index.html');
+    die();
+}
+
+
 
 
 ?>
