@@ -81,18 +81,18 @@
             <div class="modal-form">
               <form class="modal-form" method="POST">
 
-                <label>Título</label>
+                <label>Título*</label>
                 <input name="titulo_evento" type="text" placeholder="Título do evento" required>
 
-                <label>Data de início</label>
+                <label>Data de início*</label>
                 <input name="data_evento" type="date" required>
                 <input name="horario_evento" type="time" required>
 
-                <label>Data de término</label>
+                <label>Data de término*</label>
                 <input name="data_prazo" type="date" required>
                 <input name="hora_prazo" type="time" required>
 
-                <label>Descrição</label>
+                <label>Descrição*</label>
                 <textarea name="descricao" placeholder="Escreva uma descrição..." required></textarea>
 
                 <button type="submit" class="save-event">Salvar</button>
