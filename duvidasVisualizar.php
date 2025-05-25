@@ -22,7 +22,7 @@ $resultado = $oMysql->query($query);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/duvidaVisualizar.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     <title>Duvidas</title>
 </head>
 <body>
@@ -33,7 +33,7 @@ $resultado = $oMysql->query($query);
     <div class="caixa">
         <h2>Olá <?php echo $nome_usuario;?>, qual a sua duvida?</h2>
         <div class="criarDuvidas">
-            <form action="duvidaInsert.php" method="post">
+            <form action="duvidaInsert.php" method="post" id="formDuvida" >
                 <label >
                     <p>Titulo:</p>
                     <input type="text" placeholder="Escreva aqui:" name="titulo">
@@ -46,7 +46,7 @@ $resultado = $oMysql->query($query);
 
                 <div class="botoes" >
                     <button type="submit" name="submit" class="btn">Enviar</button>
-                    <button type="reset" name="reset" id="cancelar" class="btn">Cancelar</button>
+                    <button type="button" id="cancelar" class="btn">Cancelar</button>
                 </div>
             </form>
         </div>
@@ -57,7 +57,7 @@ $resultado = $oMysql->query($query);
                         $id_duvidas = $duvidasLinha->id_duvidas;
                         $titulo = $duvidasLinha->titulo_duvidas;
                         $texto = $duvidasLinha->texto_duvidas;
-                        $data = date('d - m - y', strtotime($linha->data_daily));
+                        $data = date('d - m - Y', strtotime($duvidasLinha->data_duvidas));
         ?>
 
         <div class="visualizarDuvidas">
@@ -89,7 +89,131 @@ $resultado = $oMysql->query($query);
     </div>
 </section>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<script>
+document.getElementById("cancelar").addEventListener("click", function(e) {
+    Swal.fire({
+        title: 'Tem certeza?',
+        text: "Suas informações serão apagadas.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sim, cancelar',
+        cancelButtonText: 'Não, voltar',
+        customClass: {
+            popup: 'popup-personalizado',
+            confirmButton: 'botao-confirmar',
+            cancelButton: 'botao-cancelar'
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Reseta o formulário
+            document.getElementById("formDuvida").reset();
+
+            // Exibe mensagem de sucesso
+            Swal.fire({
+                title: 'Cancelado!',
+                text: 'Mensagem excluida',
+                icon: 'success',
+                confirmButtonText: 'OK',
+                customClass: {
+                    popup: 'popup-personalizado',
+                    confirmButton: 'botao-confirmar'
+                }
+            });
+        }
+    });
+});
+</script>
+
+
+<?php if (isset($_GET['sucesso']) && $_GET['sucesso'] == 1): ?>
+<script>
+Swal.fire({
+    title: 'Dúvida enviada!',
+    text: 'Dúvida enviada com sucesso, aguarde sua resposta.',
+    icon: 'success',
+    confirmButtonText: 'OK',
+    customClass: {
+            popup: 'popup-personalizado',
+            confirmButton: 'botao-confirmar',
+            cancelButton: 'botao-cancelar'
+        }
+}).then(() => {
+    
+    const url = new URL(window.location.href);
+    url.searchParams.delete('sucesso');
+    window.history.replaceState({}, document.title, url);
+});
+
+</script>
+<?php endif; ?>
+
+<?php if (isset($_GET['error']) && $_GET['error'] == 2): ?>
+<script>
+Swal.fire({
+    title: 'Campos incompletos',
+    text: 'Porfavor preencha todos os campos!!',
+    icon: 'warning',
+    confirmButtonText: 'OK',
+    customClass: {
+            popup: 'popup-personalizado',
+            confirmButton: 'botao-confirmar',
+            cancelButton: 'botao-cancelar'
+        }
+}).then(() => {
+    
+    const url = new URL(window.location.href);
+    url.searchParams.delete('error');
+    window.history.replaceState({}, document.title, url);
+});
+
+</script>
+<?php endif; ?>
+
+<?php if (isset($_GET['error']) && $_GET['error'] == 3): ?>
+<script>
+Swal.fire({
+    title: 'Tamanho da mensagem!!',
+    text: 'A sua mensagem tem que ter no mínimo 100 caracteres.',
+    icon: 'warning',
+    confirmButtonText: 'OK',
+    customClass: {
+            popup: 'popup-personalizado',
+            confirmButton: 'botao-confirmar',
+            cancelButton: 'botao-cancelar'
+        }
+}).then(() => {
+    
+    const url = new URL(window.location.href);
+    url.searchParams.delete('error');
+    window.history.replaceState({}, document.title, url);
+});
+
+</script>
+<?php endif; ?>
+
+<?php if (isset($_GET['error']) && $_GET['error'] == 4): ?>
+<script>
+Swal.fire({
+    title: 'Tamanho da mensagem!!',
+    text: 'A sua mensagem tem que ter no máximo 500 caracteres.',
+    icon: 'warning',
+    confirmButtonText: 'OK',
+    customClass: {
+            popup: 'popup-personalizado',
+            confirmButton: 'botao-confirmar',
+            cancelButton: 'botao-cancelar'
+        }
+}).then(() => {
+    
+    const url = new URL(window.location.href);
+    url.searchParams.delete('error');
+    window.history.replaceState({}, document.title, url);
+});
+
+</script>
+<?php endif; ?>
 
 </body>
 </html>

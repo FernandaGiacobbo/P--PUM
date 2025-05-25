@@ -26,7 +26,7 @@
 
     <?php
       $oMysql = conecta_db();
-      $query1 = "SELECT status_tarefa FROM tb_tarefa where usuario_id = $id_us";
+      $query1 = "SELECT status_tarefa FROM tb_tarefa where usuario_tarefa = $id_us";
       $resultado1 = $oMysql->query($query1);
 
       $concluido = 0;
@@ -89,7 +89,7 @@
 
                     <?php
                       
-                      $query = "SELECT * FROM tb_tarefa where usuario_id = $id_us";
+                      $query = "SELECT * FROM tb_tarefa where usuario_tarefa = $id_us ORDER BY id_tarefa DESC";
                       $resultado = $oMysql->query($query);
                       if($resultado) {
                           while($linha = $resultado->fetch_object()){
@@ -100,10 +100,10 @@
                               
 
                               $html = "<tr class='corpo_tb'>";
-                              $html .= "<td class='td_dec'>".$linha->nome."</td>";
-                              $html .= "<td class='td_dec'><div class='td_scroll'>".htmlspecialchars($linha->detalhamento)."</div></td>";
+                              $html .= "<td class='td_dec'>".$linha->nome_tarefa."</td>";
+                              $html .= "<td class='td_dec'><div class='td_scroll'>".htmlspecialchars($linha->detalhamento_tarefa)."</div></td>";
                               $html .= "<td class='td_dec'>".$linha->data_tarefa."</td>";
-                              $html .= "<td class='td_dec'>".$linha->prazo."</td>";
+                              $html .= "<td class='td_dec'>".$linha->prazo_tarefa."</td>";
                               $html .= "<td class='td_dec'>".$linha->status_tarefa."</td>";
                               $html .= "<td class='td_dec alingbtn'>".$botoes."</td>";
                               $html .= "</tr>";

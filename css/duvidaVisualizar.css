@@ -48,8 +48,6 @@ label input{
 
 label input:hover{
     border: #3a4a68 solid 1px;
-    height: 2.5em;
-    width: 90%;
     transition: 0.5s;
 }
 
@@ -62,8 +60,6 @@ label textarea{
 
 label textarea:hover{
     border: #3a4a68 solid 1px;
-    height: 5.5em;
-    width: 90.5%;
     transition: 0.5s;
 }
 
@@ -135,19 +131,21 @@ label textarea:hover{
 .caixaUpdate{
     margin: 2em;
     display: flex;
+    flex-direction: row;
+    margin-top: 10%;
     flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     gap: 1em;
-    left: 50%;
-    top: 50%;
-    transform: translate(50%, 50%);
 }
 
 .updateDuvidas{
 
     padding: 2em;
     background-color: #fff;
-    width: 80%;
+    width: 70%;
     height: auto;
     border-radius: 10px;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
@@ -190,6 +188,14 @@ label textarea:hover{
     gap: 1em;
 }
 
+.alingBotoes p {
+    padding-top: 4px;
+    text-align: center;
+    text-decoration: none;
+    color: #3a4a68;
+    font-size: 13.7px;
+}
+
 .alingBotoes a {
     text-align: center;
     text-decoration: none;
@@ -208,3 +214,37 @@ label textarea:hover{
     padding-top: 4px;
 }
 
+
+/*POPUP#######*/
+
+popup-personalizado
+
+.popup-personalizado {
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.botao-confirmar {
+    background-color: #edca85;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.botao-confirmar:hover{
+    background-color: #edca85;
+    border: #3a4a68 solid 0.5px ;
+    transition: 0.3s;
+}
+
+.botao-cancelar {
+    background-color: #e2b354;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.botao-cancelar:hover{
+    background-color: #e2b354;
+    border: #3a4a68 solid 0.5px ;
+    transition: 0.3s;
+}
