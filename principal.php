@@ -26,19 +26,19 @@ session_start();
     
         if (isset($_GET['page'])) {
             if ($_GET['page'] == 1) {
-                include 'insert.php';
+                include 'php/mainInsert.php';
     
             } else if ($_GET['page'] == 2) {
-                include 'update.php';
+                include 'php/mainUpdate.php';
     
             } else if ($_GET['page'] == 3) {
-                include 'delete.php';
+                include 'php/mainDelete.php';
     
             } else {
-                include 'main.php';
+                include 'php/main.php';
             }
         } else {
-            include 'main.php';
+            include 'php/main.php';
     }
 ?>
 

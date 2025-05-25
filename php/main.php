@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="css/main.css">
   <title>Papum</title>
 </head>
 
@@ -125,7 +125,7 @@
 
   <dialog id="modal">
     <div class="caixaModal">
-        <form action="insert.php" method="post">
+        <form action="mainInsert.php" method="post">
 
                 <h2>Inserir sua Tarefa:</h2>
 
@@ -160,8 +160,9 @@
                 <label >
                   <p>Insira o status da tarefa</p>
                     <select name="status">
-                        <option value="Em Andamento" >Em andamento</option>
                         <option value="Não Iniciado">Não iniciado</option>
+                        <option value="Em Andamento" >Em andamento</option>
+                        
                     </select>
                 </label>
 
@@ -177,7 +178,7 @@
 
 </section>
 
-<script src="principal.js"></script>
+<script src="js/principal.js"></script>
 
 </body>
 </html>
