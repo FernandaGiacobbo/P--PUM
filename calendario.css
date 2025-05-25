@@ -345,20 +345,17 @@ p{
   font-family: Arial, sans-serif;
 }
 
-/* Título */
 .swal2-title {
   color: #3A4A68;
   font-size: 1.5rem;
   font-weight: bold;
 }
 
-/* Conteúdo de texto */
 .swal2-content {
   color: #555;
   font-size: 1rem;
 }
 
-/* Botão de confirmação */
 .swal2-confirm {
   background-color: #3A4A68 !important;
   border: none !important;
