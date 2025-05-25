@@ -5,8 +5,11 @@
   session_start();
   $id_estudante = $_SESSION['id'];
 
-  
-  if (
+if(!isset($_SESSION['id'])) {
+    header('Location: index.html');
+    exit();
+} else {
+    if (
       isset($_POST['titulo_evento']) &&
       isset($_POST['data_evento']) &&
       isset($_POST['horario_evento']) &&
@@ -37,6 +40,10 @@
   }
 
     include 'header.php';
+}
+
+  
+
 ?>
 
 <!DOCTYPE html>

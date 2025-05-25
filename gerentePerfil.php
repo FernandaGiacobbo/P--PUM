@@ -1,17 +1,21 @@
 <?php
 session_start();
 
-include_once('conecta_db.php');
-$oMysql = conecta_db();
+if(!isset($_SESSION['id'])) {
+    header('Location: index.html');
+    exit();
+} else {
+    include_once('conecta_db.php');
+    $oMysql = conecta_db();
 
-include 'gerenteHeader.php';
+    include 'gerenteHeader.php';
 
-    $senha_log = $_SESSION['senha'];
-    $email_log = $_SESSION['email'];
-    $logado = $_SESSION['nome'];
-    $id_us = $_SESSION['id']; 
-    $cargo = $_SESSION['cargo'];
-
+        $senha_log = $_SESSION['senha'];
+        $email_log = $_SESSION['email'];
+        $logado = $_SESSION['nome'];
+        $id_us = $_SESSION['id']; 
+        $cargo = $_SESSION['cargo'];
+}
 ?>
 
 <!DOCTYPE html>
