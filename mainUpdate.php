@@ -12,7 +12,7 @@ if (isset($_POST['submit']) && isset($_GET['id_tarefa'])) {
     $oMysql = conecta_db();
     
     if ($oMysql) {
-        $query = "UPDATE tb_tarefa SET nome = ?, detalhamento = ?, data_tarefa = ?, prazo = ?, status_tarefa = ? WHERE id_tarefa = ?";
+        $query = "UPDATE tb_tarefa SET nome_tarefa = ?, detalhamento_tarefa = ?, data_tarefa = ?, prazo_tarefa = ?, status_tarefa = ? WHERE id_tarefa = ?";
         $stmt = $oMysql->prepare($query);
         $stmt->bind_param("sssssi", $nome, $detalhamento, $data_tarefa, $prazo, $status_tarefa, $id_tarefa);
         

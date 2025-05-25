@@ -13,13 +13,13 @@ create table tb_usuario(
 
 create table tb_tarefa(
 	id_tarefa INT PRIMARY KEY AUTO_INCREMENT,
-   	nome VARCHAR(50),
-    	detalhamento VARCHAR(500),
-    	data_tarefa DATETIME,
-    	prazo DATE,
+   	    nome_tarefa VARCHAR(50),
+    	detalhamento_tarefa VARCHAR(500),
+    	data_tarefa DATE,
+    	prazo_tarefa DATE,
     	status_tarefa VARCHAR(50),
-		usuario_id INT,
-	FOREIGN KEY  (usuario_id) REFERENCES tb_usuario(id_usuario)
+		usuario_tarefa INT,
+	FOREIGN KEY  (usuario_tarefa) REFERENCES tb_usuario(id_usuario)
 );
 
 
@@ -67,3 +67,11 @@ CREATE TABLE tb_evento(
     FOREIGN KEY tb_evento(id_estudante) REFERENCES tb_usuario(id_usuario)
 );
 
+CREATE TABLE tb_duvidas(
+	id_duvidas INT PRIMARY KEY AUTO_INCREMENT,
+	titulo_duvidas VARCHAR(60),
+	texto_duvidas VARCHAR(500),
+	data_duvidas date,
+	usuario_duvidas INT,
+	FOREIGN KEY (usuario_duvidas) REFERENCES tb_usuario(id_usuario)
+);
