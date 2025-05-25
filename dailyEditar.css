@@ -10,11 +10,11 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: #000;
+    border: none;
     background: white;
     padding: 20px;
     z-index: 1000;
-    border: 2px solid black;
+    border-radius: 15px;
 }
 
 #modal-editar form {
@@ -65,7 +65,7 @@
 }
 
 #modal-editar::backdrop {
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.1);
 }
 
 
