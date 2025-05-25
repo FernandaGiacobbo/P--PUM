@@ -26,17 +26,8 @@ create table tb_tarefa(
 
 CREATE TABLE tb_daily (
     id_daily INT AUTO_INCREMENT PRIMARY KEY,
-    data_daily DATE NOT NULL,
-    resumo_dia VARCHAR(30),
-    inicio_planejado VARCHAR(30),
-    metas_definidas INT,
-    metas_concluidas INT,
-    adiantou_tarefa BOOLEAN,
-    postura_pendencias VARCHAR(50),
-    emocao_dia VARCHAR(300),
-    conselho_para_si VARCHAR(300),
-    texto_livre VARCHAR(300),                        
-    id_usuario INT,
+    data_daily DAT	
+implementação da música no perfil do gerente,
     FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario)
 );
 

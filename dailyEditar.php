@@ -40,7 +40,7 @@ if (!empty($_GET['id_daily'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily</title>
-    <link rel="stylesheet" href="dailyEditar.css">
+    <link rel="stylesheet" href="css/dailyEditar.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -153,6 +153,6 @@ if (!empty($_GET['id_daily'])) {
         </div>
     </section>
 
-    <script src="dailyEditar.js"></script>
+    <script src="js/dailyEditar.js"></script>
 </body>
 </html>
