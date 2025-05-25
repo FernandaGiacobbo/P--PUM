@@ -1,12 +1,22 @@
 <?php
 
 session_start();
+date_default_timezone_set('America/Sao_Paulo');
 
 include_once('conecta_db.php');
 $oMysql = conecta_db();
 
 $id_user = $_SESSION['id'];
+$data_atual = date('Y-m-d');
 
+$query_verifica_daily = "SELECT id_daily FROM tb_daily WHERE id_usuario = $id_user AND data_daily = '$data_atual'";
+$resultado_verifica_daily = $oMysql->query($query_verifica_daily);
+
+$daily_id_existente = null;
+if ($resultado_verifica_daily && $resultado_verifica_daily->num_rows > 0) {
+    $daily_data = $resultado_verifica_daily->fetch_assoc();
+    $daily_id_existente = $daily_data['id_daily'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -17,6 +27,7 @@ $id_user = $_SESSION['id'];
     <title>Daily</title>
     <link rel="stylesheet" href="dailyVisualizar.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 
@@ -193,7 +204,40 @@ $id_user = $_SESSION['id'];
         function abrirModalEdicao(idDaily) {
             window.location.href = `dailyEditar.php?id_daily=${idDaily}`;
         }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const abrirModalBtn = document.getElementById("abrir");
+            const dailyModal = document.getElementById("modal");
+            const fecharModalBtn = document.getElementById("fechar");
+
+            const dailyJaRegistrada = <?php echo ($daily_id_existente !== null) ? 'true' : 'false'; ?>;
+            const dailyId = <?php echo ($daily_id_existente !== null) ? $daily_id_existente : 'null'; ?>;
+
+            if (!dailyModal) {
+                console.error('Modal de Daily não encontrado');
+                return;
+            }
+
+            abrirModalBtn.onclick = function() {
+                if (dailyJaRegistrada) {
+                    Swal.fire({
+                        title: 'Atenção!',
+                        text: 'Suas informações de hoje já foram registradas.',
+                        icon: 'warning',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        window.location.href = `dailyEditar.php?id_daily=${dailyId}`;
+                    });
+                } else {
+                    dailyModal.showModal();
+                }
+            };
+
+            fecharModalBtn.onclick = function() {
+                dailyModal.close();
+                window.location.href = 'dailyVisualizar.php'; // Redireciona para evitar reenvio de formulário
+            };
+        });
     </script>
-    <script src="dailyVisualizar.js"></script>
 </body>
 </html>

@@ -14,10 +14,10 @@ if ($_GET['id_tarefa']) {
 
     if($resultado1){
         while($tarefa = $resultado1->fetch_object()){
-            $nome = $tarefa->nome;
-            $detalhamento = $tarefa->detalhamento;
+            $nome = $tarefa->nome_tarefa;
+            $detalhamento = $tarefa->detalhamento_tarefa;
             $data_tarefa = $tarefa->data_tarefa;
-            $prazo = $tarefa->prazo;
+            $prazo = $tarefa->prazo_tarefa;
             $status_tarefa = $tarefa->status_tarefa;
         }
 
