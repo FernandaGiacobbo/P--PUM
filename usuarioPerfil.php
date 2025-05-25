@@ -1,17 +1,22 @@
 <?php
 
 session_start();
+$id_us = $_SESSION['id']; 
 
-include 'header.php';
+
+if (!empty($id_us)) {
 
     $senha_log = $_SESSION['senha'];
     $email_log = $_SESSION['email'];
     $logado = $_SESSION['nome'];
-    $id_us = $_SESSION['id']; 
+    
 
     include_once('conecta_db.php');
     $oMysql = conecta_db();
-
+} else {
+    header('Location: index.html');
+    die();
+}
     
 ?>
 
@@ -28,6 +33,7 @@ include 'header.php';
 </head>
 <body>
 
+<?php include 'header.php';?>
 
 <section class="home">
     <section class="quadro-infos">

@@ -3,12 +3,12 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="css/header.css">
     <title>PÁ-PUM</title>
 </head>
 <body>
@@ -35,35 +35,35 @@
 
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a href="home_gerente.php">
+                        <a href="gerentePrincipal.php">
                             <i class='bx bx-home icon'></i>
                             <span class="text nav-text">Home</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="perfil.php">
+                        <a href="gerentePerfil.php">
                             <i class='bx bx-user icon'></i>
                             <span class="text nav-text">Perfil</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="musicaIndex.php">
-                            <i class='bx bx-user icon'> </i> <!-- colocar uma coisa de música -->
+                        <a href="gerenteMusica.php">
+                            <i class='bx  bx-list-music icon'></i>                             
                             <span class="text nav-text">Músicas</span>
                         </a>
                     </li>
 
                     <li class="nav-link"> 
-                        <a href="#">
+                        <a href="gerenteCentralAjuda.php">
                             <i class='bx bx-help-circle icon'></i> 
                             <span class="text nav-text">Central de ajuda</span>
                         </a>
                     </li>
 
                     <li class="nav-link"> 
-                        <a href="#">
+                        <a href="gerenteFeedback.php">
                             <i class='bx bx-chat icon'></i>
                             <span class="text nav-text">Feedback</span>
                         </a>
@@ -85,7 +85,7 @@
             </div>
         </div>
 
-        <script src="header.js"></script>
+        <script src="js/header.js"></script>
 
     </nav>
 </body>

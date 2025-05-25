@@ -1,10 +1,13 @@
 <?php
 session_start();
+$id_us = $_SESSION['id'];
+
+if (!empty($id_us)) {
 
 $senha_log = $_SESSION['senha'];
 $email_log = $_SESSION['email'];
 $logado = $_SESSION['nome'];
-$id_us = $_SESSION['id'];
+
 
 $atualizado = false; // flag pra saber se deve mostrar o SweetAlert
 
@@ -24,6 +27,10 @@ if (isset($_POST['subimit'])) {
     $_SESSION['senha'] = $senha;
 
     $atualizado = true; // marca que foi atualizado
+}
+} else {
+    header('Location: index.html');
+    die();
 }
 ?>
 
