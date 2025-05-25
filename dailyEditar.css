@@ -1,70 +1,45 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-* {
-    padding: 0;
-    margin: 0;
-}
-
-body {
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    background-color: #fff;
-    width: 100%;
-    height: 45rem; 
-    margin-bottom: 3em;
-}
-
-
-.cartao-editar {
+#modal-editar {
+    width: 90%;
+    height: 90%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    position: fixed;
-    border: #000;
+    border: none;
     border-radius: 10px;
-    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
-    overflow-y: scroll;
-    padding: 1em;
-    
-    width: 60%;
-    height: 500px;
-    margin-left: 2.5em;
-    margin-right: 2.5em;
-    margin-bottom: 3em;
+    background: white;
+    padding: 20px;
+}
+
+#modal-editar form {
     display: flex;
-    flex-direction: row;
-    gap: 2.2em;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 3em;
+    gap: 0.5em;
 }
 
-.cartao-editar form {
-    max-height: 80vh;
-    overflow-y: auto;
-    padding: 1em;
-    overflow-y: auto;
-}
-
-.cartao-editar p {
+#modal-editar p {
     margin-top: 2em;
 }
 
-.cartao-editar .texto {
+#modal-editar .texto {
     border: none;
     width: 60%;
     height: auto;
-/*  */
 }
 
-.cartao-editar .textarea {
+#modal-editar .textarea {
     border: black solid 1px;
     width: 100%;
 }
 
-.cartao-editar button {
+#modal-editar button {
     border: none;
     width: 10em;
-    height: 40px ;
+    height: 40px;
     margin: 3em;
     border-radius: 25em;
     cursor: pointer;
@@ -73,8 +48,70 @@ body {
     font-style: italic;
 }
 
-.conteinerEDITAR {
-    position: relative;
+#modal-editar .pergunta {
+    text-align: center;
+}
+
+/* Estilos específicos para o conteúdo do modal */
+.cartao-editar {
     width: 100%;
     height: 100%;
+    overflow-y: auto;
+    padding: 1em;
+}
+
+/* Garante que o modal fique acima de tudo */
+#modal-editar {
+    z-index: 1000;
+}
+
+#modal-editar::backdrop {
+    background: rgba(0,0,0,0.5);
+}
+
+
+dialog {
+    width: 90%;
+    height: 90%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: auto;
+}
+
+dialog form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 3em;
+    gap: 0.5em;
+    
+}
+
+dialog p {
+    margin-top: 2em;
+}
+
+dialog .texto {
+    border: none;
+    width: 60%;
+    height: auto;
+
+}
+
+dialog .textarea {
+    border: black solid 1px;
+    width: 100%;
+}
+
+dialog button {
+    border: none;
+    width: 10em;
+    height: 40px ;
+    border-radius: 25em;
+    cursor: pointer;
+    background-color: #f9d57f;
+    font-weight: 700;
+    font-style: italic;
 }

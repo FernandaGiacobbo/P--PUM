@@ -61,7 +61,7 @@ $id_user = $_SESSION['id'];
                         <?php echo "Definidas: " . $linha->metas_definidas . " | Concluídas: " . $linha->metas_concluidas; ?> <br>
                         <?php echo $linha->conselho_para_si; ?> 
                         
-                        <?php echo "<a href='dailyEditar.php?id_daily=$linha->id_daily'><button class='Editar'>Editar</button></a>";?>
+                        <?php echo "<a href='dailyEditar.php?id_daily=$linha->id_daily'><button class='editar'>Editar</button></a>";?>
                     </div>
 
                 </div>
@@ -155,9 +155,13 @@ $id_user = $_SESSION['id'];
 
     </div>
 
-    <script src="dailyVisualizar.js"></script>
-
 </section>
 
+    <script>
+        function abrirModalEdicao(idDaily) {
+            window.location.href = `dailyEditar.php?id_daily=${idDaily}`;
+        }
+    </script>
+    <script src="dailyVisualizar.js"></script>
 </body>
 </html>
