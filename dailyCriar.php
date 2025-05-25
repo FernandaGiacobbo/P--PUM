@@ -18,13 +18,18 @@ if (isset($_POST['submit'])){
     
     if ($res = mysqli_fetch_assoc($resultado2)) {
         $id_day = $res['id_daily'];
-
-        //mudar esse alertas aqui
-        echo "<script>alert ('Parece que você já criou uma daily hoje:');
-        </script>";
-        echo "<script>window.location.href = 'dailyEditar.php?id_daily=$id_day';</script>";
-
-        die();
+        echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>"; 
+        echo "<script>
+                Swal.fire({
+                    title: 'Atenção!',
+                    text: 'Suas informações de hoje já foram registradas.',
+                    icon: 'warning',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    window.location.href = 'dailyEditar.php?id_daily=$id_day';
+                });
+              </script>";
+        exit();
     } else {
         $data = date('Y-m-d');
         $resumo_dia = $_POST['resumo_dia'] ?? '';
