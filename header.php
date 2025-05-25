@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="css/header.css">
     <title>PÁ-PUM</title>       
 </head>
 <body>
@@ -111,7 +111,7 @@
     </nav>
 
 
-    <script src="header.js"></script>
+    <script src="js/header.js"></script>
 
 </body>
 </html>

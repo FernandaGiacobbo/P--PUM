@@ -44,7 +44,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Calendário</title>
-  <link rel="stylesheet" href="calendario.css">
+  <link rel="stylesheet" href="css/calendario.css">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
@@ -178,7 +178,7 @@
 
     </section>
 
-    <script src="calendario.js"></script>
+    <script src="js/calendario.js"></script>
 
   </section>
 
