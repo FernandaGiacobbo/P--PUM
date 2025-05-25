@@ -160,11 +160,29 @@ dialog button {
     margin: 3em;
     border-radius: 25em;
     cursor: pointer;
-    background-color: #f9d57f;
     font-weight: 700;
     font-style: italic;
 }
 
+#submit {
+    background-color: #3E6985;
+    color: white;
+}
+
+#submit:hover {
+    background-color: #0D273D;
+    transition: all 0.3s ease;
+}
+
+#fechar {
+    background-color: #3A4A68;
+    color: white;
+}
+
+#fechar:hover {
+    background-color: #0D273D;
+    transition: all 0.3s ease;
+}
 
 #modal .pergunta{
     text-align: center;

@@ -48,8 +48,9 @@ if (!empty($_GET['id_daily'])) {
 
     <?php include 'header.php'; ?> <!-- ? -->
 
-    <section class="home">            
-            <dialog id="moda-editar" open>
+    <section class="home">
+        <div class="main">
+            <dialog id="modal-editar" class="modal-padrao">
                 <form action="dailyEdicao.php" method="post">
                     <h2>Editar Daily</h2>
                 
@@ -120,25 +121,21 @@ if (!empty($_GET['id_daily'])) {
                         <textarea rows="6" cols="50" maxlength="300" name="texto_livre"><?php echo $texto_livre;?></textarea>
                     </label>
                     <br>
+                    
+                    <div class="botoes-conteiner">
+                        <button type="submit" id="botaosalvar" name="salvar-edicao">Salvar</button>
 
-                    <button type="submit" name="salvar-edicao">Salvar</button>
-
-                    <button type="button" onclick="window.location.href='dailyVisualizar.php'">Cancelar</button>
-
-                    <button type="button" onclick="if(confirm('Tem certeza que deseja excluir esta daily?')) { window.location.href='dailyExcluir.php?id_daily=<?php echo $id_da_daily; ?>'; }">Excluir</button>
+                        <button type="button" id="botaoexcluir" onclick="if(confirm('Tem certeza que deseja excluir esta daily?')) { window.location.href='dailyExcluir.php?id_daily=<?php echo $id_da_daily; ?>'; }">Excluir</button>
+                        
+                        <button type="button" id="botaocancelar" onclick="window.location.href='dailyVisualizar.php'">Cancelar</button>
+                    </div>
+                
                 </form>
             </dialog>
 
-
+        </div>
     </section>
 
-    <script>
-        document.getElementById('modal-editar').addEventListener('click', function(e) {
-            if (e.target === this) {
-                window.location.href = 'dailyVisualizar.php';
-            }
-        });
-    </script> 
-
+        <script src="dailyEditar.js"></script>
 </body>
 </html>

@@ -7,10 +7,6 @@ $oMysql = conecta_db();
 
 $id_user = $_SESSION['id'];
 
-//busca a dau=ily do dia 
-// $query3 = "SELECT * FROM tb_daily WHERE id_usuario = $id_us AND data_daily = CURDATE()";
-// $resultado = $oMysql->query($query3);
-
 ?>
 
 <!DOCTYPE html>
@@ -61,7 +57,7 @@ $id_user = $_SESSION['id'];
                         <?php echo "Definidas: " . $linha->metas_definidas . " | Concluídas: " . $linha->metas_concluidas; ?> <br>
                         <?php echo $linha->conselho_para_si; ?> 
                         
-                        <?php echo "<a href='dailyEditar.php?id_daily=$linha->id_daily'><button class='editar'>Editar</button></a>";?>
+                        <?php echo "<button class='editar' onclick=\"window.location.href='dailyEditar.php?id_daily=$linha->id_daily'\">Editar</button>";?>
                     </div>
 
                 </div>
@@ -144,12 +140,10 @@ $id_user = $_SESSION['id'];
                 </label>
                 <br>
 
-
-                <label>
-                    <button type="submit" name="submit"> Enviar </button>
+                <div class="botoes-container">
+                    <button type="submit" id="submit" name="submit"> Enviar </button>
                     <button type="reset" id="fechar"> Cancelar </button>
-                </label>
-
+                </div>
             </form>
         </dialog>
 

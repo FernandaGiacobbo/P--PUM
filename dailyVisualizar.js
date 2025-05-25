@@ -1,26 +1,37 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const abrirModal = document.getElementById("abrir");
+    const modal = document.getElementById("modal");
+    const fecharModal = document.getElementById("fechar");
 
-const abrirModal = document.getElementById("abrir");
-const modal = document.getElementById("modal");
-const fecharModal = document.getElementById("fechar");
-const editar = document.getElementById("editar");
-const abrirModalEditar = document.getElementById("editar");
-const formDaily = document.querySelector("#modal form");
+    if (!modal) {
+        console.error('Modal não encontrado');
+        return;
+    }
 
-    // Abrir modal
-abrirModal.onclick = function() {
-    modal.showModal();
-}
+    // Abrir modal ao clicar no botão "Aqui"
+    abrirModal.onclick = function() {
+        modal.showModal();
+    }
 
-    // Fechar modal
-fecharModal.onclick = function() {
-    modal.close();
-}
+    // Fechar modal ao clicar no botão Cancelar
+    fecharModal.onclick = function() {
+        modal.close();
+        // Resetar o formulário ao cancelar
+        document.querySelector('#modal form').reset();
+    }
 
-abrirModalEditar.onclick = function() {
-    modal.showModal();
-}
-
-fecharModalEditar.onclick = function() {
-    modal.close();
-}
-
+    // Fechar modal ao clicar no backdrop e resetar formulário
+    modal.addEventListener('click', (e) => {
+        const dialogDimensions = modal.getBoundingClientRect();
+        if (
+            e.clientX < dialogDimensions.left ||
+            e.clientX > dialogDimensions.right ||
+            e.clientY < dialogDimensions.top ||
+            e.clientY > dialogDimensions.bottom
+        ) {
+            modal.close();
+            // Resetar o formulário ao clicar fora
+            document.querySelector('#modal form').reset();
+        }
+    });
+});
