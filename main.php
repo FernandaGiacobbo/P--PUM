@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=preview" />
   <title>Papum</title>
 </head>
 
@@ -79,7 +80,7 @@
                       <th>Data</th>
                       <th>Prazo</th>
                       <th>Status</th>
-                      <th>Ações</th>
+                      <th></th>
                     </tr>
                   
 
@@ -92,9 +93,9 @@
                       if($resultado) {
                           while($linha = $resultado->fetch_object()){
 
-                              $botoes = "<a 
-                                  class='success' href='principal.php?page=2&id_tarefa=".$linha->id_tarefa."'> Alterar </a>";
-                              $botoes .= "<a class='danger' href='principal.php?page=3&id_tarefa=".$linha->id_tarefa."'> Excluir </a>";
+                              $botoes = ""; 
+
+                              $botoes .= "<a class='success' href='mainVisualizar.php?id_tarefa=".$linha->id_tarefa."'> <span class='material-symbols-outlined'>preview</span> Visualizar</a>";
                               
 
                               $html = "<tr class='corpo_tb'>";
@@ -125,7 +126,7 @@
 
   <dialog id="modal">
     <div class="caixaModal">
-        <form action="insert.php" method="post">
+        <form action="mainInsert.php" method="post">
 
                 <h2>Inserir sua Tarefa:</h2>
 
@@ -160,8 +161,9 @@
                 <label >
                   <p>Insira o status da tarefa</p>
                     <select name="status">
-                        <option value="Em Andamento" >Em andamento</option>
                         <option value="Não Iniciado">Não iniciado</option>
+                        <option value="Em Andamento" >Em andamento</option>
+                        
                     </select>
                 </label>
 
@@ -177,7 +179,7 @@
 
 </section>
 
-<script src="principal.js"></script>
+<script src="js/principal.js"></script>
 
 </body>
 </html>
