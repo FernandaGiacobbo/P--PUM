@@ -32,7 +32,10 @@ $id_user = $_SESSION['id'];
 
             <!-- botão de adicionar dia novo -->
             <label> 
-                Adicione como foi seu dia: <button id="abrir">Aqui</button>
+                <div class="adicionar-daily">
+                    <button id="abrir" class="add-daily">+</button>
+                    <p>Adicionar registro de hoje</p>
+                </div>
             </label>
             
         </div>
@@ -55,7 +58,7 @@ $id_user = $_SESSION['id'];
                         <?php echo "Seu dia foi: " . $linha->resumo_dia; ?> <br><br>
                         <?php echo "Metas:" ?> <br>
                         <?php echo "Definidas: " . $linha->metas_definidas . " | Concluídas: " . $linha->metas_concluidas; ?> <br>
-                        <?php echo $linha->conselho_para_si; ?> 
+                        <div class="conselho-texto"><?php echo $linha->conselho_para_si; ?></div>
                         
                         <?php echo "<button class='editar' onclick=\"window.location.href='dailyEditar.php?id_daily=$linha->id_daily'\">Editar</button>";?>
                     </div>

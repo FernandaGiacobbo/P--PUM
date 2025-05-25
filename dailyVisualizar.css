@@ -11,13 +11,44 @@ body {
     font-style: normal;
     background-color: #fff;
     width: 100%;
-    height: 45rem; 
+    height: 45rem;
     margin-bottom: 3em;
+}
+
+.adicionar-daily{
+    display: flex;
+}
+
+.adicionar-daily p{
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.add-daily{
+    border: none;
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: #f9d57f;
+    font-weight: 700;
+    font-style: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    font-size: 1.8em;
+    line-height: 1;
+}
+
+.add-daily:hover {
+    background-color: black;
+    color: #fff;
+    transition: 0.3s;
 }
 
 .main{
     width: 100%;
-    
 }
 
 .cabecalho{
@@ -25,18 +56,6 @@ body {
     margin-left: 2.5em;
     display: flex;
     flex-direction: column;
-    
-}
-
-.cabecalho button{
-    border: none;
-    width: 5em;
-    height: 2em;
-    border-radius: 25em;
-    cursor: pointer;
-    background-color: #f9d57f;
-    font-weight: 700;
-    font-style: italic;
 }
 
 .cabecalho button:hover{
@@ -72,7 +91,7 @@ hr {
 
 .cartao {
     border: rgb(238, 236, 236) solid 1px;
-    width: 29%;
+    width: 29%; /* Keep this width relative to its container */
     height: 23em;
     padding: 1em;
     display: flex;
@@ -80,25 +99,26 @@ hr {
     align-items: center;
     text-align: center;
     gap: 1em;
-    overflow: auto;
+    overflow: auto; /* This is good for scrollbars if content overflows */
     border-radius: 10px;
     box-shadow: 0 8px 8px rgba(0,0,0,0.5);
     background-color: #fff;
-    
 }
 
-.cartao button{
+.cartao button {
     border: none;
     width: 5em;
     height: 30px ;
     border-radius: 25em;
     cursor: pointer;
-    background-color: #f9d57f;
     font-weight: 700;
     font-style: italic;
     align-self: center;
 }
 
+.cartao .editar{
+    background-color: #f9d57f;
+}
 
 .cartao button:hover{
     background-color: black;
@@ -118,7 +138,22 @@ hr {
   gap: 1em;
 }
 
+/* This is the crucial part for the text wrapping */
+.conselho-texto {
+    width: 100%; /* Make sure it takes up 100% of the parent's available width */
+    word-break: break-word; /* Breaks long words that don't have spaces */
+    overflow-wrap: break-word; /* Modern equivalent of word-wrap */
+    white-space: pre-wrap; /* Preserves line breaks and wraps text */
+    text-align: left; /* Aligns text to the left within its own container */
+    /* Remove max-width: 300px; if you want it to fill the card */
+    /* If you still have issues, you could add this: */
+    /* flex-shrink: 0; */ 
+}
 
+
+#modal::backdrop {
+    background: rgba(0,0,0,0.5);
+}
 dialog {
     width: 90%;
     height: 90%;
@@ -134,7 +169,6 @@ dialog form {
     justify-content: center;
     margin: 3em;
     gap: 0.5em;
-    
 }
 
 dialog p {
@@ -145,7 +179,6 @@ dialog .texto {
     border: none;
     width: 60%;
     height: auto;
-
 }
 
 dialog .textarea {
@@ -187,4 +220,3 @@ dialog button {
 #modal .pergunta{
     text-align: center;
 }
-

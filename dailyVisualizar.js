@@ -16,11 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Fechar modal ao clicar no botão Cancelar
     fecharModal.onclick = function() {
         modal.close();
-        // Resetar o formulário ao cancelar
-        document.querySelector('#modal form').reset();
+        // Redireciona para dailyVisualizar.php ao invés de resetar
+        window.location.href = 'dailyVisualizar.php';
     }
 
-    // Fechar modal ao clicar no backdrop e resetar formulário
+    // Fechar modal ao clicar no backdrop e redirecionar
     modal.addEventListener('click', (e) => {
         const dialogDimensions = modal.getBoundingClientRect();
         if (
@@ -30,8 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
             e.clientY > dialogDimensions.bottom
         ) {
             modal.close();
-            // Resetar o formulário ao clicar fora
-            document.querySelector('#modal form').reset();
+            // Redireciona para dailyVisualizar.php ao invés de resetar
+            window.location.href = 'dailyVisualizar.php';
         }
     });
 });
