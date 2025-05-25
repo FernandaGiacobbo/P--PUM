@@ -309,13 +309,16 @@ confirmEdit.addEventListener('click', async () => {
     if (result.includes("sucesso")) {
       modalEditar.style.display = "none"; // Fecha modal de confirmação
       modalEdit.style.display = "none"; // Fecha modal de edição
-      await carregarEventosDoDia(); // Atualiza os eventos
+      await carregarEventosDoDia(); // Atualiza os eventos no frontend
 
-      Swal.fire({
+      // Modal de confirmação de alteração
+      await Swal.fire({
         title: "Evento alterado com sucesso!",
         icon: "success",
         draggable: true
       });
+
+      location.reload(); // Faz a página recarregar automaticamente depois de alterar o evento
 
     } else {
       throw new Error(result); // Se falhar, lança erro
@@ -325,6 +328,7 @@ confirmEdit.addEventListener('click', async () => {
     modalEditar.style.display = "none"; // Fecha modal de confirmação
   }
 });
+
 
 // Botão de cancelar a edição
 cancelEdit.addEventListener('click', () => {
