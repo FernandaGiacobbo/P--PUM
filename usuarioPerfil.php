@@ -83,7 +83,7 @@ function confirmarLogout() {
     }).then((result) => {
         if (result.isConfirmed) {
             // Redireciona somente após confirmação
-            window.location.href = "sairSession.php";
+            window.location.href = "sairsession.php?id_usuario=<?php echo $id_us; ?>";
         }
     });
 }
