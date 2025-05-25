@@ -16,6 +16,7 @@
     background-color: #F2D6A1;
     border-radius: 1em;
     margin-top: 4em;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .titulo-caixa{
@@ -33,34 +34,59 @@
     background-color: rgb(255, 255, 255);
     padding: 1em;
     border-radius: 0.5em;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .edit{
-    width: 100px;
-    height: 50px;
-    border-radius: 1em;
-    text-decoration: none;
-    background-color: #b9d1f0;
-    border: none;
-    color: white;
+      font-family: sans-serif;
+      font-weight: bold;
+      padding: 10px 40px;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      color: white;
+      background-color: #3E6985;
+}
+
+.edit:hover{
+    background-color: #0D273D;
 }
 
 .delete{
-    width: 100px;
-    height: 50px;
-    border-radius: 1em;
-    background-color: #632024;
-    border: none;
+      font-family: sans-serif;
+      font-weight: bold;
+      padding: 10px 40px;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      color: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      background-color: #617891;
+
+}
+
+.delete:hover{
+    background-color: #0D273D;
+}
+
+.logout{
+      font-family: sans-serif;
+      font-weight: bold;
+      padding: 10px 40px;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      color: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      background-color: #3A4A68;
+}
+
+.logout:hover{
+    background-color: #0D273D;
+}
+
+a{
     text-decoration: none;
     color: white;
 }
 
-.logout{
-    width: 100px;
-    height: 50px;
-    border-radius: 1em;
-    background-color: #809076;
-    border: none;
-    text-decoration: none;
-    color: white;
-}
