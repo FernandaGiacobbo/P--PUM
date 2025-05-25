@@ -1,3 +1,10 @@
+<?php 
+if(!isset($_SESSION['id'])) {
+    header('Location: index.html');
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -12,6 +19,7 @@
     
     <?php 
         include 'gerenteHeader.php';
+
     ?>
 
     

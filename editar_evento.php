@@ -1,6 +1,11 @@
 <?php
 include 'conecta_db.php';
 
+if(!isset($_SESSION['id'])) {
+    header('Location: index.html');
+    exit();
+}
+
 header('Content-Type: text/plain');
 
 // Inicia um bloco try-catch para tratamento de erros

@@ -2,6 +2,10 @@
 
 session_start();
 
+if(!isset($_SESSION['id'])) {
+    header('Location: index.html');
+    exit();
+}
 
 include_once('conecta_db.php');
 $oMysql = conecta_db();

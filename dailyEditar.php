@@ -2,6 +2,11 @@
 
 session_start();
 
+if(!isset($_SESSION['id'])) {
+    header('Location: index.html');
+    exit();
+}
+
 if (!empty($_GET['id_daily'])) {
     include_once('conecta_db.php');
     $oMysql = conecta_db();
