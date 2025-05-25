@@ -101,7 +101,7 @@ hr {
     gap: 1em;
     overflow: auto; /* This is good for scrollbars if content overflows */
     border-radius: 10px;
-    box-shadow: 0 8px 8px rgba(0,0,0,0.5);
+    box-shadow: 0 8px 8px rgba(0,0,0,0.1);
     background-color: #fff;
 }
 
@@ -138,28 +138,28 @@ hr {
   gap: 1em;
 }
 
-/* This is the crucial part for the text wrapping */
 .conselho-texto {
-    width: 100%; /* Make sure it takes up 100% of the parent's available width */
-    word-break: break-word; /* Breaks long words that don't have spaces */
-    overflow-wrap: break-word; /* Modern equivalent of word-wrap */
-    white-space: pre-wrap; /* Preserves line breaks and wraps text */
-    text-align: left; /* Aligns text to the left within its own container */
-    /* Remove max-width: 300px; if you want it to fill the card */
-    /* If you still have issues, you could add this: */
-    /* flex-shrink: 0; */ 
+    width: 100%; 
+    word-break: break-word;
+    overflow-wrap: break-word; 
+    white-space: pre-wrap; 
+    text-align: left; 
+    
 }
 
 
 #modal::backdrop {
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.1);
 }
+
 dialog {
     width: 90%;
     height: 90%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    border: none;
+    border-radius: 15px;
 }
 
 dialog form {
