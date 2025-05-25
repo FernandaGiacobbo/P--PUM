@@ -21,6 +21,7 @@ include 'header.php';
   <title>Perfil</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link rel="stylesheet" href="css/usuarioPerfil.css">
 
 
@@ -56,15 +57,52 @@ include 'header.php';
 
         <br>
         
-            <button type="button" class="edit "><a href="usuarioEditar.php">Editar</a></button>
-            <button type="submit" class="delete" id="Excluir" name="Excluir"><a href="usuarioExcluir.php">Excluir</a></button>
-            <button type="submit" class="logout" id="Excluir" name="Excluir"><a href="sairsession.php">Sair</a></button>
+            <button type="button" class="edit " onclick="irParaEditar()">Editar</a></button>
+            <button type="submit" class="delete" id="Excluir" name="Excluir" onclick="confirmarExclusao()">Excluir</a></button>
+            <button type="submit" class="logout" id="Excluir" name="Excluir" onclick="confirmarLogout()">Sair</button>
 
 
     </section>
 </section>
- 
 
+<script>
+function confirmarLogout() {
+    Swal.fire({
+        title: 'Tem certeza?',
+        text: "Você realmente quer finalizar a sessão?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sim, sair',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Redireciona somente após confirmação
+            window.location.href = "sairSession.php";
+        }
+    });
+}
+
+function confirmarExclusao(){
+        Swal.fire({
+        title: 'Tem certeza?',
+        text: "Você realmente quer excluir seu perfil?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sim, excluir',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Redireciona somente após confirmação
+            window.location.href = "usuarioExcluir.php";
+        }
+    });
+}
+
+function irParaEditar(){
+    window.location.href = "usuarioEditar.php";
+}
+
+</script>
 
 </body>
 </html>
