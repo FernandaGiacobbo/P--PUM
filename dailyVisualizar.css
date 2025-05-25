@@ -220,3 +220,34 @@ dialog button {
 #modal .pergunta{
     text-align: center;
 }
+
+
+.swal2-styled.swal2-confirm {
+    border: none;
+    width: 10em; 
+    height: 40px;
+    border-radius: 25em;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1rem; 
+    margin: 0.5em; 
+    background-color: #f9d57f !important; 
+    color: black !important;
+    transition: 0.3s ease-in-out; 
+    box-shadow: none !important; 
+}
+
+.swal2-styled.swal2-confirm:hover {
+    background-color: black !important;
+    color: #fff !important;
+}
+
+.swal2-popup {
+    border-radius: 15px !important; 
+    font-family: "Poppins", sans-serif !important; 
+}
+
+.swal2-warning {
+    color: #f9d57f !important; 
+    border-color: #f9d57f !important;
+}

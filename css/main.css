@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap'); 
+
 *{
     margin: 0;
     padding: 0;
@@ -278,4 +280,105 @@ dialog button:hover{
     border: #3a4a68 solid 1px;
     background-color: #fff;
     transition: 0.3s;
+}
+
+#cronometro{
+    margin-left: 62em;
+    position: static;
+    bottom: 20px;
+    right: 20px;
+    width: 25em;
+    background-color: #fff;
+    border: 2px solid #E2B354;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 9999;
+}
+
+#cronometro h1{
+    font-size: 20px;
+    margin: 0 0 10px;
+    color: #3a4a68;
+    text-align: center;
+}
+
+.inputs-pomodoro {
+  display: flex;
+  justify-content: center;
+  gap: 3em;
+  margin-bottom: 5px;
+}
+
+.inputs-pomodoro label {
+  font-size: 12px;
+}
+
+.inputs-pomodoro input {
+  width: 60px;
+  padding: 5px;
+  border-radius: 5px;
+  border-color: #3A4A68;
+}
+
+#timer{
+    font-size: 40px;
+    text-align: center;
+    font-weight: 600;
+    color:#3A4A68;
+}
+
+#status{
+    text-align: center;
+    font-weight: 500;
+}
+
+.botoes-cronometro{
+    text-align: center;
+}
+
+.botoes-cronometro button {
+  flex: 1;
+  margin: 2px;
+  padding: 6px;
+  font-size: 12px;
+  background-color: #3A4A68;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.botoes-cronometro button:hover {
+  background-color: #E2B354;
+}
+
+.spacer-cronometro {
+  height: 150px; 
+}
+
+.swal2-popup {
+  background-color: #FEFEFE;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  font-family: Poppins, sans-serif;
+}
+
+.swal2-title {
+  color: #3A4A68;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.swal2-content {
+  color: #555;
+  font-size: 1rem;
+}
+
+.swal2-confirm {
+  background-color: #3A4A68 !important;
+  border: none !important;
+  border-radius: 25em !important;
+  padding: 8px 20px !important;
 }

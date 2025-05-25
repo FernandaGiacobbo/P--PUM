@@ -42,19 +42,18 @@ if (!empty($_GET['id_daily'])) {
     <title>Daily</title>
     <link rel="stylesheet" href="dailyEditar.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 
 <body>
 
-    <?php include 'header.php'; ?> <!-- ? -->
-
-    <section class="home">
+    <?php include 'header.php'; ?> <section class="home">
         <div class="main">
             <dialog id="modal-editar" class="modal-padrao">
                 <form action="dailyEdicao.php" method="post">
                     <h2>Editar Daily</h2>
                 
-                    <!-- pergunta 1 -->
                     <p>Como você se sentiu, de forma geral, em relação ao seu dia?</p>
                     <label>
                         <input type="radio" name="resumo_dia" value="Leve e equilibrado(a)" required <?php echo ($resumo_dia == 'Leve e equilibrado(a)') ? 'checked' : ''; ?>> Leve e equilibrado(a) <br>
@@ -75,7 +74,6 @@ if (!empty($_GET['id_daily'])) {
                         <input type="radio" name="resumo_dia" value="Frustrante ou abaixo do que eu esperava"<?php echo( $resumo_dia  == 'Frustrante ou abaixo do que eu esperava') ? 'checked' : ''; ?>> Frustrante ou abaixo do que eu esperava <br>
                     </label>
                 
-                    <!-- pergunta 2 -->
                     <p>Você conseguiu iniciar o dia como havia planejado?</p>
                     <label>
                         <input type="radio" name="inicio_planejado" value="Sim, dentro do que imaginei" required <?php echo( $inicio_planejado  == 'Sim, dentro do que imaginei') ? 'checked' : '' ?>> Sim, dentro do que imaginei <br>
@@ -87,19 +85,16 @@ if (!empty($_GET['id_daily'])) {
                         <input type="radio" name="inicio_planejado" value="Não fiz um plano para hoje"<?php echo( $inicio_planejado  == 'Não fiz um plano para hoje') ? 'checked' : '' ?>> Não fiz um plano para hoje
                     </label>
                 
-                    <!-- pergunta 3 -->
                     <p>Quantas metas ou intenções você definiu para hoje? Lembre-se de considerar tanto tarefas quanto atitudes ou hábitos.</p>
                     <label>
                         <input type="number" name="metas_definidas" min="0" value="<?php echo isset($metas_definidas) ? $metas_definidas : '' ?>" required>
                     </label>
                 
-                    <!-- pergunta 4 -->
                     <p>E quantas dessas metas ou intenções você conseguiu concluir?</p>
                     <label>
                         <input type="number" name="metas_concluidas" min="0" value="<?php echo isset($metas_concluidas) ? $metas_concluidas : '' ?>" required>
                     </label>
                 
-                    <!-- pergunta 5 -->
                     <p>Você adiantou ou resolveu algo que não estava nos seus planos para hoje?</p>
                     <label>
                         <input type="radio" name="adiantou_tarefa" value="1"<?php echo (isset($adiantou_tarefa)&& $adiantou_tarefa == 1) ? 'checked' : ''?> required> Sim, e isso foi positivo <br>
@@ -108,7 +103,6 @@ if (!empty($_GET['id_daily'])) {
                         <input type="radio" name="adiantou_tarefa" value="0"<?php echo (isset($adiantou_tarefa)&& $adiantou_tarefa == 0) ? 'checked' : ''?>> Não, mantive o foco no que já havia planejado
                     </label>
                 
-                    <!-- pergunta 6 -->
                     <p>Como foi sua postura diante dos desafios e pendências do dia?</p>
                     <label>
                         <input type="radio" name="postura_pendencias" value="Evitei lidar com eles" required <?php echo( $postura_pendencias  == 'Evitei lidar com eles') ? 'checked' : '' ?>> Evitei lidar com eles <br>
@@ -129,19 +123,16 @@ if (!empty($_GET['id_daily'])) {
                         <input type="radio" name="postura_pendencias" value="Preferi deixar para outro momento"<?php echo( $postura_pendencias  == 'Preferi deixar para outro momento') ? 'checked' : '' ?>> Preferi deixar para outro momento
                     </label>
 
-                    <!-- pergunta 7 -->
                     <p>Como você se sentiu ao longo do dia? Reflita com sinceridade sobre suas emoções. Houve variações? Algum gatilho importante?</p>
                     <label>
                         <textarea rows="6" cols="50" maxlength="300" name="emocao_dia" required><?php echo $emocao_dia;?></textarea>
                     </label>
 
-                    <!-- pergunta 8 -->
                     <p>Gostaria de deixar um lembrete ou conselho para si mesmo(a) amanhã?Algo que possa te inspirar, cuidar ou guiar quando um novo dia começar.</p>
                     <label>
                         <textarea rows="6" cols="50" maxlength="300" name="conselho_para_si" required><?php echo $conselho_para_si;?></textarea>
                     </label>
 
-                    <!-- pergunta 9 -->
                     <p>Deseja escrever algo livremente sobre o seu dia? Esse espaço é seu. Pode desabafar, agradecer, soltar ideias ou apenas respirar.</p>
                     <label>
                         <textarea rows="6" cols="50" maxlength="300" name="texto_livre" required><?php echo $texto_livre;?></textarea>
@@ -151,10 +142,9 @@ if (!empty($_GET['id_daily'])) {
                     <div class="botoes-conteiner">
                         <button type="submit" id="botaosalvar" name="salvar-edicao">Salvar</button>
 
-                        <button type="button" id="botaoexcluir" onclick="if(confirm('Tem certeza que deseja excluir esta daily?')) { window.location.href='dailyExcluir.php?id_daily=<?php echo $id_da_daily; ?>'; }">Excluir</button>
+                        <button type="button" id="botaoexcluir" data-id-daily="<?php echo $id_da_daily; ?>">Excluir</button>
                         
-                        <button type="button" id="botaocancelar" onclick="window.location.href='dailyVisualizar.php'">Cancelar</button>
-                        <!-- “as informações preenchidas não serão salvas” -->
+                        <button type="button" id="botaocancelar">Cancelar</button>
                     </div>
                 
                 </form>
@@ -163,6 +153,6 @@ if (!empty($_GET['id_daily'])) {
         </div>
     </section>
 
-        <script src="dailyEditar.js"></script>
+    <script src="dailyEditar.js"></script>
 </body>
 </html>

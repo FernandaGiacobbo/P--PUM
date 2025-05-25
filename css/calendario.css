@@ -359,6 +359,6 @@ p{
 .swal2-confirm {
   background-color: #3A4A68 !important;
   border: none !important;
-  border-radius: 5px !important;
+  border-radius: 10px !important;
   padding: 8px 20px !important;
 }
