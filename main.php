@@ -25,10 +25,6 @@
   
 
     <?php
-
-      
-      $id_us = $_SESSION['id'];
-      if (!empty($id_us)) {
         $oMysql = conecta_db();
         $query1 = "SELECT status_tarefa FROM tb_tarefa where usuario_tarefa = $id_us";
         $resultado1 = $oMysql->query($query1);
@@ -50,10 +46,7 @@
         
           
         }
-      } else {
-          header('Location: index.html');
-          die();
-      }
+
 
       //pegando as infos dos status 
 

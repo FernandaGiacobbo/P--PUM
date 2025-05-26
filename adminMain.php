@@ -1,9 +1,3 @@
-<?php
-if(!isset($_SESSION['id'])) {
-    header('Location: index.html');
-    exit();
-}
-?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -18,7 +12,7 @@ if(!isset($_SESSION['id'])) {
 <body>
     
     <?php 
-        include 'gerenteHeader.php';
+        include 'adminHeader.php';
     ?>
 
     
