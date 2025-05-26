@@ -352,6 +352,7 @@ dialog button:hover{
 
 .botoes-cronometro button:hover {
   background-color: #E2B354;
+  transition: all 0.3s ease;
 }
 
 .spacer-cronometro {
