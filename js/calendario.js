@@ -264,24 +264,25 @@ confirmDelete.addEventListener('click', async () => {
 
     const result = await response.text(); // Lê o resultado
 
-    // Se a resposta indicar sucesso
     if (result.includes("sucesso")) {
-      modalDelete.style.display = "none"; // Fecha modal
-      await carregarEventosDoDia(); // Recarrega os eventos
+      modalDelete.style.display = "none"; // Fecha modal de confirmação
+      await carregarEventosDoDia(); // Atualiza os eventos na tela
 
-      // Exibe alerta de sucesso
-      Swal.fire({
+      // Aguarda o usuário clicar em "OK" no alerta
+      await Swal.fire({
         title: "Evento deletado com sucesso!",
         icon: "success",
         draggable: true
       });
 
+      location.reload(); // Só recarrega depois do clique no OK
+
     } else {
-      throw new Error(result); // Lança erro se falhou
+      throw new Error(result);
     }
   } catch (error) {
-    console.error('Erro ao deletar:', error); // Loga erro no console
-    alert('Erro ao deletar evento: ' + error.message); // Mostra alerta de erro
+    console.error('Erro ao deletar:', error);
+    alert('Erro ao deletar evento: ' + error.message);
   }
 });
 

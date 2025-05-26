@@ -11,28 +11,6 @@ create table tb_usuario(
     
 );
 
-create table tb_tarefa(
-	id_tarefa INT PRIMARY KEY AUTO_INCREMENT,
-   	    nome_tarefa VARCHAR(50),
-    	detalhamento_tarefa VARCHAR(500),
-    	data_tarefa DATE,
-    	prazo_tarefa DATE,
-    	status_tarefa VARCHAR(50),
-		usuario_tarefa INT,
-	FOREIGN KEY  (usuario_tarefa) REFERENCES tb_usuario(id_usuario)
-);
-
-
-
-CREATE TABLE tb_daily (
-    id_daily INT AUTO_INCREMENT PRIMARY KEY,
-    data_daily DAT	
-implementação da música no perfil do gerente,
-    FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario)
-);
-
-
-
 create table musicas_tb(
     	id_musica INT PRIMARY KEY AUTO_INCREMENT,
     	nome_musica VARCHAR(50)
@@ -58,6 +36,17 @@ CREATE TABLE tb_evento(
     FOREIGN KEY tb_evento(id_estudante) REFERENCES tb_usuario(id_usuario)
 );
 
+create table tb_tarefa(
+	id_tarefa INT PRIMARY KEY AUTO_INCREMENT,
+   	    nome_tarefa VARCHAR(50),
+    	detalhamento_tarefa VARCHAR(500),
+    	data_tarefa DATE,
+    	prazo_tarefa DATE,
+    	status_tarefa VARCHAR(50),
+		usuario_tarefa INT,
+	FOREIGN KEY  (usuario_tarefa) REFERENCES tb_usuario(id_usuario)
+);
+
 CREATE TABLE tb_duvidas(
 	id_duvidas INT PRIMARY KEY AUTO_INCREMENT,
 	titulo_duvidas VARCHAR(60),
@@ -65,4 +54,20 @@ CREATE TABLE tb_duvidas(
 	data_duvidas date,
 	usuario_duvidas INT,
 	FOREIGN KEY (usuario_duvidas) REFERENCES tb_usuario(id_usuario)
+);
+
+CREATE TABLE tb_daily (
+id_daily INT AUTO_INCREMENT PRIMARY KEY,
+data_daily 	date ,
+resumo_dia 	varchar(30),
+inicio_planejado 	varchar(30),
+metas_definidas 	INT,
+metas_concluidas 	INT, 	
+adiantou_tarefa 	tinyint,
+postura_pendencias 	varchar(50),	
+emocao_dia 	varchar(300),	
+conselho_para_si 	varchar(300),	
+texto_livre 	varchar(300),	
+id_usuario 	int(11),
+FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario)
 );
