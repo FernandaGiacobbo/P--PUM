@@ -84,7 +84,7 @@
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="feedbackGeral.php">
                             <i class='bx bx-chat icon'></i>
                             <span class="text nav-text">Feedback</span>
                         </a>
