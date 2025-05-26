@@ -14,12 +14,14 @@
     <H1>Upload Musica:</H1>
 
     <form id="formulario" action="musicaUpload.php" method="POST" enctype="multipart/form-data">
-        <input id="botoes" type="file" name="audiofile"/>
-        <input id="botoes" type="submit" value="Upload" name="save_audio"/>
+        <input id="botaoSub" type="file" name="audiofile" accept=".mp3, .wav"/>
+        <input id="botaoSub" type="submit" value="Upload" name="save_audio"/>
 
     </form>
 
 <?php
+
+include 'gerenteHeader.php';
 
 session_start();
 $id_us = $_SESSION['id'];
@@ -27,7 +29,7 @@ $id_us = $_SESSION['id'];
 if (!empty($id_us)) {
     // importa o arquivo que possui a função para conectar o db
     require_once 'conecta_db.php';
-    //função de listar musicas 
+    //função de listar musicas  
     function listarMusicas() {
         //conecta com o banco usando a func conecta_db
         $conn = conecta_db();
@@ -58,7 +60,7 @@ if (!empty($id_us)) {
             echo '</table>';
         } else {
             //caso nenhuma musica seja encontrada, printa isso:
-            echo 'Nenhuma música encontrada.';
+            echo '<h4 id="aviso"> Nenhuma música encontrada.<h4>';
         }
         //fecha conexao com o banco
         $conn->close();

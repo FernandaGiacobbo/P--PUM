@@ -24,7 +24,7 @@
                 </div>
             </div>
 
-            <i class='bx bxs-chrvron-right toggle'></i>
+            <i class='bx bx-chevron-right toggle'></i>
         </header>
 
         <div class="menu-bar">
@@ -47,8 +47,8 @@
                     </li>
 
                     <li class="nav-link">
-                        <a href="gerenteMusica.php">
-                            <i class='bx  bx-list-music icon'></i>                             
+                        <a href="musicaIndex.php">
+                            <i class='bx bx-music icon'></i></i>                             
                             <span class="text nav-text">Músicas</span>
                         </a>
                     </li>
