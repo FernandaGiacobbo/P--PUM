@@ -14,53 +14,63 @@
     <H1>Upload Musica:</H1>
 
     <form id="formulario" action="musicaUpload.php" method="POST" enctype="multipart/form-data">
-        <input id="botoes" type="file" name="audiofile"/>
-        <input id="botoes" type="submit" value="Upload" name="save_audio"/>
+        <input id="botaoSub" type="file" name="audiofile" accept=".mp3, .wav"/>
+        <input id="botaoSub" type="submit" value="Upload" name="save_audio"/>
 
     </form>
 
 <?php
-// importa o arquivo que possui a função para conectar o db
-require_once 'conecta_db.php';
-//função de listar musicas 
-function listarMusicas() {
-    //conecta com o banco usando a func conecta_db
-    $conn = conecta_db();
-    
-    //executa consulta para pegar o ID e o nome das musicas     
-    $resultado = $conn->query("SELECT id_musica, nome_musica FROM musicas_tb");
-    //verifica se existem musicas (foram retornadas linhas)
-    if ($resultado->num_rows > 0) {
-        //comeca a fazer a tabela em html
-        echo '<table>';
-        echo '<tr><th>ID</th><th>Nome da Música</th><th>Ações</th></tr>';
-        //loop por todas as linhas retornadas (cada musica)
-        while ($linha = $resultado->fetch_assoc()) {
-            echo '<tr>';
-            //mostra id da musica
-            echo '<td>' . $linha['id_musica'] . '</td>';
-            //mostra nome da musica
-            echo '<td>' . $linha['nome_musica'] . '</td>';
-            echo '<td>';
-            //link para editar a musica
-            echo '<a href="musicaEditar.php?id=' . $linha['id_musica'] . '">Editar</a> | ';
-            //link para deletar a musica
-            echo '<a href="musicaDelete.php?id=' . $linha['id_musica'] . '" onclick="return confirm(\'Tem certeza?\')">Deletar</a>';
-            echo '</td>';
-            echo '</tr>';
-        }
-        //fecha a tabela
-        echo '</table>';
-    } else {
-        //caso nenhuma musica seja encontrada, printa isso:
-        echo 'Nenhuma música encontrada.';
-    }
-    //fecha conexao com o banco
-    $conn->close();
-}
-//chama a funcao para mostrar musicas na tela
-listarMusicas();
 
+include 'gerenteHeader.php';
+
+session_start();
+$id_us = $_SESSION['id'];
+
+if (!empty($id_us)) {
+    // importa o arquivo que possui a função para conectar o db
+    require_once 'conecta_db.php';
+    //função de listar musicas  
+    function listarMusicas() {
+        //conecta com o banco usando a func conecta_db
+        $conn = conecta_db();
+        
+        //executa consulta para pegar o ID e o nome das musicas     
+        $resultado = $conn->query("SELECT id_musica, nome_musica FROM musicas_tb");
+        //verifica se existem musicas (foram retornadas linhas)
+        if ($resultado->num_rows > 0) {
+            //comeca a fazer a tabela em html
+            echo '<table>';
+            echo '<tr><th>ID</th><th>Nome da Música</th><th>Ações</th></tr>';
+            //loop por todas as linhas retornadas (cada musica)
+            while ($linha = $resultado->fetch_assoc()) {
+                echo '<tr>';
+                //mostra id da musica
+                echo '<td>' . $linha['id_musica'] . '</td>';
+                //mostra nome da musica
+                echo '<td>' . $linha['nome_musica'] . '</td>';
+                echo '<td>';
+                //link para editar a musica
+                echo '<a href="musicaEditar.php?id=' . $linha['id_musica'] . '">Editar</a> | ';
+                //link para deletar a musica
+                echo '<a href="musicaDelete.php?id=' . $linha['id_musica'] . '" onclick="return confirm(\'Tem certeza?\')">Deletar</a>';
+                echo '</td>';
+                echo '</tr>';
+            }
+            //fecha a tabela
+            echo '</table>';
+        } else {
+            //caso nenhuma musica seja encontrada, printa isso:
+            echo '<h4 id="aviso"> Nenhuma música encontrada.<h4>';
+        }
+        //fecha conexao com o banco
+        $conn->close();
+    }
+    //chama a funcao para mostrar musicas na tela
+    listarMusicas();
+} else {
+    header('Location: index.html');
+    die();
+}
 ?>
     
 </body>

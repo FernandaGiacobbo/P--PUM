@@ -1,29 +1,35 @@
 <?php
 
 session_start();
+$id_us = $_SESSION['id'];
+if (!empty($id_us)) {
 
-if ($_GET['id_tarefa']) {
-    $id_tarefa = $_GET['id_tarefa'];
-    $_SESSION['id_tarefa'] = $id_tarefa; 
+    if ($_GET['id_tarefa']) {
+        $id_tarefa = $_GET['id_tarefa'];
+        $_SESSION['id_tarefa'] = $id_tarefa; 
 
-    include_once('conecta_db.php');
-    $oMysql = conecta_db();
+        include_once('conecta_db.php');
+        $oMysql = conecta_db();
 
-    $query1 = "SELECT * FROM tb_tarefa WHERE id_tarefa = $id_tarefa";
-    $resultado1 = $oMysql->query($query1);
+        $query1 = "SELECT * FROM tb_tarefa WHERE id_tarefa = $id_tarefa";
+        $resultado1 = $oMysql->query($query1);
 
-    if($resultado1){
-        while($tarefa = $resultado1->fetch_object()){
-            $nome = $tarefa->nome_tarefa;
-            $detalhamento = $tarefa->detalhamento_tarefa;
-            $data_tarefa = $tarefa->data_tarefa;
-            $prazo = $tarefa->prazo_tarefa;
-            $status_tarefa = $tarefa->status_tarefa;
+        if($resultado1){
+            while($tarefa = $resultado1->fetch_object()){
+                $nome = $tarefa->nome_tarefa;
+                $detalhamento = $tarefa->detalhamento_tarefa;
+                $data_tarefa = $tarefa->data_tarefa;
+                $prazo = $tarefa->prazo_tarefa;
+                $status_tarefa = $tarefa->status_tarefa;
+            }
+
         }
 
+
     }
-
-
+} else {
+    header('Location: index.html');
+    die();
 }
 
 

@@ -5,8 +5,11 @@
   session_start();
   $id_estudante = $_SESSION['id'];
 
-  
-  if (
+if(!isset($_SESSION['id'])) {
+    header('Location: index.html');
+    exit();
+} else {
+    if (
       isset($_POST['titulo_evento']) &&
       isset($_POST['data_evento']) &&
       isset($_POST['horario_evento']) &&
@@ -37,6 +40,10 @@
   }
 
     include 'header.php';
+}
+
+  
+
 ?>
 
 <!DOCTYPE html>
@@ -81,18 +88,18 @@
             <div class="modal-form">
               <form class="modal-form" method="POST">
 
-                <label>Título</label>
+                <label>Título*</label>
                 <input name="titulo_evento" type="text" placeholder="Título do evento" required>
 
-                <label>Data de início</label>
+                <label>Data de início*</label>
                 <input name="data_evento" type="date" required>
                 <input name="horario_evento" type="time" required>
 
-                <label>Data de término</label>
+                <label>Data de término*</label>
                 <input name="data_prazo" type="date" required>
                 <input name="hora_prazo" type="time" required>
 
-                <label>Descrição</label>
+                <label>Descrição*</label>
                 <textarea name="descricao" placeholder="Escreva uma descrição..." required></textarea>
 
                 <button type="submit" class="save-event">Salvar</button>

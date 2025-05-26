@@ -2,6 +2,10 @@
 
 session_start();
 
+if(!isset($_SESSION['id'])) {
+    header('Location: index.html');
+    exit();
+}
 
 include_once('conecta_db.php');
 $oMysql = conecta_db();
@@ -58,6 +62,7 @@ if (isset($_POST['submit'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/duvidaVisualizar.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Duvidas Update</title>
 </head>
 <body>
@@ -83,8 +88,8 @@ if (isset($_POST['submit'])){
 
                     <div class="alingBotoes">
                         <button type="submit" name="submit" class="botoesUpdade">Enviar</button>
-                        <a href="duvidasVisualizar.php" ><p class="botoesUpdade">Voltar</p></a>
-                        <a href="duvidaDelete.php?id_duvidas=<?php echo $id_duvidas;?>" ><p class="botoesUpdade">Excluir</p></a>
+                        <a href="duvidasVisualizar.php" ><p class="botoesUpdade" onclick="confirmarEditar(123)">Voltar</p></a>
+                        <p class="botoesUpdade"  onclick="confirmarExclusao(123)">Excluir</p>
                     </div>
                 </form>
             </div>
@@ -92,5 +97,29 @@ if (isset($_POST['submit'])){
         </div>
 
     </section>
+
+<script>
+function confirmarExclusao(id_duvidas) {
+    Swal.fire({
+        title: 'Tem certeza?',
+        text: "Essa ação não poderá ser desfeita!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sim, deletar!',
+        cancelButtonText: 'Não, cancelar',
+        customClass: {
+            popup: 'popup-personalizado',
+            confirmButton: 'botao-confirmar',
+            cancelButton: 'botao-cancelar'
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = "duvidaDelete.php?id_duvidas=" + <?php echo $id_duvidas;?>;
+        }
+    });
+}
+
+</script>
+
 </body>
 </html>

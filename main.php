@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=preview" />
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <title>Papum</title>
+  <title>PA-PUM</title>
 </head>
 
 <body>
@@ -25,27 +25,28 @@
   
 
     <?php
-      $oMysql = conecta_db();
-      $query1 = "SELECT status_tarefa FROM tb_tarefa where usuario_id = $id_us";
-      $resultado1 = $oMysql->query($query1);
+        $oMysql = conecta_db();
+        $query1 = "SELECT status_tarefa FROM tb_tarefa where usuario_tarefa = $id_us";
+        $resultado1 = $oMysql->query($query1);
 
-      $concluido = 0;
-      $pendente = 0;
+        $concluido = 0;
+        $pendente = 0;
 
-      $cont_linhas = mysqli_num_rows($resultado1);
+        $cont_linhas = mysqli_num_rows($resultado1);
 
-      for($i = 0; $i < $cont_linhas; $i++){
+        for($i = 0; $i < $cont_linhas; $i++){
 
-          $status = mysqli_fetch_assoc($resultado1);
+            $status = mysqli_fetch_assoc($resultado1);
 
-          if ($status['status_tarefa'] != 'Completo') {
-            $pendente += 1;
-          } else {
-            $concluido += 1;
-          }
-      
+            if ($status['status_tarefa'] != 'Completo') {
+              $pendente += 1;
+            } else {
+              $concluido += 1;
+            }
         
-      }
+          
+        }
+
 
       //pegando as infos dos status 
 
@@ -89,7 +90,7 @@
 
                     <?php
                       
-                      $query = "SELECT * FROM tb_tarefa where usuario_id = $id_us";
+                      $query = "SELECT * FROM tb_tarefa where usuario_tarefa = $id_us ORDER BY id_tarefa DESC";
                       $resultado = $oMysql->query($query);
                       if($resultado) {
                           while($linha = $resultado->fetch_object()){
@@ -100,10 +101,10 @@
                               
 
                               $html = "<tr class='corpo_tb'>";
-                              $html .= "<td class='td_dec'>".$linha->nome."</td>";
-                              $html .= "<td class='td_dec'><div class='td_scroll'>".htmlspecialchars($linha->detalhamento)."</div></td>";
+                              $html .= "<td class='td_dec'>".$linha->nome_tarefa."</td>";
+                              $html .= "<td class='td_dec'><div class='td_scroll'>".htmlspecialchars($linha->detalhamento_tarefa)."</div></td>";
                               $html .= "<td class='td_dec'>".$linha->data_tarefa."</td>";
-                              $html .= "<td class='td_dec'>".$linha->prazo."</td>";
+                              $html .= "<td class='td_dec'>".$linha->prazo_tarefa."</td>";
                               $html .= "<td class='td_dec'>".$linha->status_tarefa."</td>";
                               $html .= "<td class='td_dec alingbtn'>".$botoes."</td>";
                               $html .= "</tr>";
