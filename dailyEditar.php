@@ -53,9 +53,10 @@ if (!empty($_GET['id_daily'])) {
 
 <body>
 
-    <?php include 'header.php'; ?> <section class="home">
+    <?php include 'header.php'; ?> 
+    <section class="home">
         <div class="main">
-            <dialog id="modal-editar" class="modal-padrao">
+            <div id="modal-editar" class="modal-padrao">
                 <form action="dailyEdicao.php" method="post">
                     <h2>Editar Daily</h2>
                 
@@ -133,7 +134,7 @@ if (!empty($_GET['id_daily'])) {
                         <textarea rows="6" cols="50" maxlength="300" name="emocao_dia" required><?php echo $emocao_dia;?></textarea>
                     </label>
 
-                    <p>Gostaria de deixar um lembrete ou conselho para si mesmo(a) amanhã?Algo que possa te inspirar, cuidar ou guiar quando um novo dia começar.</p>
+                    <p>Gostaria de deixar um lembrete ou conselho para si mesmo(a) amanhã? Algo que possa te inspirar, cuidar ou guiar quando um novo dia começar.</p>
                     <label>
                         <textarea rows="6" cols="50" maxlength="300" name="conselho_para_si" required><?php echo $conselho_para_si;?></textarea>
                     </label>
@@ -153,11 +154,61 @@ if (!empty($_GET['id_daily'])) {
                     </div>
                 
                 </form>
-            </dialog>
+</div>
 
         </div>
-    </section>
+</section>
 
-    <script src="js/dailyEditar.js"></script>
+
+<script>
+        document.getElementById('botaocancelar').addEventListener('click', function (e) {
+        e.preventDefault();
+
+        Swal.fire({
+            title: 'Tem certeza?',
+            text: 'As informações preenchidas não serão salvas!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#f9d57f',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sim, sair',
+            cancelButtonText: 'Não',
+            customClass: {
+                confirmButton: 'swal2-styled swal2-confirm',
+                cancelButton: 'swal2-styled swal2-cancel'
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = 'dailyVisualizar.php'; // ou outro destino apropriado
+            }
+        });
+    });
+
+    // Botão Excluir
+    document.getElementById('botaoexcluir').addEventListener('click', function (e) {
+        const id = this.getAttribute('data-id-daily');
+
+        Swal.fire({
+            title: 'Tem certeza?',
+            text: 'Você não poderá reverter esta ação!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#f9d57f',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sim, excluir!',
+            cancelButtonText: 'Cancelar',
+            customClass: {
+                confirmButton: 'swal2-styled swal2-confirm',
+                cancelButton: 'swal2-styled swal2-cancel'
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Redireciona para um script que vai excluir
+                window.location.href = 'dailyExcluir.php?id_daily=' + id;
+            }
+        });
+    });
+
+</script>
 </body>
 </html>
