@@ -8,21 +8,23 @@
 
 .container{
     display: flex;
-    flex-direction: column;
     flex-wrap: wrap;
-    justify-content: baseline;
-    width: 100%;
-    margin: 2em ;
-    gap: 2em ;
+    justify-content: space-between; /* Distribui o espaço entre os elementos */
+    width: calc(100% - 4em); /* Ajusta a largura considerando a margem */
+    margin: 2em;
+    gap: 2em;
+    position: relative; /* Importante para o posicionamento do cronômetro */
 }
 
 .caixa h2{
     font-weight: 600;
+    font-family: 'poppins', sans-serif;
 }
 
 .caixa h3{
     margin-top: 0.5em;
     font-weight: 500;
+    font-family: 'poppins', sans-serif;
 }
 
 .vermelho {
@@ -33,13 +35,19 @@
     color: #e2b354;
 }
 
+.corpo {
+    flex: 1; /* Ocupa o espaço disponível */
+    min-width: 102%; /* Largura mínima para a tabela */
+    max-width: calc(100% - 27em); /* Largura máxima (100% - largura do cronômetro) */
+}
+
 .corpo h3 {
     font-weight: 700;
 }
 
 .tabela{
     background-color: #fff;
-    width: 95%;
+    width: 98%;
     border-radius: 10px;
     box-shadow: 0 3px 5px rgba(0,0,0,0.5);
     display: flex;
@@ -64,16 +72,16 @@
     margin-left: 3.3em;
     margin-top: 1.5em;
     border: none;
-    border-radius: 2px;
+    border-radius: 5px;
     width: 13em;
     height: 3.5em;
     background-color: #e2b354;
     cursor: pointer;
+    font-weight: bold;
 }
 
 .tabela .botao:hover{
-    background-color: #fff;
-    border: #3a4a68 solid 1px;
+    background-color: #EDCA85;
     transition: 0.3s;
 }
 
@@ -283,17 +291,20 @@ dialog button:hover{
 }
 
 #cronometro{
-    margin-left: 62em;
-    position: static;
-    bottom: 20px;
-    right: 20px;
+    position: sticky; /* Fixa na tela, mas respeita o fluxo do container */
+    top: 20px; /* Distância do topo quando fixado */
+    float: right; /* Alinha à direita */
+    margin-right: 20px; /* Espaçamento da borda direita */
     width: 25em;
     background-color: #fff;
     border: 2px solid #E2B354;
     border-radius: 12px;
     padding: 20px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    z-index: 9999;
+    z-index: 100; /* Um z-index moderado para não cobrir o header */
+    align-self: flex-start; /* Alinha no topo do container flex */
+    margin-top: 3em;
+    margin-bottom: 1em;
 }
 
 #cronometro h1{
