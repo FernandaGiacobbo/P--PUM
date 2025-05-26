@@ -1,3 +1,8 @@
+* {
+    box-sizing: border-box;
+}
+
+
 body{
     font-family: Arial, sans-serif;
 }
@@ -8,32 +13,49 @@ h1{
     text-align: center;
 }
 
-input[type="file"] {
-    margin-bottom: 10px;
+#formulario {
+    text-align: center;
+    display: grid;
+    width: 90%;
+    max-width: 400px;
+    margin: auto;
+    gap: 10px;
 }
 
-
-#formulario{
-    text-align: center;
-    
+#botaoSub {
+    background-color: #b9d1f0;
+    color: #222;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    margin-top: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+#botaoSub:hover {
+    background-color: #3a4a69;
+    color: #fff;
 }
 
 table {
-    width: 80%;
-    margin: 20px auto;
+    width: 70%;
+    max-width: 800px;
+    margin: 15px auto;
     border-collapse: collapse;
     background-color: #ffffff;
 }
 
 
 table th, table td {
+    margin-top: 10px auto;
     padding: 12px;
     text-align: left;
     border-bottom: 1px solid #dee2e6;
-}
+}   
 
 table th {
-    background-color: #007bff;
+    background-color: #3a4a69;
     color: white;
 }
 
@@ -48,4 +70,10 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+#aviso{
+    text-align: center;
+    margin-top: 20px;
+    color: #6c757d;
 }
