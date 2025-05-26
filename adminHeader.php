@@ -50,7 +50,7 @@
                     <li class="nav-link">
                         <a href="adminRegistro.php">
                             <i class='bx bx-notepad icon'></i>
-                            <span class="text nav-text">Daily</span>
+                            <span class="text nav-text">Registro</span>
                         </a>
                     </li>
                     
