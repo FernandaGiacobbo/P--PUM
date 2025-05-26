@@ -113,6 +113,7 @@ section h2{
     padding-left: 0.5em;
     background-color: #e2b354;
     flex-wrap: wrap;
+    flex-direction: row;
 }
 
 .td_dec{
@@ -121,11 +122,28 @@ section h2{
     border: rgba(226, 178, 84, 0.23) solid 1px;
     border-radius: 3px;
     padding: 7px;
+    white-space: nowrap;
+    text-align: center; 
+}
 
+.success:hover{
+    background-color: #3a4a68;
+    color: #fff;
+    border: #3a4a68 solid 1px;
+    transition: 0.3s;
+}
+
+.alingbtn { 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    border-bottom: 1px solid rgba(226, 178, 84, 0.23); 
+    border-left: 1px solid rgba(226, 178, 84, 0.23);
+    border-right: 1px solid rgba(226, 178, 84, 0.23);
 }
 
 .success {
-    margin: 1px;
+    margin: 1px; 
     border: none;
     border-radius: 25px;
     height: 2em;
@@ -138,22 +156,105 @@ section h2{
     padding: 0em 1.5em;
 }
 
-.success:hover{
-    background-color: #3a4a68;
-    color: #fff;
-    border: #3a4a68 solid 1px;
-    transition: 0.3s;
-}
-
-.alingbtn{
+.botao-acao {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    flex-direction: row;
-    flex: 1;
-    gap: 0.5em;
-    border-bottom: 1px;
-    border-left: 1px;
-    border-right: 1px;
+    width: 100%;
+    height: 100%;
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.close-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-modal:hover {
+    color: #000;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.btn-submit {
+    background-color: #e2b354;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.btn-submit:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+#form-adicionar-gerente {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza horizontalmente */
+}
+
+.form-group {
+    width: 100%; /* Faz os inputs ocuparem toda a largura disponível */
+    max-width: 400px; /* Largura máxima para os campos */
+}
+
+/* Estilo para o formulário de edição */
+.tabela form {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Estilo para o botão de atualizar */
+.btn-submit {
+    display: block;
+    margin: 20px auto 0;
+    width: 200px;
+    text-align: center;
 }
