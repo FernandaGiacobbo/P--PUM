@@ -73,10 +73,18 @@ if (!empty($id_us)) {
     </div>
 
     <form id="formPostit" method="POST" action="mural.php">
-        <textarea name="texto_postit" required></textarea><br>
-        <input type="color" name="cor_postit" value="#fffc00" required><br>
+        <div class="form-group">
+            <label for="texto_postit">Texto do Post-it:</label>
+            <textarea name="texto_postit" id="texto_postit" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="cor_postit">Cor do Post-it:</label>
+            <input type="color" name="cor_postit" id="cor_postit" value="#fffc00" required>
+        </div>
         <button type="submit" name="adicionar">Adicionar Nota</button>
     </form>
+
+    
     
 
     <script src="main.js"></script>
