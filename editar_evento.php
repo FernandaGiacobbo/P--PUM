@@ -1,8 +1,11 @@
 <?php
 include 'conecta_db.php';
 
+session_start();
+
 if(!isset($_SESSION['id'])) {
-    header('Location: index.html');
+    header('Content-Type: application/json');
+    echo json_encode(['error' => 'Sessão expirada']);
     exit();
 }
 
