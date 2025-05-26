@@ -9,11 +9,11 @@
 .container{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    width: calc(100% - 4em);
+    justify-content: space-between; /* Distribui o espaço entre os elementos */
+    width: calc(100% - 4em); /* Ajusta a largura considerando a margem */
     margin: 2em;
     gap: 2em;
-    position: relative;
+    position: relative; /* Importante para o posicionamento do cronômetro */
 }
 
 .caixa h2{
@@ -36,9 +36,9 @@
 }
 
 .corpo {
-    flex: 1;
-    min-width: 105%;
-    max-width: calc(100% - 27em);
+    flex: 1; /* Ocupa o espaço disponível */
+    min-width: 102%; /* Largura mínima para a tabela */
+    max-width: calc(100% - 27em); /* Largura máxima (100% - largura do cronômetro) */
 }
 
 .corpo h3 {
@@ -47,7 +47,7 @@
 
 .tabela{
     background-color: #fff;
-    width: 95%;
+    width: 98%;
     border-radius: 10px;
     box-shadow: 0 3px 5px rgba(0,0,0,0.5);
     display: flex;
@@ -291,19 +291,20 @@ dialog button:hover{
 }
 
 #cronometro{
-    margin-left: 62em;
-    position: static;
-    bottom: 20px;
-    right: 20px;
+    position: sticky; /* Fixa na tela, mas respeita o fluxo do container */
+    top: 20px; /* Distância do topo quando fixado */
+    float: right; /* Alinha à direita */
+    margin-right: 20px; /* Espaçamento da borda direita */
     width: 25em;
     background-color: #fff;
     border: 2px solid #E2B354;
     border-radius: 12px;
     padding: 20px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    z-index: 9999;
-    flex-wrap: nowrap;
-    overflow-x: auto;
+    z-index: 100; /* Um z-index moderado para não cobrir o header */
+    align-self: flex-start; /* Alinha no topo do container flex */
+    margin-top: 3em;
+    margin-bottom: 1em;
 }
 
 #cronometro h1{
