@@ -164,15 +164,15 @@ dialog button {
     font-weight: 700;
     font-size: 1rem;
     margin: 0.5em;
-    background-color: #f9d57f !important; /* Amarelo */
-    color: black !important;
+    background-color: #3A4A68 !important; /* Amarelo */
+    color: white !important;
     transition: 0.3s ease-in-out;
     box-shadow: none !important;
 }
 
 .swal2-styled.swal2-confirm:hover {
-    background-color: black !important;
-    color: #fff !important;
+    background-color: #EDE5E0 !important;
+    color: black !important;
 }
 
 .swal2-styled.swal2-cancel {
@@ -184,18 +184,15 @@ dialog button {
     font-weight: 700;
     font-size: 1rem;
     margin: 0.5em;
-    background-color: #d33 !important; /* Vermelho para cancelar */
+    background-color: #E2B354 !important; /* Vermelho para cancelar */
     color: white !important;
     transition: 0.3s ease-in-out;
     box-shadow: none !important;
 }
 
 .swal2-styled.swal2-cancel:hover {
-    background-color: #a00 !important; /* Um vermelho mais escuro para o hover */
-    color: white !important;
+    background-color: #EDE5E0 !important; /* Um vermelho mais escuro para o hover */
+    color: black !important;
 }
 
-.swal2-container {
-    z-index: 10001 !important; /* One more than the modal's z-index */
-}
 
