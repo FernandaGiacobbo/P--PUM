@@ -38,7 +38,7 @@ if(isset($_POST['submit']) && !empty($_POST['email']) && !empty($_POST['senha'])
           header('Location: gerentePrincipal.php');
           exit();
         case 'admin':
-          header('Location: home_admin.php');
+          header('Location: adminMain.php');
           exit();
         default:
           echo "<script>

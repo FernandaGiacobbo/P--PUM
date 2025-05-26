@@ -9,7 +9,8 @@ if(!isset($_SESSION['id'])) {
     include_once('conecta_db.php');
     $oMysql = conecta_db();
 
-    include 'gerenteHeader.php';
+    include 'adminHeader.php';
+
 
         $senha_log = $_SESSION['senha'];
         $email_log = $_SESSION['email'];
