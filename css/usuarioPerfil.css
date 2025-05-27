@@ -1,45 +1,52 @@
-.home{
-    padding: 50px;
-    height: 100vh;
-    position: relative;
-    justify-content: center;
-    text-align: center;
-    left: 250px;
-    width: calc(100% - 250px);
-    transition: var(--tran-05);
+.home {
+    min-height: 100vh;
+    padding: 2rem 1rem;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    left: 0;
+    position: relative;
 }
 
-.quadro-infos{
-    height: 500px;
-    width: 1000px;
-    background-color: #F2D6A1;
-    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.5);
+.quadro-infos {
+    background-color: #fff;
     border-radius: 1em;
-    margin-top: 4em;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 992px; /* equivalente a 62em */
+    padding: 2rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    margin: 0 auto;
 }
 
-.titulo-caixa{
-    margin-top: 0.3em;
-    font-size: 2em;
+
+.titulo-caixa {
+    font-size: 1.8rem;
+    color: #3A4A68;
+    margin-bottom: 1rem;
 }
 
 .titulos-labels{
-    padding: 2em;
+    font-size: 1rem;
+    color: #3A4A68;
     text-align: left;
-
+    margin-bottom: 0.3rem;
 }
 
-.placeholder{
-    background-color: rgb(255, 255, 255);
-    padding: 1em;
-    border-radius: 0.5em;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.placeholder {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #EDCA85;
+    border-radius: 8px;
+    background: rgba(237, 202, 133, 0.1);
+    color: #3A4A68;
+    margin-bottom: 1rem;
 }
 
 .edit{
-      font-family: sans-serif;
+      font-family: 'poppins';
       font-weight: bold;
       padding: 10px 40px;
       border: none;
@@ -47,6 +54,7 @@
       cursor: pointer;
       color: white;
       background-color: #3E6985;
+      
 }
 
 .edit:hover{
@@ -54,7 +62,7 @@
 }
 
 .delete{
-      font-family: sans-serif;
+      font-family: 'poppins';
       font-weight: bold;
       padding: 10px 40px;
       border: none;
@@ -71,7 +79,7 @@
 }
 
 .logout{
-      font-family: sans-serif;
+      font-family: 'poppins';
       font-weight: bold;
       padding: 10px 40px;
       border: none;
@@ -118,3 +126,20 @@
   padding: 8px 20px !important;
 }
 
+@media (max-width: 600px) {
+    .quadro-infos {
+        padding: 1.5rem;
+    }
+
+    .titulo-caixa {
+        font-size: 1.5rem;
+    }
+
+    .titulos-labels h2 {
+        font-size: 0.9rem;
+    }
+
+    .button-submit {
+        width: 100%;
+    }
+}
