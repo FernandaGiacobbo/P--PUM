@@ -75,7 +75,7 @@ if (!empty($id_us)) {
         $conn = conecta_db();
         
         //executa consulta para pegar o ID e o nome das musicas     
-        $resultado = $conn->query("SELECT id_musica, nome_musica FROM musicas_tb");
+        $resultado = $conn->query("SELECT id_musica, nome_musica FROM tb_musicas");
         //verifica se existem musicas (foram retornadas linhas)
         if ($resultado->num_rows > 0) {
             //comeca a fazer a tabela em html

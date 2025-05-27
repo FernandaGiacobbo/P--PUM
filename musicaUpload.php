@@ -20,7 +20,7 @@
 
     function salvarMusica($nomeArquivo, $caminhoCompleto) {
         $conn = conecta_db();
-        $stmt = $conn->prepare("INSERT INTO musicas_tb (nome_musica, caminho_arquivo) VALUES (?, ?)");
+        $stmt = $conn->prepare("INSERT INTO tb_musicas (nome_musica, caminho_arquivo) VALUES (?, ?)");
         $stmt->bind_param("ss", $nomeArquivo, $caminhoCompleto);
         $resultado = $stmt->execute();
         $stmt->close();
