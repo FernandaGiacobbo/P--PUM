@@ -209,13 +209,13 @@ form p {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: 280px; /* Largura fixa para melhor controle */
+    width: 20em;
     background-color: #fff;
     border: 2px solid #E2B354;
     border-radius: 12px;
     padding: 15px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    z-index: 1000; /* Aumentei o z-index para garantir que fique acima de tudo */
+    z-index: 1000;
     margin: 0;
 }
 
@@ -292,15 +292,6 @@ form p {
     .corpo {
         flex: 1;
         min-width: 0;
-    }
-    
-    #cronometro {
-        order: 1;
-        width: 25em;
-        margin: 0;
-        align-self: flex-start;
-        position: sticky;
-        top: 1em;
     }
     
     .datas {
