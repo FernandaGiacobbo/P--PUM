@@ -1,30 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap'); 
 
-*{
+* {
     margin: 0;
     padding: 0;
-
+    box-sizing: border-box;
 }
 
-.container{
+.container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between; /* Distribui o espaço entre os elementos */
-    width: calc(100% - 4em); /* Ajusta a largura considerando a margem */
-    margin: 2em;
-    gap: 2em;
-    position: relative; /* Importante para o posicionamento do cronômetro */
+    flex-direction: column;
+    width: calc(100% - 2em);
+    margin: 1em;
+    gap: 1.5em;
+    position: relative;
 }
 
-.caixa h2{
-    font-weight: 600;
+.caixa {
+    width: 100%;
+    padding: 1em;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+}
+
+.caixa h2 {
+    font-weight: 400;
     font-family: 'poppins', sans-serif;
+    font-size: 1.5em;
 }
 
-.caixa h3{
+.caixa h3 {
     margin-top: 0.5em;
-    font-weight: 500;
+    font-weight: 300;
     font-family: 'poppins', sans-serif;
+    font-size: 1.1em;
 }
 
 .vermelho {
@@ -36,278 +45,181 @@
 }
 
 .corpo {
-    flex: 1; /* Ocupa o espaço disponível */
-    min-width: 102%; /* Largura mínima para a tabela */
-    max-width: calc(100% - 27em); /* Largura máxima (100% - largura do cronômetro) */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .corpo h3 {
-    font-weight: 700;
-}
-
-.tabela{
-    background-color: #fff;
-    width: 98%;
-    border-radius: 10px;
-    box-shadow: 0 3px 5px rgba(0,0,0,0.5);
-    display: flex;
-    flex-direction: column;
-    justify-content:space-between ;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1em;
+    font-weight: 500;
+    margin-bottom: 0.5em;
+    font-size: 1.2em;
 }
 
 .tabela {
-  flex-wrap: nowrap;
-  overflow-x: auto;
+    background-color: #fff;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+    padding: 1em;
+    margin-bottom: 1.5em;
+    overflow-x: auto;
 }
 
-.table {
-  flex-shrink: 0;
-}
-
-.tabela .botao{
-    align-self: baseline;
-    margin-left: 3.3em;
-    margin-top: 1.5em;
+.tabela .botao {
+    margin: 0 0 1em 0;
     border: none;
     border-radius: 5px;
-    width: 13em;
-    height: 3.5em;
+    width: 100%;
+    max-width: 200px;
+    height: 3em;
     background-color: #e2b354;
     cursor: pointer;
     font-weight: bold;
+    font-size: 0.9em;
 }
 
-.tabela .botao:hover{
+.tabela .botao:hover {
     background-color: #EDCA85;
     transition: 0.3s;
 }
 
-.table{
-    width: 95%;
-    margin: 1%;
-    align-content: space-between;
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-weight: 400;
 }
 
-.tabela th {
+.table th {
     text-align: left;
-    border-radius: 2px;
-    gap: 1px;
-    padding-left: 0.5em;
+    padding: 0.8em 0.5em;
     background-color: #e2b354;
-    flex-wrap: wrap;
+    font-size: 0.9em;
+    font-weight: 400;
 }
 
-.td_dec{
-    max-width: 25em;
-    max-height: 7em;
-    border: rgba(226, 178, 84, 0.23) solid 1px;
-    border-radius: 3px;
-    padding: 7px;
-    
+.table td {
+    padding: 0.6em 0.5em;
+    border: 1px solid rgba(226, 178, 84, 0.23);
+    font-size: 0.85em;
+    font-weight: 400;
 }
 
 .td_scroll {
-   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .success {
-    margin: 1px;
+    padding: 0.3em 0.6em;
     border: none;
     border-radius: 2px;
-    height: 2em;
     background-color: #fff;
     border: #3a4a68 solid 1px;
-    box-shadow: 0 2px 3px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 3px rgba(0,0,0,0.1);
     color: black;
     cursor: pointer;
     text-decoration: none;
+    font-size: 0.8em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
 }
 
-.success:hover{
+.success:hover {
     background-color: #3a4a68;
     color: #fff;
-    border: #3a4a68 solid 1px;
     transition: 0.3s;
 }
 
-.danger {
-    text-decoration: none;
-    margin: 1px;
-    border: none;
-    border-radius: 2px;
-    height: 2em;
-    background-color: #3a4a68;
-    border: #3a4a68 solid 1px;
-    box-shadow: 0 2px 3px rgba(0,0,0,0.3);
-    color: #fff;
-    cursor: pointer;
-}
-
-.danger:hover{
-    background-color: #fff;
-    color: #3a4a68;
-    border: #3a4a68 solid 1px;
-    transition: 0.3s;
-}
-
-.alingbtn{
+.alingbtn {
     display: flex;
     justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    flex-direction: row;
-    flex: 1;
-    gap: 0.5em;
-    border-bottom: 1px;
-    border-left: 1px;
-    border-right: 1px;
+    gap: 0.3em;
 }
 
-
+/* Modal */
 dialog {
-    width: 50%;
+    width: 90%;
+    max-width: 600px;
     top: 50%;
     left: 50%;
     border-radius: 10px;
     transform: translate(-50%, -50%);
-    
+    border: none;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.caixaModal {
+    padding: 1em;
 }
 
 form h2 {
-    font-size: 35px;
-    font-weight: 300;
-    margin-bottom: 1em;
+    font-size: 1.5em;
+    margin-bottom: 0.8em;
 }
 
 form p {
-    font-size: 17px;
-    margin-bottom: 0.5em;
+    font-size: 0.9em;
+    margin-bottom: 0.3em;
 }
 
-
-
-.caixaModal{
-    display: flex;
-    width: 90%;
-    margin: 2em;
-    padding: 1em;
-    justify-content: center;
-    align-items: center;
-    gap: 2em;
-    flex-wrap: wrap;
-
+.texto {
+    width: 100%;
 }
 
-.caixaModal form {
-  margin: 2em;  
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  gap: 1.5em;
-  width: 100%;
+.textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 0.8em;
+    border: 1px solid #3a4a68;
+    border-radius: 5px;
+    resize: vertical;
 }
 
-
+.nome, .data, select {
+    width: 100%;
+    padding: 0.8em;
+    border: 1px solid #3a4a68;
+    border-radius: 5px;
+}
 
 .datas {
-  display: flex;
-  flex-direction: row;
-  gap: 1em;              
-  justify-content: center;
-  flex-wrap: wrap;       
-  width: 100%;
-}
-
-.botoesModal{
     display: flex;
-    flex-direction: row;
-    gap: 1em;              
-    justify-content: center;
-    flex-wrap: wrap;       
+    flex-direction: column;
+    gap: 1em;
     width: 100%;
 }
 
-
-dialog .texto {
-    border: none;
-    width: 60%;
-    height: auto;
-
+.botoesModal {
+    display: flex;
+    gap: 1em;
+    margin-top: 1em;
 }
 
-dialog .textarea {
-    border: #3a4a68 solid 1px;
-    width: 100%;
-    padding: 1em;
-    border-radius: 5px;
+.botoesModal button {
+    flex: 1;
+    padding: 0.8em;
+    max-width: 150px;
 }
 
-dialog .nome {
-    border-radius: 5px;
-    width: 20em;
-    height: 3em;
-    padding: 1em;
-    border: #3a4a68 solid 1px;
-}
-
-dialog .data {
-    border: #3a4a68 solid 1px;
-    width: 15em;
-    height: 3em;
-    padding: 1em;
-}
-
-dialog select {
-    border: #3a4a68 solid 1px;
-    width: 30em;
-    height: 3em;
-    padding: 1em;
-    background-color: #fff;
-}
-
-dialog button {
-    border: none;
-    width: 10em;
-    height: 40px ;
-    margin: 3em;
-    border-radius: 10em;
-    cursor: pointer;
-    background-color: #e2b354;
-    font-weight: 700;
-}
-
-dialog button:hover{
-    border: #3a4a68 solid 1px;
-    background-color: #fff;
-    transition: 0.3s;
-}
-
-#cronometro{
-    position: sticky; /* Fixa na tela, mas respeita o fluxo do container */
-    top: 20px; /* Distância do topo quando fixado */
-    float: right; /* Alinha à direita */
-    margin-right: 20px; /* Espaçamento da borda direita */
-    width: 25em;
+#cronometro {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 280px; /* Largura fixa para melhor controle */
     background-color: #fff;
     border: 2px solid #E2B354;
     border-radius: 12px;
-    padding: 20px;
+    padding: 15px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    z-index: 100; /* Um z-index moderado para não cobrir o header */
-    align-self: flex-start; /* Alinha no topo do container flex */
-    margin-top: 3em;
-    margin-bottom: 1em;
+    z-index: 1000; /* Aumentei o z-index para garantir que fique acima de tudo */
+    margin: 0;
 }
 
-#cronometro h1{
+#cronometro h1 {
     font-size: 20px;
     margin: 0 0 10px;
     color: #3a4a68;
@@ -315,154 +227,87 @@ dialog button:hover{
 }
 
 .inputs-pomodoro {
-  display: flex;
-  justify-content: center;
-  gap: 3em;
-  margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    gap: 3em;
+    margin-bottom: 5px;
 }
 
 .inputs-pomodoro label {
-  font-size: 12px;
+    font-size: 12px;
 }
 
 .inputs-pomodoro input {
-  width: 60px;
-  padding: 5px;
-  border-radius: 5px;
-  border-color: #3A4A68;
+    width: 60px;
+    padding: 5px;
+    border-radius: 5px;
+    border-color: #3A4A68;
 }
 
-#timer{
-    font-size: 40px;
+#timer {
+    font-size: 35px;
     text-align: center;
     font-weight: 600;
     color:#3A4A68;
 }
 
-#status{
+#status {
     text-align: center;
     font-weight: 500;
 }
 
-.botoes-cronometro{
+.botoes-cronometro {
     text-align: center;
 }
 
 .botoes-cronometro button {
-  flex: 1;
-  margin: 2px;
-  padding: 6px;
-  font-size: 12px;
-  background-color: #3A4A68;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  margin-top: 5px;
+    flex: 1;
+    margin: 2px;
+    padding: 6px;
+    font-size: 12px;
+    background-color: #3A4A68;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 5px;
 }
 
 .botoes-cronometro button:hover {
-  background-color: #E2B354;
-  transition: all 0.3s ease;
+    background-color: #E2B354;
+    transition: all 0.3s ease;
 }
 
-.spacer-cronometro {
-  height: 150px; 
-}
-
-.swal2-popup {
-  background-color: #FEFEFE;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  font-family: Poppins, sans-serif;
-}
-
-.swal2-title {
-  color: #3A4A68;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.swal2-content {
-  color: #555;
-  font-size: 1rem;
-}
-
-.swal2-confirm {
-  background-color: #3A4A68 !important;
-  border: none !important;
-  border-radius: 25em !important;
-  padding: 8px 20px !important;
-}
-
-@media (max-width: 768px) {
-
-  .container {
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    margin: 1em 0.5em;
-    gap: 1em;
-  }
-
-  .corpo {
-    max-width: 100%;
-    min-width: 100%;
-    padding: 0 1em;
-  }
-
-  .tabela {
-    width: 100%;
-    overflow-x: auto;
-  }
-
-  .table {
-    width: 800px; /* largura fixa pra permitir scroll horizontal */
-  }
-
-  #cronometro {
-    position: relative;
-    float: none;
-    width: 100%;
-    margin: 0;
-  }
-
-  .inputs-pomodoro {
-    flex-direction: column;
-    gap: 0.5em;
-  }
-
-  .caixa h2,
-  .caixa h3 {
-    text-align: center;
-    padding: 0 1em;
-  }
-
-  .tabela .botao {
-    margin: 1em auto;
-    width: 90%;
-  }
-
-  dialog {
-    width: 95%;
-  }
-
-  dialog .nome,
-  dialog .data,
-  dialog select {
-    width: 90%;
-  }
-
-  dialog .texto {
-    width: 90%;
-  }
-
-  .caixaModal form {
-    gap: 1em;
-  }
-
-  .botoesModal button {
-    width: 40%;
-    margin: 0.5em;
-  }
+/* Media Queries para telas maiores */
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .caixa {
+        width: 100%;
+    }
+    
+    .corpo {
+        flex: 1;
+        min-width: 0;
+    }
+    
+    #cronometro {
+        order: 1;
+        width: 25em;
+        margin: 0;
+        align-self: flex-start;
+        position: sticky;
+        top: 1em;
+    }
+    
+    .datas {
+        flex-direction: row;
+    }
+    
+    .tabela .botao {
+        margin-left: 0;
+    }
 }
