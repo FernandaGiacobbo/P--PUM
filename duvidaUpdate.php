@@ -78,12 +78,12 @@ if (isset($_POST['submit'])){
                     <input type="hidden" name="id_duvidas" value="<?php echo $id_duvidas; ?>">
                     <label >
                         <p>Titulo:</p>
-                        <input type="text" placeholder="Escreva aqui:" name="titulo" value="<?php echo $titulo;?>">
+                        <input class="inputs" type="text" placeholder="Escreva aqui:" name="titulo" value="<?php echo $titulo;?>">
                     </label>
 
                     <label >
                         <p>Sua duvida:</p>
-                        <textarea name="duvida" id="" placeholder="Escreva sua duvida aqui!"><?php echo $texto; ?></textarea>
+                        <textarea class="inputs" name="duvida" id="" placeholder="Escreva sua duvida aqui!"><?php echo $texto; ?></textarea>
                     </label>
 
                     <div class="alingBotoes">

@@ -43,12 +43,12 @@ if (!empty($id_usuario)) {
             <form action="duvidaInsert.php" method="post" id="formDuvida" >
                 <label >
                     <p>Titulo:</p>
-                    <input type="text" placeholder="Escreva aqui:" name="titulo">
+                    <input class="inputs" type="text" placeholder="Escreva aqui:" name="titulo">
                 </label>
 
                 <label >
                     <p>Sua duvida:</p>
-                    <textarea name="duvida" id="" placeholder="Escreva sua duvida aqui!"></textarea>
+                    <textarea class="inputs" name="duvida" id="" placeholder="Escreva sua duvida aqui!"></textarea>
                 </label>
 
                 <div class="botoes" >
@@ -66,6 +66,9 @@ if (!empty($id_usuario)) {
                         $texto = $duvidasLinha->texto_duvidas;
                         $data = date('d - m - Y', strtotime($duvidasLinha->data_duvidas));
         ?>
+
+        <br>
+        
 
         <div class="visualizarDuvidas">
 
