@@ -54,12 +54,6 @@
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-bar-chart-alt-2 icon'></i>
-                            <span class="text nav-text">Análise de IA</span>
-                        </a>
-                    </li>
-                    <li class="nav-link">
                         <a href="mural.php">
                             <i class='bx bx-edit-alt icon'></i>
                             <span class="text nav-text">Anotações</span>
@@ -72,9 +66,9 @@
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="usuarioDesempenho.php">    
                             <i class='bx bx-objects-horizontal-left icon'></i>
-                            <span class="text nav-text"> Desempenho</span>
+                            <span class="text nav-text">Desempenho</span>
                         </a>
                     </li>
                     <li class="nav-link">
