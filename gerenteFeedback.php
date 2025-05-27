@@ -19,9 +19,12 @@
             include 'conecta_db.php';
             
             $conn = conecta_db();
+
+            // Consulta todos os feedbacks ordenando do mais recente ao mais antigo
             $sql = "SELECT * FROM tb_feedback ORDER BY submitted_at DESC";
             $result = $conn->query($sql);
             
+            //Se houver feedbacks, entra no while para exibir cada um
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
                     $status_class = $row['lido'] ? 'read' : '';
@@ -63,16 +66,19 @@
     
     <script>
         function openModal(feedbackId) {
+
+            //Faz uma requisição ao backend para pegar os detalhes completos do feedback (nome, comentário, etc)
             fetch('gerenteFeedbackDetalhes.php?id=' + feedbackId)
                 .then(response => response.json())
                 .then(data => {
+                    //Atualiza o título do modal dinamicamente com o nome da pessoa
                     document.getElementById('modalTitle').textContent = `Feedback de ${data.nome}`;
                     
                     let stars = '';
                     for (let i = 1; i <= 5; i++) {
                         stars += i <= data.rating ? '★' : '☆';
                     }
-                    
+                    //Monta o conteúdo do feedbaack usando os dados recebidos da API
                     document.getElementById('modalContent').innerHTML = `
                         <p><strong>Email:</strong> ${data.email}</p>
                         <p><strong>Avaliação:</strong> ${stars} (${getRatingText(data.rating)})</p>
@@ -82,7 +88,7 @@
                             <p>${data.comentarios}</p>
                         </div>
                     `;
-                    
+                    //Se ainda não tiver sido lido, exibe o botão "Marcar como lido"
                     let buttons = '';
                     if (!data.lido) {
                         buttons += `
@@ -107,11 +113,15 @@
         }
         
         function markAsRead(feedbackId) {
+
+            //Envia uma requisição para atualizar o status do feedback na banco de dados
             fetch('gerenteFeedbackLido.php?id=' + feedbackId)
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
                         const item = document.querySelector(`.feedback-item[data-feedback-id="${feedbackId}"]`);
+
+                        // Atualiza visualmente o card do feedback para "lido", sem recarregar a página
                         item.classList.add('read');
                         item.querySelector('.status-badge').outerHTML = `
                             <span class="status-badge read-badge"><i class="fas fa-check"></i> Lido</span>
@@ -126,6 +136,7 @@
         }
         
         function getRatingText(rating) {
+            //Converte a nota numérica em texto para exibir junto com as estrelas
             const ratings = {
                 1: 'Péssimo',
                 2: 'Ruim',
