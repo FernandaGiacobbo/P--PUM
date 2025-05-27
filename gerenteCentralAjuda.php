@@ -17,6 +17,7 @@
     <title>Central de Ajuda</title>
     <link rel="stylesheet" href="css/gerenteCentralAjuda.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=preview" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 <body>
@@ -41,22 +42,26 @@
             <div class="duvidas">
 
                 <?php
-                    $query1 = "SELECT 
-                                d.id_duvidas,
-                                d.titulo_duvidas,
-                                d.texto_duvidas,
-                                d.data_duvidas,
-                                u.nome_usuario AS nome_usuario,
-                                CASE 
-                                    WHEN r.id_resposta IS NOT NULL THEN 'Respondida'
-                                    ELSE 'Não Respondida'
-                                END AS status
-                            FROM 
-                                tb_duvidas d
-                            JOIN 
-                                tb_usuario u ON d.usuario_duvidas = u.id_usuario
-                            LEFT JOIN 
-                                tb_resDuvidas r ON d.id_duvidas = r.duvida_resposta";
+                    $query1 = "SELECT
+                                    d.id_duvidas,
+                                    d.titulo_duvidas,
+                                    d.texto_duvidas,
+                                    d.data_duvidas,
+                                    u.nome_usuario AS nome_usuario,
+                                    CASE
+                                        WHEN MAX(r.id_resposta) IS NOT NULL THEN 'Respondida'
+                                        ELSE 'Não Respondida'
+                                    END AS status
+                                FROM
+                                    tb_duvidas d
+                                JOIN
+                                    tb_usuario u ON d.usuario_duvidas = u.id_usuario
+                                LEFT JOIN
+                                    tb_resDuvidas r ON d.id_duvidas = r.duvida_resposta
+                                GROUP BY
+                                    d.id_duvidas, d.titulo_duvidas, d.texto_duvidas, d.data_duvidas, u.nome_usuario
+                                ORDER BY
+                                    d.id_duvidas DESC";
                     $resulrado1 = $oMysql->query($query1);
                     if($resulrado1){
                         while ($duvidasL = $resulrado1->fetch_object()) {
@@ -65,54 +70,59 @@
                             $titulo_us = $duvidasL->titulo_duvidas;
                             $duvida_us = $duvidasL->texto_duvidas;
                             $data_us = $duvidasL->data_duvidas;
+                            $status_class = ($duvidasL->status == 'Não Respondida') ? 'nao-respondida' : 'respondida';
                 ?>
-                    <div class="caixaDuvidas">
+                    <div class="caixaDuvidas <?php echo $status_class; ?>" data-id=<?php echo $id_dus?>>
                         <p class="nome"><?php echo $nome_us;?></p>
                         <h3><?php echo $titulo_us;?></h3>
                         <div class="textoDuvidas">
                             <p><?php echo $duvida_us;?></p>
                         </div>
                         <p class="dia"><?php echo $data_us;?></p>
-                        <div class="btn">
-                            <button class="botoes">Excluir</button>
-                            <button class="botoes" id="abrirResposta">Responder</button>
-                        </div>
                         
                     </div>
                 <?php }}?>
                 
             </div>
         </div>
+
+
+            <div id="duvidamodal" class="modal" style="display:none;">
+
+                <div class="caixaModal" >
+                <span class="close" id="closeModal">×</span>
+
+                <div id="duvidaDetalhe">
+                    <h2 id="modalTitulo"></h2>
+                    <p id="modalTexto"></p>
+                    <p><strong>Usuário:</strong> <span id="modalUsuario"></span></p>
+                    <p><strong>Data:</strong> <span id="modalData"></span></p>
+                    <button id="excluirDuv" data-id="" class="btn2">Excluir Dúvida</button>
+                </div>
+
+                <div id="respostaDetalhe">
+                    <h3>Respostas:</h3>
+                    <div id="respostasLista">
+                    
+                    <p><strong>Usuário:</strong> </p>
+                    </div>
+
+                    <div id="respostaForm">
+                        <br>
+                        <p>Adicione sua resposta:</p>
+                        <textarea name="respostaTexto" id="textoResposta" placeholder="adicione sua resposta"></textarea>
+                        <button id="enviarResposta" class="btn2">Enviar</button>
+                        <button id="cancelarResposta" class="btn2">Cancelar</button>
+                        <button id="salvarEdicao" style="display:none;" class="btn">Salvar</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
        
-        
+            <script src="js/gerenteCentralAjuda.js"></script>
     </section>
 
-    <dialog id="dialog">
-        <form action="" method="post">
-            <h3>Responder: </h3>
-            <textarea name="resposta" id="" placeholder="Digite aqui:"></textarea>
-            <div class="btnModal">
-                <button type="submit" class="botoesModal">Enviar</button>
-                <button type="reset" class="botoesModal" id="cancelar">Cancelar</button>
-            </div>                              
-        </form>
-    </dialog>
-    
-    <script>
-        
 
-        const modal = document.getElementById('dialog');
-        const abrirModal = document.getElementById('abrirResposta');
-        const fecharModal = document.getElementById('cancelar');
-
-        abrirModal.onclick = function () {
-            modal.showModal();
-        };
-
-        fecharModal.onclick = function () {
-            modal.close();
-        };
-    </script>
 
 
 </body>
