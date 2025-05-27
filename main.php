@@ -121,7 +121,11 @@
             </div>
 
               
-        <div id="cronometro">
+
+
+    </div>
+
+            <div id="cronometro">
           <h1>Cronômetro Pomodoro</h1>
 
           <div class="inputs-pomodoro">
@@ -140,8 +144,6 @@
         </div>
       </div>
 
-
-  </div>
 
   <dialog id="modal">
     <div class="caixaModal">
