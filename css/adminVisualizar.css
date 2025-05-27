@@ -1,0 +1,89 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+
+section h2{
+    margin-top: 2%;
+    font-size: 26px;
+    font-weight: 150;
+    margin-bottom: 1em;
+    margin-left: 2%;
+    font-weight: 600;
+}
+
+.caixa h2{
+    font-weight: 600;
+}
+
+.caixa h3{
+    margin-top: 0.5em;
+    font-weight: 500;
+}
+
+.vermelho {
+    color: #3a4a68;
+}
+
+.verde {
+    color: #e2b354;
+}
+
+.corpo h3 {
+    font-weight: 700;
+}
+
+.tabela{
+    background-color: #fff;
+    width: 95%;
+    border-radius: 10px;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between ;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1em;
+    margin-left: 2%;
+}
+
+.tabela {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.table { 
+  flex-shrink: 0;
+  width: 95%; 
+  margin: 1%; 
+  align-content: space-between;
+}
+
+.tabela th { 
+    text-align: left;
+    border-radius: 2px;
+    gap: 1px;
+    padding-left: 0.5em;
+    background-color: #e2b354;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.td_dec{
+    max-width: 25em;
+    max-height: 7em;
+    border: rgba(226, 178, 84, 0.23) solid 1px;
+    border-radius: 3px;
+    padding: 7px;
+    white-space: nowrap;
+    text-align: center; 
+}
+
+/* Estilo para o formulário de edição */
+.tabela form {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+}

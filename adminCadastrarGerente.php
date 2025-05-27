@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     // Validações básicas
     if (empty($nome) || empty($email) || empty($senha)) {
-        $_SESSION['erro'] = 'Todos os campos são obrigatórios!';
+        $_SESSION['erro'];
         header('Location: adminRegistro.php');
         exit;
     }
@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->store_result();
     
     if ($stmt->num_rows > 0) {
-        $_SESSION['erro'] = 'Este e-mail já está cadastrado!';
+        $_SESSION['erro'];
         header('Location: adminRegistro.php');
         exit;
     }
