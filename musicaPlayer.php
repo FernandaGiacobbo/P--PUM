@@ -3,16 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <title>Player de Músicas</title>
-  <style>
-    body { font-family: Arial; padding: 20px; }
-    .musica { cursor: pointer; margin: 10px 0; }
-    .musica.ativa { font-weight: bold; color: blue; }
-  </style>
+  <link rel="stylesheet" href="css/musicaPlayer.css">
 </head>
 <body>
 
-  <h2>🎵 Playlist</h2>
-  <div id="lista-musicas"></div>
+<?php include 'header.php'; ?>
+
+    <h2>Playlist de Músicas: </h2>
+    <table id="lista-musicas" class="tabela-musicas">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Música</th>
+            </tr>
+        </thead>
+            <tbody></tbody>
+    </table>
+
   <audio id="audio" controls></audio>
 
   <script>
@@ -30,19 +37,28 @@
         carregarMusica(0);
       });
 
-    function exibirLista() {
-      listaDiv.innerHTML = '';
-      musicas.forEach((musica, index) => {
-        const div = document.createElement('div');
-        div.textContent = musica.nome;
-        div.className = 'musica';
-        div.onclick = () => {
-          carregarMusica(index);
-          audio.play();
-        };
-        listaDiv.appendChild(div);
-      });
-    }
+function exibirLista() {
+  const tbody = document.querySelector('#lista-musicas tbody');
+  tbody.innerHTML = '';
+  musicas.forEach((musica, index) => {
+    const tr = document.createElement('tr');
+    tr.className = 'linha-musica';
+    tr.onclick = () => {
+      carregarMusica(index);
+      audio.play();
+    };
+
+    const tdIndex = document.createElement('td');
+    tdIndex.textContent = index + 1;
+
+    const tdNome = document.createElement('td');
+    tdNome.textContent = musica.nome;
+
+    tr.appendChild(tdIndex);
+    tr.appendChild(tdNome);
+    tbody.appendChild(tr);
+  });
+}
 
     function carregarMusica(index) {
       atual = index;
@@ -51,9 +67,9 @@
     }
 
     function atualizarEstilo() {
-      document.querySelectorAll('.musica').forEach((el, i) => {
-        el.classList.toggle('ativa', i === atual);
-      });
+    document.querySelectorAll('.linha-musica').forEach((linha, i) => {
+        linha.classList.toggle('ativa', i === atual);
+    });
     }
 
     // Toca a próxima música ao terminar

@@ -16,7 +16,7 @@
 
             <div class="img-text">
                 <span class="image">
-                    <img src="logo.png" alt="logo">
+                    <img src="img/logopapum.png" alt="logo">
                 </span>
 
                 <div class="text header-text">
@@ -69,6 +69,12 @@
                         <a href="usuarioDesempenho.php">    
                             <i class='bx bx-objects-horizontal-left icon'></i>
                             <span class="text nav-text">Desempenho</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="musicaPlayer.php">
+                            <i class='bx bx-music icon'></i></i>                             
+                            <span class="text nav-text">Músicas</span>
                         </a>
                     </li>
                     <li class="nav-link">

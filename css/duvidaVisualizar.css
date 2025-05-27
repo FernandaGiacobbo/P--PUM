@@ -10,10 +10,32 @@ body{
     margin: 2em;
     display: flex;
     flex-direction: column;
-    
     flex-wrap: wrap;
     width: 100%;
     gap: 1em;
+}
+
+.caixa h2{
+    font-size: 1.5rem;
+    color: #3A4A68;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.inputs{
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #EDCA85;
+    border-radius: 8px;
+    background: rgba(237, 202, 133, 0.1);
+    color: #3A4A68;
+    margin-bottom: 1rem;
+}
+
+.inputs:focus {
+    border-color: #E2B354;
+    box-shadow: 0 0 0 2px rgba(226, 179, 84, 0.3);
 }
 
 .criarDuvidas {
@@ -21,7 +43,7 @@ body{
     width: 95%;
     height: auto;
     border-radius: 10px;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     position: relative;
     
 }
@@ -34,33 +56,12 @@ body{
     margin-left: 3em;
 }
 
-label p {
-    font-size: 17px;
-    font-weight: 600;
-}
-
-label input{
-    height: 2em;
-    width: 95%;
-    padding: 0.3em 2em;
-    cursor: pointer;
-}
-
-label input:hover{
-    border: #3a4a68 solid 1px;
-    transition: 0.5s;
-}
-
-label textarea{
-    height: 5em;
-    width: 95.5%;
-    padding: 0.3em 2em;
-    cursor: pointer;
-}
-
-label textarea:hover{
-    border: #3a4a68 solid 1px;
-    transition: 0.5s;
+.criarDuvidas p{
+    font-size: 1rem;
+    color: #3A4A68;
+    text-align: left;
+    margin-bottom: 0.3rem;
+    font-weight: 500;
 }
 
 .botoes {
@@ -92,7 +93,7 @@ label textarea:hover{
     height: 13em;
     max-height: 15em;
     border-radius: 10px;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 .duvidasCriadas{
@@ -141,6 +142,16 @@ label textarea:hover{
     gap: 1em;
 }
 
+
+
+.updateDuvidas p{
+    font-size: 1rem;
+    color: #3A4A68;
+    text-align: left;
+    margin-bottom: 0.3rem;
+    font-weight: 500;
+}
+
 .updateDuvidas{
 
     padding: 2em;
@@ -153,8 +164,10 @@ label textarea:hover{
 }
 
 .updateDuvidas h2 {
-    font-weight: 500;
-    padding-left: 3em;
+    font-size: 1.8rem;
+    color: #3A4A68;
+    margin-bottom: 1rem;
+    margin-left: 70px;
 }
 
 .updateDuvidas form{

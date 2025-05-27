@@ -48,3 +48,4 @@ function atualizarPosicaoPostit(id, x, y) {
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // Define o tipo de dado enviado
     xhr.send(`id=${id}&x=${x}&y=${y}`); // Envia os dados do post-it (id, x e y)
 }
+

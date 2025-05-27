@@ -12,8 +12,9 @@ create table tb_usuario(
 );
 
 create table musicas_tb(
-    	id_musica INT PRIMARY KEY AUTO_INCREMENT,
-    	nome_musica VARCHAR(50)
+	id_musica INT PRIMARY KEY AUTO_INCREMENT,
+    nome_musica VARCHAR(50)
+	caminho_arquivo VARCHAR(255)
 );
 
 create table postits (
@@ -62,21 +63,22 @@ CREATE table tb_feedback(
     email VARCHAR(100) NOT NULL,
     rating INT NOT NULL,
     comentarios TEXT NOT NULL,
-    submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    lido TINYINT DEFAULT 0
 );
 
 CREATE TABLE tb_daily (
-id_daily INT AUTO_INCREMENT PRIMARY KEY,
-data_daily 	date ,
-resumo_dia 	varchar(30),
-inicio_planejado 	varchar(30),
-metas_definidas 	INT,
-metas_concluidas 	INT, 	
-adiantou_tarefa 	tinyint,
-postura_pendencias 	varchar(50),	
-emocao_dia 	varchar(300),	
-conselho_para_si 	varchar(300),	
-texto_livre 	varchar(300),	
-id_usuario 	int(11),
-FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario)
+    id_daily INT AUTO_INCREMENT PRIMARY KEY,
+    data_daily 	date ,
+    resumo_dia 	varchar(30),
+    inicio_planejado 	varchar(30),
+    metas_definidas 	INT,
+    metas_concluidas 	INT, 	
+    adiantou_tarefa 	tinyint,
+    postura_pendencias 	varchar(50),	
+    emocao_dia 	varchar(300),	
+    conselho_para_si 	varchar(300),	    
+    texto_livre 	varchar(300),	
+    id_usuario 	int(11),
+    FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario)
 );
