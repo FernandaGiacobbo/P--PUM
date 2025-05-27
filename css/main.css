@@ -394,3 +394,75 @@ dialog button:hover{
   border-radius: 25em !important;
   padding: 8px 20px !important;
 }
+
+@media (max-width: 768px) {
+
+  .container {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 1em 0.5em;
+    gap: 1em;
+  }
+
+  .corpo {
+    max-width: 100%;
+    min-width: 100%;
+    padding: 0 1em;
+  }
+
+  .tabela {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .table {
+    width: 800px; /* largura fixa pra permitir scroll horizontal */
+  }
+
+  #cronometro {
+    position: relative;
+    float: none;
+    width: 100%;
+    margin: 0;
+  }
+
+  .inputs-pomodoro {
+    flex-direction: column;
+    gap: 0.5em;
+  }
+
+  .caixa h2,
+  .caixa h3 {
+    text-align: center;
+    padding: 0 1em;
+  }
+
+  .tabela .botao {
+    margin: 1em auto;
+    width: 90%;
+  }
+
+  dialog {
+    width: 95%;
+  }
+
+  dialog .nome,
+  dialog .data,
+  dialog select {
+    width: 90%;
+  }
+
+  dialog .texto {
+    width: 90%;
+  }
+
+  .caixaModal form {
+    gap: 1em;
+  }
+
+  .botoesModal button {
+    width: 40%;
+    margin: 0.5em;
+  }
+}
