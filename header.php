@@ -16,7 +16,7 @@
 
             <div class="img-text">
                 <span class="image">
-                    <img src="logo.png" alt="logo">
+                    <img src="img/logopapum.png" alt="logo">
                 </span>
 
                 <div class="text header-text">
