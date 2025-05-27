@@ -49,8 +49,14 @@
                     </li>
                     <li class="nav-link">
                         <a href="adminRegistro.php">
-                            <i class='bx bx-notepad icon'></i>
-                            <span class="text nav-text">Registro</span>
+                            <i class='bx  bx-user-check icon'></i> 
+                            <span class="text nav-text">Gerentes</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="adminVisualizar.php">
+                            <i class='bx  bx-group icon'></i> 
+                            <span class="text nav-text">Estudantes</span>
                         </a>
                     </li>
                     

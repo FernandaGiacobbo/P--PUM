@@ -112,13 +112,15 @@ select {
 
 .botao {
     position:relative;
-   
     padding: 0.5em;
     background-color: #e2b354;
     border: #3a4a68 solid 1px;
     cursor: pointer;
     text-decoration: none;
     color: black;
+    border-radius: 5px;
+    height: 33px;
+    border: none;
 }
 
 form a {

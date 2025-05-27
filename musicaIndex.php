@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +7,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="css/musicaIndex.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Upload Musica</title>
+    
 </head>
 <body>
     <H1>Upload Musica:</H1>
@@ -21,10 +23,50 @@
 
 <?php
 
-include 'gerenteHeader.php';
+if (isset($_GET['status'])) {
+    // Armazena a mensagem na sessão para exibir após o redirecionamento
+    $_SESSION['upload_status'] = $_GET['status'];
+    
+    // Redireciona para limpar a URL
+    header("Location: musicaIndex.php");
+    exit;
+}
+
+// Verifica se há mensagem na sessão para exibir
+if (isset($_SESSION['upload_status'])) {
+    $status = $_SESSION['upload_status'];
+    unset($_SESSION['upload_status']); // Remove para não exibir novamente
+    
+    // Define a mensagem e o tipo de alerta
+    if ($status === 'sucesso') {
+        $alert_message = 'Upload realizado com sucesso!';
+        $alert_type = 'success';
+    } else {
+        $alert_message = 'Erro ao realizar o upload!';
+        $alert_type = 'error';
+    }
+    
+    // Adiciona o script para exibir o SweetAlert
+    echo "<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        Swal.fire({
+            icon: '$alert_type',
+            title: '$alert_message',
+            showConfirmButton: false,
+            timer: 3000
+        });
+    });
+    </script>";
+
+}
+
 
 session_start();
+
+include 'gerenteHeader.php';
+
 $id_us = $_SESSION['id'];
+
 
 if (!empty($id_us)) {
     // importa o arquivo que possui a função para conectar o db
@@ -52,7 +94,7 @@ if (!empty($id_us)) {
                 //link para editar a musica
                 echo '<a href="musicaEditar.php?id=' . $linha['id_musica'] . '">Editar</a> | ';
                 //link para deletar a musica
-                echo '<a href="musicaDelete.php?id=' . $linha['id_musica'] . '" onclick="return confirm(\'Tem certeza?\')">Deletar</a>';
+                echo '<a href="musicaDelete.php?id=' . $linha['id_musica'] . '" onclick="confirmarExclusao(event)">Deletar</a>';
                 echo '</td>';
                 echo '</tr>';
             }
@@ -60,7 +102,7 @@ if (!empty($id_us)) {
             echo '</table>';
         } else {
             //caso nenhuma musica seja encontrada, printa isso:
-            echo '<h4 id="aviso"> Nenhuma música encontrada.<h4>';
+            echo '<h4 id="aviso">Nenhuma música encontrada.<h4>';
         }
         //fecha conexao com o banco
         $conn->close();
@@ -68,11 +110,52 @@ if (!empty($id_us)) {
     //chama a funcao para mostrar musicas na tela
     listarMusicas();
 } else {
-    header('Location: index.html');
+    header('Location: musicaIndex.php');
     die();
 }
-?>
+?>  
+
+<script>
+// Feedback simples após o envio do formulário
+document.getElementById('formulario').addEventListener('submit', function(e) {
+    // Pode adicionar uma verificação rápida do arquivo se quiser
+    const fileInput = document.querySelector('input[type="file"]');
+    if (fileInput.files.length === 0) {
+        e.preventDefault();
+        Swal.fire('Erro!', 'Selecione um arquivo antes de enviar.', 'error');
+        return;
+    }
     
+    // Feedback visual simples
+    Swal.fire({
+        title: 'Enviando...',
+        text: 'Por favor aguarde',
+        allowOutsideClick: false,
+        didOpen: () => {
+            Swal.showLoading();
+        }
+    });
+});
+
+// Substitui o confirm padrão da exclusão
+function confirmarExclusao(event) {
+    event.preventDefault();
+    const url = event.target.getAttribute('href');
+    
+    Swal.fire({
+        title: 'Tem certeza?',
+        text: "Você quer mesmo deletar esta música?",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Sim, deletar!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = url;
+        }
+    });
+}
+</script>
+
 </body>
 </html>
 

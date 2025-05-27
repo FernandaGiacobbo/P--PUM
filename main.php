@@ -121,7 +121,24 @@
             </div>
 
               
-    </div>
+        <div id="cronometro">
+          <h1>Cronômetro Pomodoro</h1>
+
+          <div class="inputs-pomodoro">
+            <label>Foco: <input type="number" id="tempoFoco" value="25"></label>
+            <label>Intervalo: <input type="number" id="tempoIntervalo" value="5"></label>
+          </div>
+
+          <div id="timer">25:00</div>
+          <p id="status">Foco</p>
+
+          <div class="botoes-cronometro">
+            <button onclick="startTimer()">Iniciar</button>
+            <button onclick="pauseTimer()">Pausar</button>
+            <button onclick="resetTimer()">Resetar</button>
+          </div>
+        </div>
+      </div>
 
 
   </div>
@@ -178,25 +195,6 @@
         </form>                 
     </div>
   </dialog>
-
-    <div id="cronometro">
-      <h1>Cronômetro Pomodoro</h1>
-
-      <div class="inputs-pomodoro">
-        <label>Foco: <input type="number" id="tempoFoco" value="25"></label>
-        <label>Intervalo: <input type="number" id="tempoIntervalo" value="5"></label>
-      </div>
-
-      <div id="timer">25:00</div>
-      <p id="status">Foco</p>
-
-      <div class="botoes-cronometro">
-        <button onclick="startTimer()">Iniciar</button>
-        <button onclick="pauseTimer()">Pausar</button>
-        <button onclick="resetTimer()">Resetar</button>
-      </div>
-    </div>
-
 
 </section>
 
