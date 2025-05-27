@@ -1,63 +1,79 @@
 <?php
-
+include 'gerenteHeader.php';
 session_start();
 $id_us = $_SESSION['id'];
 if (!empty($id_us)) {
-    //importa o arquivo que conecta com o bd
     require_once 'conecta_db.php';
-    //inicializa uma variavel vazia (para preencher o campo no form)
     $nomeMusica = '';
 
-    // Verifica se o formulário foi enviado (botão "salvar" foi clicado)
-    if(isset($_POST['salvar'])) {
-        // pega o ID da música pela URL (via GET)
+    if (isset($_POST['salvar'])) {
         $id_musica = $_GET['id'];
-        // Pega o novo nome da música enviado pelo formulário (via POST)
         $nomeMusica = $_POST['nome_musica'];
 
-        // Conecta ao banco
         $conn = conecta_db();
 
-        // Prepara o comando SQL para atualizar o nome da música com base no ID
+        // Atualiza o nome no banco
         $stmt = $conn->prepare("UPDATE musicas_tb SET nome_musica = ? WHERE id_musica = ?");
-        // Liga os parâmetros ao SQL de forma segura (s = string, i = inteiro)    
         $stmt->bind_param("si", $nomeMusica, $id_musica);
 
-        // Executa a query
         if ($stmt->execute()) {
-            echo 'Música atualizada com sucesso!';
-            // Redireciona de volta para a página de listagem
+            // Busca o caminho atual do arquivo
+            $query = $conn->prepare("SELECT caminho_arquivo FROM musicas_tb WHERE id_musica = ?");
+            $query->bind_param("i", $id_musica);
+            $query->execute();
+            $query->bind_result($caminhoAtual);
+            $query->fetch();
+            $query->close();
+
+            // Renomear arquivo
+            $diretorio = dirname($caminhoAtual);
+            $extensao = pathinfo($caminhoAtual, PATHINFO_EXTENSION);
+
+            $nomeSanitizado = preg_replace("/[^a-zA-Z0-9-_]/", "_", $nomeMusica);
+            $novoCaminho = $diretorio . '/' . $nomeSanitizado . '.' . $extensao;
+
+            if (file_exists($caminhoAtual)) {
+                if (rename($caminhoAtual, $novoCaminho)) {
+                    // Atualiza o caminho no banco
+                    $updateCaminho = $conn->prepare("UPDATE musicas_tb SET caminho_arquivo = ? WHERE id_musica = ?");
+                    $updateCaminho->bind_param("si", $novoCaminho, $id_musica);
+                    $updateCaminho->execute();
+                    $updateCaminho->close();
+                } else {
+                    echo "Erro ao renomear o arquivo real.";
+                }
+            } else {
+                echo "Arquivo original não encontrado.";
+            }
+
+            $stmt->close();
+            $conn->close();
+
             header('Location: musicaIndex.php');
             exit;
-            // Se der erro, mostra mensagem
         } else {
             echo 'Erro ao atualizar a música.';
         }
-        //fecha a query e a conexao
+
         $stmt->close();
         $conn->close();
     }
-    // Se a página foi acessada com um ID via URL (sem ainda enviar o formulário)
+
     if (isset($_GET['id'])) {
         $id_musica = $_GET['id'];
         $conn = conecta_db();
-        // Busca o nome da música atual no banco, para exibir no formulário
         $resultado = $conn->query("SELECT nome_musica FROM musicas_tb WHERE id_musica = $id_musica");
 
-        // Verifica se encontrou a musica
         if ($resultado->num_rows > 0) {
-            // Pega os dados da música
             $linha = $resultado->fetch_assoc();
             $nomeMusica = $linha['nome_musica'];
         } else {
-        
             echo 'Música não encontrada';
             exit;
         }
-        // Fecha a conexão com o banco
+
         $conn->close();
     } else {
-        // Se o ID não foi informado na URL
         echo 'ID não fornecido.';
         exit;
     }
@@ -66,11 +82,22 @@ if (!empty($id_us)) {
     die();
 }
 ?>
-<!-- Formulário que envia os dados para a mesma página, mantendo o ID da música na URL -->
-<form action="musicaEditar.php?id=<?php echo $id_musica; ?>" method="post">
-    <label for="nome_musica">Nome da Música:</label>
-     <!-- Campo de texto preenchido com o nome atual da música -->
-    <input type="text" name="nome_musica" value="<?php echo htmlspecialchars($nomeMusica); ?>" required>
-    <!-- Botão de envio -->
-    <input type="submit" name="salvar" value="Salvar Alterações">
-</form>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar</title>
+    <link rel="stylesheet" href="css/musicaEditar.css">
+</head>
+<body>
+    <h1 id="titulo">Edição de arquivo: </h1>
+
+    <form action="musicaEditar.php?id=<?php echo $id_musica; ?>" method="post">
+        <label for="nome_musica">Nome da Música:</label>
+        <input id="caixaTexto" type="text" name="nome_musica" value="<?php echo htmlspecialchars($nomeMusica); ?>" required>
+        <input id="botao" type="submit" name="salvar" value="Salvar Alterações">
+    </form>
+</body>
+</html>
