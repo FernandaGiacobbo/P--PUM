@@ -78,6 +78,12 @@
                         </a>
                     </li>
                     <li class="nav-link">
+                        <a href="musicaPlayer.php">
+                            <i class='bx bx-music icon'></i></i>                             
+                            <span class="text nav-text">Músicas</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
                         <a href="duvidasVisualizar.php">
                             <i class='bx bx-help-circle icon'></i>
                             <span class="text nav-text">Central de ajuda</span>

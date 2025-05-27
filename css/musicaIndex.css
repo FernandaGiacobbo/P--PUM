@@ -77,3 +77,43 @@ a:hover {
     margin-top: 20px;
     color: #6c757d;
 }
+
+.swal2-styled.swal2-confirm {
+    border: none;
+    width: 10em;
+    height: 40px ;
+    border-radius: 25em;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1rem;
+    margin: 0.5em;
+    background-color: #3A4A68 !important; /* Amarelo */
+    color: white !important;
+    transition: 0.3s ease-in-out;
+    box-shadow: none !important;
+}
+
+.swal2-styled.swal2-confirm:hover {
+    background-color: #EDE5E0 !important;
+    color: black !important;
+}
+
+.swal2-styled.swal2-cancel {
+    border: none;
+    width: 10em;
+    height: 40px ;
+    border-radius: 25em;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1rem;
+    margin: 0.5em;
+    background-color: #E2B354 !important; /* Vermelho para cancelar */
+    color: white !important;
+    transition: 0.3s ease-in-out;
+    box-shadow: none !important;
+}
+
+.swal2-styled.swal2-cancel:hover {
+    background-color: #EDE5E0 !important; /* Um vermelho mais escuro para o hover */
+    color: black !important;
+}
