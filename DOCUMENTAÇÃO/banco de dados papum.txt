@@ -82,3 +82,13 @@ CREATE TABLE tb_daily (
     id_usuario 	int(11),
     FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario)
 );
+
+CREATE TABLE tb_resDuvidas (
+    id_resposta INT AUTO_INCREMENT PRIMARY KEY,
+    duvida_resposta INT,
+    usuario_resposta INT,
+    texto_resposta VARCHAR(500),
+    data_resposta DATE, 
+    FOREIGN KEY (usuario_resposta) REFERENCES tb_usuario(id_usuario),
+    FOREIGN KEY (duvida_resposta) REFERENCES tb_duvidas(id_duvidas)
+)

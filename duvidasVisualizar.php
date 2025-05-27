@@ -12,11 +12,11 @@ if (!empty($id_usuario)) {
 
     $query = "SELECT * FROM tb_duvidas WHERE usuario_duvidas = $id_usuario ORDER BY id_duvidas DESC";
     $resultado = $oMysql->query($query);
+
 } else {
     header('Location: index.html');
     die();
 }
-
 
 
 
@@ -65,6 +65,19 @@ if (!empty($id_usuario)) {
                         $titulo = $duvidasLinha->titulo_duvidas;
                         $texto = $duvidasLinha->texto_duvidas;
                         $data = date('d - m - Y', strtotime($duvidasLinha->data_duvidas));
+
+                        $query2 = "SELECT 
+                                        r.id_resposta,
+                                        r.texto_resposta,
+                                        r.data_resposta,
+                                        u.id_usuario as nome_usario
+                                    FROM
+                                        tb_resDuvidas r
+                                    JOIN
+                                        tb_usuario u on r.usuario_resposta = u.id_usuario
+                                    WHERE 
+                                        r.duvida_resposta = $id_duvidas ";
+                        $resposta2 = $oMysql->query($query2);   
         ?>
 
         <br>
@@ -88,8 +101,26 @@ if (!empty($id_usuario)) {
                     <p class="dataPostagem"> Publicado em: <?php echo $data;?> </p>
                     </div>
 
-            </div>
+                              <?php
+                                    if($resposta2){
+                                        while ($linhaRes = $resposta2->fetch_object()) {
+                                            $nomeUsuarioRes = $linhaRes->nome_usuario;
+                                            $textoRes = $linhaRes->texto_resposta;
+                                            $dataRes = date('d - m - Y', strtotime($linhaRes->data_resposta));
+                                        
+                                ?>
 
+                                    <div class="resDuvidas">
+                                        <?php
+                                            echo $nomeUsuarioRes;
+                                            echo $textoRes;
+                                            echo $dataRes;
+                                        ?>
+                                    </div>
+
+                                <?php }}?>
+
+            </div>
             
 
         </div>

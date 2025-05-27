@@ -90,8 +90,8 @@ body{
 .visualizarDuvidas{
     background-color: #fff;
     width: 95%;
-    height: 13em;
-    max-height: 15em;
+    height: auto;
+    
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
