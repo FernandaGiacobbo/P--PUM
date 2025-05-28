@@ -4,7 +4,7 @@ require_once 'conecta_db.php';
 $conn = conecta_db();
 
 // Lê todos os registros da tabela
-$sql = "SELECT * FROM musicas_tb";
+$sql = "SELECT * FROM tb_musicas";
 $result = $conn->query($sql);
 
 $musicas = [];

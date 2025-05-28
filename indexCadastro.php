@@ -25,7 +25,7 @@ if(isset($_POST['cadastro'])){
       //verificando se todos os campos estão preenchidos
 
     }elseif (mysqli_fetch_assoc($resultado2) > 0) {
-        echo "<script>alert('não foi possível criar uma nova conta com esse e-mail, tente um novo endereço');</script>";
+        echo "<script>alert('e-mail já cadastrado!!');</script>";
         echo "<script>window.location.href = 'index.html';</script>";
         die();
         // validar se e-mail já existe

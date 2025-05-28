@@ -13,12 +13,12 @@ if (!empty($id_us)) {
         $conn = conecta_db();
 
         // Atualiza o nome no banco
-        $stmt = $conn->prepare("UPDATE musicas_tb SET nome_musica = ? WHERE id_musica = ?");
+        $stmt = $conn->prepare("UPDATE tb_musicas SET nome_musica = ? WHERE id_musica = ?");
         $stmt->bind_param("si", $nomeMusica, $id_musica);
 
         if ($stmt->execute()) {
             // Busca o caminho atual do arquivo
-            $query = $conn->prepare("SELECT caminho_arquivo FROM musicas_tb WHERE id_musica = ?");
+            $query = $conn->prepare("SELECT caminho_arquivo FROM tb_musicas WHERE id_musica = ?");
             $query->bind_param("i", $id_musica);
             $query->execute();
             $query->bind_result($caminhoAtual);
@@ -35,7 +35,7 @@ if (!empty($id_us)) {
             if (file_exists($caminhoAtual)) {
                 if (rename($caminhoAtual, $novoCaminho)) {
                     // Atualiza o caminho no banco
-                    $updateCaminho = $conn->prepare("UPDATE musicas_tb SET caminho_arquivo = ? WHERE id_musica = ?");
+                    $updateCaminho = $conn->prepare("UPDATE tb_musicas SET caminho_arquivo = ? WHERE id_musica = ?");
                     $updateCaminho->bind_param("si", $novoCaminho, $id_musica);
                     $updateCaminho->execute();
                     $updateCaminho->close();
@@ -62,7 +62,7 @@ if (!empty($id_us)) {
     if (isset($_GET['id'])) {
         $id_musica = $_GET['id'];
         $conn = conecta_db();
-        $resultado = $conn->query("SELECT nome_musica FROM musicas_tb WHERE id_musica = $id_musica");
+        $resultado = $conn->query("SELECT nome_musica FROM tb_musicas WHERE id_musica = $id_musica");
 
         if ($resultado->num_rows > 0) {
             $linha = $resultado->fetch_assoc();
