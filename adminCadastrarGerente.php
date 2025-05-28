@@ -28,13 +28,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
     
-    // Criptografar a senha
-    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
-    
     // Inserir no banco de dados
     $query = "INSERT INTO tb_usuario (nome_usuario, email_usuario, senha_usuario, cargo) VALUES (?, ?, ?, 'gerente')";
     $stmt = $oMysql->prepare($query);
-    $stmt->bind_param('sss', $nome, $email, $senhaHash);
+    $stmt->bind_param('sss', $nome, $email, $senha);
     
     if ($stmt->execute()) {
         $_SESSION['sucesso'];

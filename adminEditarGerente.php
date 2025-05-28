@@ -55,11 +55,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Atualiza os dados no banco
     if(!empty($senha)) {
-        // Se a senha foi alterada
-        $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+        // Se a senha foi alterada (sem hash)
         $query = "UPDATE tb_usuario SET nome_usuario = ?, email_usuario = ?, senha_usuario = ? WHERE id_usuario = ?";
         $stmt = $oMysql->prepare($query);
-        $stmt->bind_param('sssi', $nome, $email, $senhaHash, $id_usuario);
+        $stmt->bind_param('sssi', $nome, $email, $senha, $id_usuario);
     } else {
         // Se a senha não foi alterada
         $query = "UPDATE tb_usuario SET nome_usuario = ?, email_usuario = ? WHERE id_usuario = ?";
