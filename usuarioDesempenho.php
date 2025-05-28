@@ -43,7 +43,7 @@ $prompt .= "Forneça uma análise objetiva em 3 parágrafos, destacando padrões
 
 // 3. Chamada DIRETA à API OpenAI
 function chamarOpenAI($prompt) {
-    $api_key = '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';
+    $api_key = '###';
 
     $url = 'https://api.openai.com/v1/chat/completions';
     
