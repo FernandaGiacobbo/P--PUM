@@ -10,7 +10,8 @@ if (isset($_GET['id'])) {
     $conn = conecta_db();
     
         // prepara a instrução SQL para deletar uma música com base no ID  
-    $stmt = $conn->prepare("DELETE FROM musicas_tb WHERE id_musica = ?");
+        
+    $stmt = $conn->prepare("DELETE FROM tb_musicas WHERE id_musica = ?");
         // Substitui o ponto de interrOgação (?) pelo valor do ID de forma segura
     $stmt->bind_param("i", $id_musica);
 
