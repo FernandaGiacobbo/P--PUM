@@ -70,7 +70,7 @@ if (!empty($id_usuario)) {
                                         r.id_resposta,
                                         r.texto_resposta,
                                         r.data_resposta,
-                                        u.id_usuario as nome_usario
+                                        u.nome_usuario
                                     FROM
                                         tb_resDuvidas r
                                     JOIN

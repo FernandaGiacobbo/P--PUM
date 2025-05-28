@@ -1,9 +1,10 @@
 <?php
 
     session_start();
+    $id_usuario = $_SESSION['id'];
     include_once('conecta_db.php');
     $oMysql = conecta_db();
-
+if (!empty($id_usuario)) {
 
     
 
@@ -127,3 +128,10 @@
 
 </body>
 </html>
+
+<?php
+} else {
+   header('Location: index.html');
+    die();
+}
+?>
