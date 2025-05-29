@@ -363,3 +363,71 @@ p{
   padding: 8px 20px !important;
 }
 
+@media (max-width: 1024px) {
+  .home {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    padding: 1em;
+  }
+
+  .calendar-container,
+  .eventos-adicionados {
+    width: 90%;
+    height: auto;
+    margin: 1em 0;
+  }
+
+  .calendar-dates div {
+    padding: 1em 0.5em;
+  }
+
+  .add-event-btn {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .modal-content {
+    width: 95%;
+    max-width: 95%;
+    margin: 1em;
+  }
+
+  .modal-form input,
+  .modal-form textarea {
+    font-size: 14px;
+  }
+
+  .event-card {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .calendar-days {
+    font-size: 12px;
+  }
+
+  .calendar-dates div {
+    padding: 0.8em 0.4em;
+    font-size: 12px;
+  }
+
+  .calendar-header h2 {
+    font-size: 18px;
+  }
+
+  .modal-content h2 {
+    font-size: 18px;
+  }
+
+  .save-event,
+  .delete-evento,
+  .edit-evento {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+
