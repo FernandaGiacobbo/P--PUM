@@ -7,7 +7,7 @@ if(isset($_GET['id_usuario'])){
     unset($_SESSION['id']);
     unset($_SESSION['senha']);
 
-    header('location: index.html');
+    header('location: index.php');
 } else {
     header('location: principal.php');
     die();

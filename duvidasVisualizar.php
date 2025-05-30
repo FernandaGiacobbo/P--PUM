@@ -14,7 +14,7 @@ if (!empty($id_usuario)) {
     $resultado = $oMysql->query($query);
 
 } else {
-    header('Location: index.html');
+    header('Location: index.php');
     die();
 }
 

@@ -14,7 +14,7 @@ if (!empty($id_us)) {
     include_once('conecta_db.php');
     $oMysql = conecta_db();
 } else {
-    header('Location: index.html');
+    header('Location: index.php');
     die();
 }
     

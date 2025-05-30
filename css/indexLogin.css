@@ -2,7 +2,7 @@
 
 * {
     padding: 0;
-    margin: 2.5%;
+    margin: 0;
 }
 
 body {
@@ -10,9 +10,18 @@ body {
     font-weight: 400;
     font-style: normal;
     background-color: #fff;
+    margin: 0;
     width: 100%;
-    height: 45rem;
     
+}
+
+.caixa{
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .main {
@@ -27,23 +36,36 @@ body {
  justify-content: center;
  flex-wrap: wrap;
  
+ 
 }
 
 .conteudo{
+    
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    left: 50%;
     
 }
 
 #partForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 47%;
     height: 100%;
     margin: 0;
     order: 1;
     text-align: center;
     padding: 0;
+}
+
+#partForm form {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;    
+    gap: 10px;             
 }
 
  p {
@@ -108,7 +130,8 @@ dialog {
     border-radius: 10px;
     align-content: center;
     justify-content: center;
-    width: 90%;
+    width: 70%;
+    height: 50%;
     margin: 0;
     top: 50%;
     left: 50%;
@@ -120,14 +143,22 @@ dialog .form{
     margin: 0;
     padding: 0;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
 
+.btnAling{
+    margin: 1em 2em 1em 2em;
+    display: flex;
+    align-items: row;
+    gap: 30%;
+    align-content: space-between;
+}
+
 dialog button {
-    width: 70px;
+    width: 110px;
     border: black solid 0.2px;
 }
 
@@ -144,4 +175,37 @@ dialog h2{
     font-style: normal;
     font-size: 30px;
       
+}
+
+
+/*popup*/
+
+.popup-personalizado {
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.botao-confirmar {
+    background-color: #edca85;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.botao-confirmar:hover{
+    background-color: #edca85;
+    border: #3a4a68 solid 0.5px ;
+    transition: 0.3s;
+}
+
+.botao-cancelar {
+    background-color: #e2b354;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.botao-cancelar:hover{
+    background-color: #e2b354;
+    border: #3a4a68 solid 0.5px ;
+    transition: 0.3s;
 }

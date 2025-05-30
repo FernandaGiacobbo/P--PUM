@@ -18,7 +18,7 @@ if (!empty($id_usuario)) {
     <title>Central de Ajuda</title>
     <link rel="stylesheet" href="css/gerenteCentralAjuda.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=preview" />
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
 
 </head>
 <body>
@@ -98,7 +98,7 @@ if (!empty($id_usuario)) {
                     <p id="modalTexto"></p>
                     <p><strong>Usuário:</strong> <span id="modalUsuario"></span></p>
                     <p><strong>Data:</strong> <span id="modalData"></span></p>
-                    <button id="excluirDuv" data-id="" class="btn2">Excluir Dúvida</button>
+                    <button id="excluirDuv" data-id="" class="btn2">Excluir</button>
                 </div>
 
                 <div id="respostaDetalhe">
@@ -112,18 +112,16 @@ if (!empty($id_usuario)) {
                         <br>
                         <p>Adicione sua resposta:</p>
                         <textarea name="respostaTexto" id="textoResposta" placeholder="adicione sua resposta"></textarea>
-                        <button id="enviarResposta" class="btn2">Enviar</button>
+                        <button id="enviarResposta" class="btn2" require>Enviar</button>
                         <button id="cancelarResposta" class="btn2">Cancelar</button>
-                        <button id="salvarEdicao" style="display:none;" class="btn">Salvar</button>
+                        <button id="salvarEdicao" style="display:none;" class="btn2">Salvar</button>
                     </div>
                     </div>
                 </div>
             </div>
-       
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
             <script src="js/gerenteCentralAjuda.js"></script>
     </section>
-
-
 
 
 </body>
@@ -131,7 +129,7 @@ if (!empty($id_usuario)) {
 
 <?php
 } else {
-   header('Location: index.html');
+   header('Location: index.php');
     die();
 }
 ?>

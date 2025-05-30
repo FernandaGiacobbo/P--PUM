@@ -45,7 +45,7 @@ if (!empty($id_us)) {
     // Chama a função e armazena os post-its na variável $postits para exibição
     $postits = buscar_postits();
 } else {
-    header('Location: index.html');
+    header('Location: index.php');
     die();
 }
 ?>

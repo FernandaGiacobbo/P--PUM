@@ -78,7 +78,7 @@ if (!empty($id_us)) {
         exit;
     }
 } else {
-    header('Location: index.html');
+    header('Location: index.php');
     die();
 }
 ?>

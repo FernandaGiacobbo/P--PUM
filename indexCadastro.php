@@ -7,10 +7,14 @@ if(isset($_POST['cadastro'])){
     include_once('conecta_db.php');
     $oMysql = conecta_db();
 
+    
+
     $email = $_POST['email'];
     $nome = $_POST['nome'];
-    $senha = $_POST['senha'];
+    $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
     $cargo = 'estudante';
+
+    
 
 
     $query2 = "SELECT id_usuario FROM tb_usuario WHERE email_usuario = '$email' ";
@@ -20,19 +24,19 @@ if(isset($_POST['cadastro'])){
 
     if(empty($nome) || empty($senha) || empty($email)){
       echo "<script>alert('Campos obrigatorios incompletos');</script>";
-      echo "<script>window.location.href = 'index.html';</script>";
+      echo "<script>window.location.href = 'index.php';</script>";
       die();
       //verificando se todos os campos estão preenchidos
 
     }elseif (mysqli_fetch_assoc($resultado2) > 0) {
-        echo "<script>alert('e-mail já cadastrado!!');</script>";
-        echo "<script>window.location.href = 'index.html';</script>";
+        
+        echo "<script>window.location.href = 'index.php?error=1';</script>";
         die();
         // validar se e-mail já existe
 
         } else if (strlen($senha) > 30) {
           echo "<script>alert('não foi possível criar uma nova conta com essa senha, tente novamente seguindo o padrão exigido');</script>";
-          echo "<script>window.location.href = 'index.html';</script>";
+          echo "<script>window.location.href = 'index.php';</script>";
           die();
           //validar se a senha tem menos de 30 caracter
 

@@ -18,6 +18,7 @@ document.querySelectorAll('.caixaDuvidas').forEach(item => {
                 data.respostas.forEach(resp => {
                     const div = document.createElement('div');
                     div.innerHTML = `
+                        <hr>
                         <p><strong>${resp.usuario}:</strong> ${resp.texto}</p>
                         <button class="editarResposta" data-id="${resp.id}" data-texto="${resp.texto}">Editar</button>
                         <button class="excluirResposta" data-id="${resp.id}">Excluir</button>

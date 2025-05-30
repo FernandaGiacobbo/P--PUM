@@ -18,7 +18,7 @@ if(isset($_POST['submit']) && !empty($_POST['email']) && !empty($_POST['senha'])
     if(mysqli_num_rows($resultado) < 1){
         
         echo "<script>alert('Usuário ou senha incorretos!');</script>";
-        echo "<script>window.location.href = 'index.html';</script>";
+        echo "<script>window.location.href = 'index.php';</script>";
 
     } else {
 
@@ -43,7 +43,7 @@ if(isset($_POST['submit']) && !empty($_POST['email']) && !empty($_POST['senha'])
         default:
           echo "<script>
                 alert('Cargo inválido! Contate o suporte.');
-                window.location.href = 'index.html';
+                window.location.href = 'index.php';
               </script>";
           exit();
         }

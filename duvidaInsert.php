@@ -31,11 +31,11 @@ if (isset($_POST['submit']) ) {
 
         if ($resultado) {
             header('Location: duvidasVisualizar.php?sucesso=1');
-            exit(); // Adicione exit() após header() para garantir o redirecionamento
+            exit(); 
         } else {
-            // Se a query falhar, mostre o erro do MySQL
+            
             echo "Erro ao inserir dúvida: " . $oMysql->error;
-            die(); // Interrompa a execução para ver o erro
+            die(); 
         }
             }
 } else {

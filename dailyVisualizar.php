@@ -4,7 +4,7 @@ session_start();
 date_default_timezone_set('America/Sao_Paulo');
 
 if(!isset($_SESSION['id'])) {
-    header('Location: index.html');
+    header('Location: index.php');
     exit();
 }
 

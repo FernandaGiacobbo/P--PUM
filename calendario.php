@@ -6,7 +6,7 @@
   $id_estudante = $_SESSION['id'];
 
 if(!isset($_SESSION['id'])) {
-    header('Location: index.html');
+    header('Location: index.php');
     exit();
 } else {
     if (

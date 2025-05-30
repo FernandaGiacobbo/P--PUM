@@ -29,7 +29,7 @@ if (isset($_POST['subimit'])) {
     $atualizado = true; // marca que foi atualizado
 }
 } else {
-    header('Location: index.html');
+    header('Location: index.php');
     die();
 }
 ?>
