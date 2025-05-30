@@ -6,7 +6,7 @@ $oMysql = conecta_db();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'] ?? '';
     $email = $_POST['email'] ?? '';
-    $senha = $_POST['senha'] ?? '';
+    $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT) ?? '';
     
     // Validações básicas
     if (empty($nome) || empty($email) || empty($senha)) {

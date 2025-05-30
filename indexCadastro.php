@@ -14,6 +14,18 @@ if(isset($_POST['cadastro'])){
     $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
     $cargo = 'estudante';
 
+    function validarSenha($senha){
+    $senhaMaiuscula = preg_match('@[A-Z]@', $senha); //preg_match funciona para realizar verificações de acordo com os padões criados
+    $senhaMinuscula = preg_match('@[a-z]@', $senha);
+    $senhaNumero = preg_match('@[0-9]@', $senha);
+    $senhaCaracter = preg_match('@[^\w]@', $senha);
+    $senhaTamanho = strlen($senha) >= 8;
+
+    return $senhaMaiuscula && $senhaMinuscula && $senhaNumero && $senhaCaracter && $senhaTamanho;
+    }
+
+    // função criada para validar se a senha é forte ou não 
+
     
 
 
@@ -34,11 +46,10 @@ if(isset($_POST['cadastro'])){
         die();
         // validar se e-mail já existe
 
-        } else if (strlen($senha) > 30) {
-          echo "<script>alert('não foi possível criar uma nova conta com essa senha, tente novamente seguindo o padrão exigido');</script>";
-          echo "<script>window.location.href = 'index.php';</script>";
+        } else if (!validarSenha($_POST['senha'])) {
+          echo "<script>window.location.href = 'index.php?error=2';</script>";
           die();
-          //validar se a senha tem menos de 30 caracter
+          //validar chama a função e verifica se a senha cumpre os requisitos
 
         } else {
 
@@ -58,9 +69,7 @@ if(isset($_POST['cadastro'])){
             $_SESSION['senha'] =$senha;
             $_SESSION['cargo'] = $cargo;
       
-            
-            echo "<script>alert('Usuário cadastrado com sucesso');</script>";
-            echo "<script>window.location.href = 'principal.php';</script>";
+            echo "<script>window.location.href = 'principal.php?sucesso=1';</script>";
   
         }
           

@@ -40,5 +40,28 @@ session_start();
         } else {
             include 'main.php';
     }
+
+
 ?>
 
+<?php if (isset($_GET['sucesso']) && $_GET['sucesso'] == 1): ?>
+<script>
+Swal.fire({
+    title: 'Cadastrado!',
+    text: 'Usuário cadastrado com sucesso!!',
+    icon: 'success',
+    confirmButtonText: 'OK',
+    customClass: {
+            popup: 'popup-personalizado',
+            confirmButton: 'botao-confirmar',
+            cancelButton: 'botao-cancelar'
+        }
+}).then(() => {
+    
+    const url = new URL(window.location.href);
+    url.searchParams.delete('sucesso');
+    window.history.replaceState({}, document.title, url);
+});
+
+</script>
+<?php endif; ?>

@@ -9,20 +9,17 @@ if(isset($_POST['submit']) && !empty($_POST['email']) && !empty($_POST['senha'])
     $email = $_POST['email'];
     $senha = $_POST['senha']; 
 
-    $query = "SELECT * from tb_usuario WHERE email_usuario = '$email' and senha_usuario = '$senha'";
+    $query = "SELECT * from tb_usuario WHERE email_usuario = '$email'";
     $resultado = $oMysql->query($query);
 
-    echo "Query: " . $query . "<br>";
-    echo "Resultados: " . mysqli_num_rows($resultado) . "<br>";
+    $usuario = mysqli_fetch_assoc($resultado);
 
-    if(mysqli_num_rows($resultado) < 1){
+    if(!password_verify($senha, $usuario['senha_usuario']) || $email != $usuario['email_usuario']){ //faz verificação da senha descodificando o hash
         
         echo "<script>alert('Usuário ou senha incorretos!');</script>";
         echo "<script>window.location.href = 'index.php';</script>";
 
     } else {
-
-      $usuario = mysqli_fetch_assoc($resultado);
 
       $_SESSION['nome'] = $usuario['nome_usuario'];
       $_SESSION['email'] = $usuario['email_usuario'];

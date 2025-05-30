@@ -84,7 +84,7 @@ include_once('conecta_db.php');
 
         </div>
     </div>
-    
+
     <script src="js/indexLogin.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -112,6 +112,33 @@ Swal.fire({
 
 </script>
 <?php endif; ?>
+
+
+<?php if (isset($_GET['error']) && $_GET['error'] == 2): ?>
+<script>
+Swal.fire({
+    title: 'Padrão de senha incorreto',
+    text: 'tente novamente seguindo o padrão exigido',
+    icon: 'warning',
+    confirmButtonText: 'OK',
+    backdrop: true,
+    allowOutsideClick: false, 
+    customClass: {
+            popup: 'popup-personalizado',
+            confirmButton: 'botao-confirmar',
+            cancelButton: 'botao-cancelar'
+        }
+}).then(() => {
+    
+    const url = new URL(window.location.href);
+    url.searchParams.delete('error');
+    window.history.replaceState({}, document.title, url);
+});
+
+</script>
+<?php endif; ?>
+
+
     
     
 </body>
