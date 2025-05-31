@@ -46,9 +46,52 @@ document.getElementById('enviarResposta').addEventListener('click', () => {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: `id=${id}&texto=${encodeURIComponent(texto)}`
-    }).then(() => {
-        location.reload(); 
-    });
+    }).then(response => response.text())
+      .then(resposta => {
+        if (resposta.trim() == "sucesso") { //aqui a gente verifica na pagina de insert se o mensagem sucesso foi realizada, caso sim aparece O POPUP de mensagem enviada
+            Swal.fire({
+                    title: 'Sucesso',
+                    text: 'Resposta enviada com sucesso!',
+                    icon: 'success',
+                    confirmButtonText: 'OK',
+                    customClass: {
+                            popup: 'popup-personalizado',
+                            confirmButton: 'botao-confirmar',
+                            cancelButton: 'botao-cancelar'
+                    }
+            }).then(() => {
+                location.reload();
+            });
+        } else if(resposta.trim() == "error") { //verifica se o requisito error foi realizado
+            Swal.fire({
+                title: 'Tamanho da mensagem!! ',
+                text: 'A sua mensagem tem que ter no mínimo 100 caracteres.',
+                icon: 'warning',
+                confirmButtonText: 'OK',
+                customClass: {
+                        popup: 'popup-personalizado',
+                        confirmButton: 'botao-confirmar',
+                        cancelButton: 'botao-cancelar'
+                    }
+            }).then(() =>{
+                location.reload();
+            });
+        } else { //caso nenhum dos dois campos foi preenchido ele realiza essa ultima verificação
+            Swal.fire({
+                title: 'Tamanho da mensagem!! ',
+                text: 'A sua mensagem tem que ter no máximo 500 caracteres.',
+                icon: 'warning',
+                confirmButtonText: 'OK',
+                customClass: {
+                        popup: 'popup-personalizado',
+                        confirmButton: 'botao-confirmar',
+                        cancelButton: 'botao-cancelar'
+                    }
+            }).then(() =>{
+                location.reload();
+            });
+        }
+      });  
 });
 
 let idRespostaEditando = null;
@@ -69,10 +112,31 @@ document.addEventListener('click', function(e) {
     //excluir
     if (e.target.classList.contains('excluirResposta')) {
         const id = e.target.dataset.id;
-        if (confirm("Tem certeza que deseja excluir essa resposta?")) {
-            fetch('gerenteCentralAjudaDelete.php?id=' + id)
-                .then(() => location.reload());
-        }
+        fetch('gerenteCentralAjudaDelete.php?id=' + id)
+            .then(response => response.text())
+            .then(resposta2 => {
+                if (resposta2.trim() == "sucesso") {
+                        Swal.fire({
+                            title: 'Tem certeza?',
+                            text: "Você realmente quer excluir seu perfil?",
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonText: 'Sim, excluir',
+                            cancelButtonText: 'Cancelar',
+                                customClass: {
+                                        popup: 'popup-personalizado',
+                                        confirmButton: 'botao-confirmar',
+                                        cancelButton: 'botao-cancelar'
+                                    }
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                fetch('gerenteCentralAjudaDelete.php?id=' + id)
+                                location.reload();
+                            }
+                        });
+                }
+            })
+        
     }
 });
 

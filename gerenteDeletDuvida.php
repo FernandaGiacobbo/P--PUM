@@ -11,4 +11,14 @@ $resultado = $oMysql->query($query);
 
 $query2 = "DELETE FROM tb_duvidas WHERE id_duvidas = $id_duvida";
 $resultado2 = $oMysql->query($query2);
+
+if ( $resultado && $resultado2 ){
+
+    echo "sucesso";
+
+} else {
+
+    echo "erro " . $oMysql->error;
+    
+}
 ?>

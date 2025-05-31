@@ -57,9 +57,9 @@ if(!isset($_SESSION['id'])) {
 
             <br>
             
-                <button type="button" class="edit "><a href="#">Editar</a></button>
+                <button type="button" class="edit "><a href="gerenteUpdate.php">Editar</a></button>
                 <button type="submit" class="delete" id="Excluir" name="Excluir"><a href="#">Excluir</a></button>
-                <button type="submit" class="logout" id="Excluir" name="Excluir"><a href="#">Sair</a></button>
+                <button type="submit" class="logout" id="Excluir" name="Excluir"><a href="sairsession.php?<?php echo $id_us;?>">Sair</a></button>
 
 
         </section>

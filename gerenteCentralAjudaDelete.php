@@ -8,4 +8,10 @@ $id_resposta = $_GET['id'];
 
 $query = "DELETE FROM tb_resDuvidas WHERE id_resposta = $id_resposta";
 $resultado = $oMysql->query($query);
+
+if($resultado){
+    echo 'sucesso';
+} else {
+    echo 'erro';
+}
 ?>

@@ -194,7 +194,7 @@ Swal.fire({
 <script>
 Swal.fire({
     title: 'Campos incompletos',
-    text: 'Porfavor preencha todos os campos!!',
+    text: 'Favor preencha todos os campos!!',
     icon: 'warning',
     confirmButtonText: 'OK',
     customClass: {
