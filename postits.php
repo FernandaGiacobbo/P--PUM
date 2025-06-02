@@ -75,7 +75,7 @@ if (!empty($id_us)) {
     <form id="formPostit" method="POST" action="postits.php">
         <div class="form-group">
             <label for="texto_postit">Texto do Post-it:</label>
-            <textarea name="texto_postit" id="texto_postit" required></textarea>
+            <textarea name="texto_postit" id="texto_postit" placeholder="Escreva aqui..." required></textarea>
         </div>
         <div class="form-group">
             <label for="cor_postit">Cor do Post-it:</label>
