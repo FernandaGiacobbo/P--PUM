@@ -38,17 +38,17 @@ if (!empty($id_usuario)) {
     
 <section class="home">
     <div class="caixa">
-        <h2>Olá <?php echo $nome_usuario;?>, qual a sua duvida?</h2>
+        <h2>Olá, <?php echo $nome_usuario;?>! Qual a sua dúvida?</h2>
         <div class="criarDuvidas">
             <form action="duvidaInsert.php" method="post" id="formDuvida" >
                 <label >
-                    <p>Titulo:</p>
+                    <p>Título:</p>
                     <input class="inputs" type="text" placeholder="Escreva aqui:" name="titulo">
                 </label>
 
                 <label >
-                    <p>Sua duvida:</p>
-                    <textarea class="inputs" name="duvida" id="" placeholder="Escreva sua duvida aqui!"></textarea>
+                    <p>Sua dúvida:</p>
+                    <textarea class="inputs" name="duvida" id="" placeholder="Escreva sua dúvida aqui!"></textarea>
                 </label>
 
                 <div class="botoes" >

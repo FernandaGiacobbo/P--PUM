@@ -22,7 +22,7 @@ if (isset($_POST['id']) && isset($_POST['x']) && isset($_POST['y'])) {
     // Monta a instrução SQL que atualiza as coordenadas dos post-its com base no ID.
     // A query atualiza os valores de 'posicaoX' e 'posicaoY' na tabela 'postits'.
         // A query UPDATE garante persistência da posição dos post-its mesmo após atualizar ou fechar a página.
-    $sql = "UPDATE postits SET posicaoX = $x, posicaoY = $y WHERE id_postit = $id";
+    $sql = "UPDATE tb_postits SET posicaoX = $x, posicaoY = $y WHERE id_postit = $id";
     
     // Executa a query no banco de dados utilizando conexão aberta.
     // Isso efetivamente move o post-it para a nova posição salva.

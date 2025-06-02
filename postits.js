@@ -3,7 +3,7 @@ function excluirPostit(id) {
     if (confirm("Tem certeza que deseja excluir esta nota?")) {
 
         // Redireciona o navegador para o script PHP de exclusão, passando  o ID do post-it na URL
-        window.location.href = "excluir_postit.php?id=" + id;
+        window.location.href = "postits_excluir.php?id=" + id;
     }
 }
 
@@ -44,7 +44,7 @@ document.querySelectorAll('.postit').forEach(postit => {
             // O arquivo PHP atualizar_posicao.php recebe esses dados e atualiza o banco de dados
 function atualizarPosicaoPostit(id, x, y) {
     const xhr = new XMLHttpRequest(); // Cria uma requisição AJAX
-    xhr.open("POST", "atualizar_posicao.php", true); // Define o método e o destino
+    xhr.open("POST", "postits_atualizarPosicao.php", true); // Define o método e o destino
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // Define o tipo de dado enviado
     xhr.send(`id=${id}&x=${x}&y=${y}`); // Envia os dados do post-it (id, x e y)
 }

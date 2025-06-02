@@ -17,18 +17,18 @@ if (!empty($id_us)) {
 
         // Monta e executa a query para inserir uma nova nota na tabela 'postits'.
         // Os valores iniciais de posição (X e Y) são fixos em 100px.
-        $sql = "INSERT INTO postits (texto_postit, cor_postit, posicaoX, posicaoY) VALUES ('$texto', '$cor', 100, 100)";
+        $sql = "INSERT INTO tb_postits (texto_postit, cor_postit, posicaoX, posicaoY) VALUES ('$texto', '$cor', 100, 100)";
         $conexao->query($sql);
 
         // Redireciona para a prórpia página após o insert, evitando reenvio do formulário após atualizar
             // Esse redirecionamento com header() serve para evitar múltiplos enviois acidentais.
-        header("Location: mural.php");
+        header("Location: postits.php");
     }
 
     // Essa função traz todos os registros da tabela postits e os armazena em um array para uso posterior no HTML.
     function buscar_postits() {
         $conexao = conecta_db();
-        $sql = "SELECT * FROM postits";
+        $sql = "SELECT * FROM tb_postits";
         $resultado = $conexao->query($sql);
 
         // Inicializa array que armazenará os post-its
@@ -56,7 +56,7 @@ if (!empty($id_us)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mural de Post-its</title>
-    <link rel="stylesheet" href="css/mural.css">
+    <link rel="stylesheet" href="css/postits.css">
 </head>
 <body>
     <?php
@@ -72,7 +72,7 @@ if (!empty($id_us)) {
         <?php endforeach; ?>
     </div>
 
-    <form id="formPostit" method="POST" action="mural.php">
+    <form id="formPostit" method="POST" action="postits.php">
         <div class="form-group">
             <label for="texto_postit">Texto do Post-it:</label>
             <textarea name="texto_postit" id="texto_postit" required></textarea>
@@ -87,7 +87,7 @@ if (!empty($id_us)) {
     
     
 
-    <script src="main.js"></script>
+    <script src="postits.js"></script>
 
     <script src="mural.js"></script>
 </section>

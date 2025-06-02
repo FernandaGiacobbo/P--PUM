@@ -8,12 +8,12 @@ if (isset($_GET['id'])) {
     $conexao = conecta_db();
     
     // Conecta ao banco de dados 
-    $sql = "DELETE FROM postits WHERE id_postit = $id";
+    $sql = "DELETE FROM tb_postits WHERE id_postit = $id";
 
     // Executa o comando SQL
     $conexao->query($sql);
 
     // Redireciona de volta para o mural após a exclusão
-    header("Location: mural.php");
+    header("Location: postits.php");
 }
 ?>
