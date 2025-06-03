@@ -2,47 +2,52 @@
 session_start();
 $id_us = $_SESSION['id'];
 if (!empty($id_us)) {
-    // Inclui o arquivo de conexão com o banco de dados
     include('conecta_db.php');
 
-    // Verifica se o botão de adicionar foi acionado via POST
     if (isset($_POST['adicionar'])) {
-
-        //Recupera os dados do formulário
         $texto = $_POST['texto_postit'];
         $cor = $_POST['cor_postit'];
 
-        // Conecta ao banco de dados
+        // Validação do campo vazio (critério de aceite)
+        if (empty(trim($texto))) {
+            $_SESSION['alert'] = [
+                'type' => 'error',
+                'message' => 'Não foi possível criar uma nota sem informação'
+            ];
+            header("Location: postits.php");
+            exit();
+        }
+
+        // Se o texto não estiver vazio, insere no banco
         $conexao = conecta_db();
-
-        // Monta e executa a query para inserir uma nova nota na tabela 'postits'.
-        // Os valores iniciais de posição (X e Y) são fixos em 100px.
         $sql = "INSERT INTO tb_postits (texto_postit, cor_postit, posicaoX, posicaoY) VALUES ('$texto', '$cor', 100, 100)";
-        $conexao->query($sql);
-
-        // Redireciona para a prórpia página após o insert, evitando reenvio do formulário após atualizar
-            // Esse redirecionamento com header() serve para evitar múltiplos enviois acidentais.
+        
+        if ($conexao->query($sql)) {
+            $_SESSION['alert'] = [
+                'type' => 'success',
+                'message' => 'Registrado com sucesso'
+            ];
+        } else {
+            $_SESSION['alert'] = [
+                'type' => 'error',
+                'message' => 'Erro ao registrar a nota'
+            ];
+        }
         header("Location: postits.php");
+        exit();
     }
 
-    // Essa função traz todos os registros da tabela postits e os armazena em um array para uso posterior no HTML.
     function buscar_postits() {
         $conexao = conecta_db();
         $sql = "SELECT * FROM tb_postits";
         $resultado = $conexao->query($sql);
-
-        // Inicializa array que armazenará os post-its
         $postits = [];
-
-        // Adiciona cada linha retornada ao array
         while ($linha = $resultado->fetch_assoc()) {
-            // O uso do fetch_assoc() retorna os dados como um array associativo, onde as chaves são os nomes das colunas.
             $postits[] = $linha;
         }
         return $postits;
     }
 
-    // Chama a função e armazena os post-its na variável $postits para exibição
     $postits = buscar_postits();
 } else {
     header('Location: index.php');
@@ -57,39 +62,46 @@ if (!empty($id_us)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mural de Post-its</title>
     <link rel="stylesheet" href="css/postits.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-    <?php
-        include('header.php');
-    ?>
-<section class="home">
-    <div class="mural">
-        <?php foreach ($postits as $postit): ?>
-            <div class="postit" style="background-color: <?= $postit['cor_postit']; ?>; top: <?= $postit['posicaoY']; ?>px; left: <?= $postit['posicaoX']; ?>px;" data-id="<?= $postit['id_postit']; ?>">
-                <div class="texto"><?= $postit['texto_postit']; ?></div>
-                <button class="excluir-btn" onclick="excluirPostit(<?= $postit['id_postit']; ?>)">Excluir</button>
+    <?php include('header.php'); ?>
+    <section class="home">
+        <?php if (isset($_SESSION['alert'])): ?>
+            <script>
+                Swal.fire({
+                    icon: '<?= $_SESSION['alert']['type'] ?>',
+                    title: '<?= $_SESSION['alert']['message'] ?>',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            </script>
+            <?php unset($_SESSION['alert']); ?>
+        <?php endif; ?>
+
+        <div class="mural">
+            <?php foreach ($postits as $postit): ?>
+                <div class="postit" style="background-color: <?= $postit['cor_postit']; ?>; top: <?= $postit['posicaoY']; ?>px; left: <?= $postit['posicaoX']; ?>px;" data-id="<?= $postit['id_postit']; ?>">
+                    <div class="texto"><?= $postit['texto_postit']; ?></div>
+                    <button class="excluir-btn" onclick="excluirPostit(<?= $postit['id_postit']; ?>)">Excluir</button>
+                </div>
+            <?php endforeach; ?>
+        </div>
+
+        <form id="formPostit" method="POST" action="postits.php">
+            <div class="form-group">
+                <label for="texto_postit">Texto do Post-it:</label>
+                <textarea name="texto_postit" id="texto_postit" placeholder="Escreva aqui..." required></textarea>
             </div>
-        <?php endforeach; ?>
-    </div>
+            <div class="form-group">
+                <label for="cor_postit">Cor do Post-it:</label>
+                <input type="color" name="cor_postit" id="cor_postit" value="#fffc00" required>
+            </div>
+            <button type="submit" name="adicionar">Adicionar Nota</button>
+        </form>
 
-    <form id="formPostit" method="POST" action="postits.php">
-        <div class="form-group">
-            <label for="texto_postit">Texto do Post-it:</label>
-            <textarea name="texto_postit" id="texto_postit" placeholder="Escreva aqui..." required></textarea>
-        </div>
-        <div class="form-group">
-            <label for="cor_postit">Cor do Post-it:</label>
-            <input type="color" name="cor_postit" id="cor_postit" value="#fffc00" required>
-        </div>
-        <button type="submit" name="adicionar">Adicionar Nota</button>
-    </form>
+        <script src="postits.js"></script>
+    </section>
 
-    
-    
-
-    <script src="postits.js"></script>
-
-    <script src="mural.js"></script>
-</section>
 </body>
 </html>
