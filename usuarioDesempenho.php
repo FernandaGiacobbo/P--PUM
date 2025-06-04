@@ -77,7 +77,7 @@ $analise_ia = chamarOpenAI($prompt);
 
 <?php
 $css_debug = realpath('css/usuarioDesempenho.css');
-echo "<!-- Caminho do CSS: $css_debug -->";
+
 ?>
 
 <!DOCTYPE html>
@@ -90,21 +90,24 @@ echo "<!-- Caminho do CSS: $css_debug -->";
 <body>
     <?php include 'header.php'; ?>
     
-    <div class="container">
-        <h1>Análise Semanal</h1>
-        
-        <!-- Métricas Básicas -->
-        <div class="metricas">
-            <p>Metas definidas: <?= $total_metas ?></p>
-            <p>Metas concluídas: <?= $total_concluidas ?></p>
-            <p>Taxa de sucesso: <?= round(($total_concluidas/$total_metas)*100, 2) ?>%</p>
+    <section class="home">
+        <div class="container">
+            <h1>Análise Semanal</h1>
+            
+            <!-- Métricas Básicas -->
+            <div class="metricas">
+                <p>Metas definidas: <?= $total_metas ?></p>
+                <p>Metas concluídas: <?= $total_concluidas ?></p>
+                <p>Taxa de sucesso: <?= round(($total_concluidas/$total_metas)*100, 2) ?>%</p>
+            </div>
+            
+            <!-- Análise da IA -->
+            <h2>Análise Personalizada</h2>
+            <div class="analise">
+                <?= htmlspecialchars($analise_ia) ?>
+            </div>
+            
         </div>
-        
-        <!-- Análise da IA -->
-        <h2>Análise Personalizada</h2>
-        <div class="analise">
-            <?= htmlspecialchars($analise_ia) ?>
-        </div>
-    </div>
+    </section>
 </body>
 </html>
