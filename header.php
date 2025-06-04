@@ -54,9 +54,9 @@
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="mural.php">
+                        <a href="postits.php">
                             <i class='bx bx-edit-alt icon'></i>
-                            <span class="text nav-text">Anotações</span>
+                            <span class="text nav-text">Mural Post-its</span>
                         </a>
                     </li>
                     <li class="nav-link">

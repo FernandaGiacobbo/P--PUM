@@ -226,6 +226,32 @@ form p {
     text-align: center;
 }
 
+#player {
+    position: fixed;
+    bottom: 20px;
+    right: 350px;
+    width: 21em;
+    height: 14.3em;
+    background-color: #fff;
+    border: 2px solid #E2B354;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+    margin: 0;
+}
+
+#player h1 {
+    font-size: 20px;
+    margin: 0 0 10px;
+    color: #3a4a68;
+    text-align: center;
+}
+
+#lista-musicas{
+    display: none;
+}
+
 .inputs-pomodoro {
     display: flex;
     justify-content: center;

@@ -144,6 +144,22 @@
         </div>
       </div>
 
+    <div id="player"  >
+      <h1>Player de Músicas: </h1>
+      <audio id="audio" controls></audio> 
+        <table id="lista-musicas" class="tabela-musicas">
+            <thead>
+                <tr>
+                    <th>Música</th>
+                </tr>
+            </thead>
+                <tbody></tbody>
+        </table>
+
+    </div>
+
+
+
 
   <dialog id="modal">
     <div class="caixaModal">
@@ -201,6 +217,7 @@
 </section>
 
 <script src="js/principal.js"></script>
+<script src="js/player.js"></script>
 
 </body>
 </html>

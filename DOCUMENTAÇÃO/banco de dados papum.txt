@@ -17,7 +17,7 @@ create table tb_musicas(
 	caminho_arquivo VARCHAR(255)
 );
 
-create table postits (
+create table tb_postits (
     id_postit INT AUTO_INCREMENT PRIMARY KEY,
     texto_postit VARCHAR(255),
     cor_postit VARCHAR(20),
