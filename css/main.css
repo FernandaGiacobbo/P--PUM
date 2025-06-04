@@ -328,3 +328,22 @@ form p {
         margin-left: 0;
     }
 }
+
+
+.popup-personalizado {
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.botao-confirmar {
+    background-color: #edca85;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.botao-confirmar:hover{
+    background-color: #edca85;
+    border: #3a4a68 solid 0.5px ;
+    transition: 0.3s;
+}

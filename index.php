@@ -138,6 +138,30 @@ Swal.fire({
 </script>
 <?php endif; ?>
 
+<?php if (isset($_GET['error']) && $_GET['error'] == 3): ?>
+<script>
+Swal.fire({
+    title: 'Verifique seus dados',
+    text: 'Usuário ou senha incorretos!',
+    icon: 'warning',
+    confirmButtonText: 'OK',
+    backdrop: true,
+    allowOutsideClick: false, 
+    customClass: {
+            popup: 'popup-personalizado',
+            confirmButton: 'botao-confirmar',
+            cancelButton: 'botao-cancelar'
+        }
+}).then(() => {
+    
+    const url = new URL(window.location.href);
+    url.searchParams.delete('error');
+    window.history.replaceState({}, document.title, url);
+});
+
+</script>
+<?php endif; ?>
+
 
     
     

@@ -229,6 +229,7 @@ hr{
 .botao-confirmar {
     background-color: #edca85;
     width: 10rem;
+    height: auto;
     border-radius: 20px;
     cursor: pointer;
 }
@@ -240,7 +241,8 @@ hr{
 }
 
 .botao-cancelar {
-    width: 20em;
+    width: 10rem;
+    height: auto;
     background-color: #e2b354;
     border-radius: 20px;
     cursor: pointer;
@@ -251,4 +253,3 @@ hr{
     border: #3a4a68 solid 0.5px ;
     transition: 0.3s;
 }
-

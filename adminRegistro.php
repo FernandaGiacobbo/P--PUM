@@ -1,7 +1,9 @@
 <?php
 session_start();
 
-$id_us = $_SESSION['id'];
+$id_usuario = $_SESSION['id'];
+
+if(!empty($id_usuario)){
 
 include_once('conecta_db.php');
 $oMysql = conecta_db();
@@ -146,3 +148,11 @@ include 'adminHeader.php';
 
 </body>
 </html>
+
+
+<?php
+    } else {
+        header('Location: index.php');
+        die();
+    }
+?>

@@ -16,8 +16,7 @@ if(isset($_POST['submit']) && !empty($_POST['email']) && !empty($_POST['senha'])
 
     if(!password_verify($senha, $usuario['senha_usuario']) || $email != $usuario['email_usuario']){ //faz verificação da senha descodificando o hash
         
-        echo "<script>alert('Usuário ou senha incorretos!');</script>";
-        echo "<script>window.location.href = 'index.php';</script>";
+        echo "<script>window.location.href = 'index.php?error=3';</script>";
 
     } else {
 

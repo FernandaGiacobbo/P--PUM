@@ -55,26 +55,30 @@ if(isset($_POST['cadastro'])){
 
           //caminho feliz, cliente é cadastrado com sucesso 
 
-            $query = "INSERT INTO tb_usuario(email_usuario, nome_usuario, senha_usuario, cargo) VALUE ('$email', '$nome', '$senha', 'estudante')";
+            $query = "INSERT INTO tb_usuario(email_usuario, nome_usuario, senha_usuario, cargo) VALUES ('$email', '$nome', '$senha', 'estudante')";
             $resultado = $oMysql->query($query);
-        
-    
-            $id_usuario = $oMysql->insert_id; //retorna o valor que foi gerado para o id criado 
+
+            if($resultado){
+              $id_usuario = $oMysql->insert_id; //retorna o valor que foi gerado para o id criado 
       
             
       
-            $_SESSION['nome'] = $nome;
-            $_SESSION['email'] =$email;
-            $_SESSION['id'] = $id_usuario;
-            $_SESSION['senha'] =$senha;
-            $_SESSION['cargo'] = $cargo;
-      
-            echo "<script>window.location.href = 'principal.php?sucesso=1';</script>";
+              $_SESSION['nome'] = $nome;
+              $_SESSION['email'] =$email;
+              $_SESSION['id'] = $id_usuario;
+              $_SESSION['senha'] =$senha;
+              $_SESSION['cargo'] = $cargo;
+        
+              echo "<script>window.location.href = 'principal.php?sucesso=1';</script>";
+            } else {
+              header('Location: index.php');
+              die("Erro no cadastro: " . $oMysql->error);
+            }
+         
   
         }
           
         }
-
 
 
 ?>

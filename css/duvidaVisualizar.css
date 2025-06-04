@@ -227,6 +227,32 @@ body{
     padding-top: 4px;
 }
 
+.duvidasCriadas h3{
+    color: #3a4a68;
+    font-weight: 550;
+    font-size: 20px;
+    margin: 2px;
+}
+
+.resDuvidas h3{
+    font-weight: 400;
+    font-size: 17px;
+    margin: 0;
+}
+
+.resDuvidas{
+    width: 94%;
+    max-height: 12em;
+    overflow-y: auto;
+    border: #E2B354 solid 1px;
+    border-radius: 10px;
+    padding: 1em;
+    margin: 5px 2px;
+    background-color: rgba(226,179,84, 0.02);
+}
+.resDuvidas p {
+    color: #3a4a68;
+}
 
 /*POPUP#######*/
 

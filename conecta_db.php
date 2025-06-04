@@ -8,7 +8,11 @@
     
         $conexao = new mysqli($server, $user, $pass, $db_name);
     
-        return $conexao;    
+        if ($conexao->connect_error) {
+            die("Erro na conexão: " . $conexao->connect_error);
+        }
+
+    return $conexao;
     }
     
 ?>
