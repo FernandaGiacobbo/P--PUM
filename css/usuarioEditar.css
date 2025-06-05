@@ -112,3 +112,68 @@
   border-radius: 25em !important;
   padding: 8px 20px !important;
 }
+
+/*Modal*/
+
+#senhaConfirm{
+    position: fixed;
+    border: none;
+    border-radius: 13px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    padding: 2%;
+}
+
+#ModalSenha{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 5px;
+}
+
+dialog input{
+    width: 75%;
+    height: 2em;
+    border: 1px solid #EDCA85;
+    border-radius: 8px;
+    background: rgba(237, 202, 133, 0.1);
+    color: #3A4A68;
+    margin-bottom: 1rem;
+}
+
+.btnModal{
+    display: flex;
+    flex-direction: row;
+    gap: 5%;
+    justify-content: center;
+    align-items: center;
+    margin: 2%;
+}
+
+
+#senhaConfirm h2{
+    color: #3A4A68;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5%;
+}
+
+#senhaConfirm button{
+    background-color: #3A4A68 !important;
+    border: none !important;
+    border-radius: 25em !important;
+    padding: 8px 20px !important;
+    cursor: pointer;
+    color: #fff;
+}
+
+#senhaConfirm button:hover{
+    background-color: #0D273D;
+    transition: 3s;
+}
