@@ -4,11 +4,6 @@ $tempoExpiracao = 86400; //limita a 86400s = 1 dia a sessão do usuário caso n�
 ini_set('session.gc_maxlifetime', $tempoExpiracao); // controla quanto tempo o php mantém os dados no servidor 
 session_set_cookie_params($tempoExpiracao); //Controla quanto tempo o PHP mantém os dados da sessão no servidor após inatividade.
 
-$tempoExpiracao = 86400; //limita a 86400s = 1 dia a sessão do usuário caso não tenha nenhuma inatividade
-
-ini_set('session.gc_maxlifetime', $tempoExpiracao); // controla quanto tempo o php mantém os dados no servidor 
-session_set_cookie_params($tempoExpiracao); //Controla quanto tempo o PHP mantém os dados da sessão no servidor após inatividade.
-
 session_start();
 
 // Verifica se houve inatividade superior a 1 dia
@@ -20,7 +15,7 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
 }
 $_SESSION['LAST_ACTIVITY'] = time(); // atualiza tempo da última atividade
 
-    $id_us = $_SESSION['id'];
+      $id_us = $_SESSION['id'];
 
       $atualizado = false; // flag pra saber se deve mostrar o SweetAlert
       $error = false;
@@ -33,9 +28,6 @@ $_SESSION['LAST_ACTIVITY'] = time(); // atualiza tempo da última atividade
       $senha_log = $_SESSION['senha'];
       $email_log = $_SESSION['email'];
       $logado = $_SESSION['nome'];
-      $senha_log = $_SESSION['senha'];
-      $email_log = $_SESSION['email'];
-      $logado = $_SESSION['nome'];
 
 
       $querySenha = "SELECT senha_usuario FROM tb_usuario WHERE id_usuario = '$id_us'";
@@ -52,27 +44,10 @@ $_SESSION['LAST_ACTIVITY'] = time(); // atualiza tempo da última atividade
           if (password_verify($confirmSenha, $senhaAtualHash)) {
 
                 if(!empty($_POST['senha'])){
-      $querySenha = "SELECT senha_usuario FROM tb_usuario WHERE id_usuario = '$id_us'";
-      $resultadoSenha = $oMysql->query($querySenha);
-      $linhaSenha = $resultadoSenha->fetch_assoc();
-      $senhaAtualHash = $linhaSenha['senha_usuario']; 
 
-
-
-      if (isset($_POST['submit']) ) {
-          
-          $confirmSenha = $_POST['ConfirmSenha'];
-
-          if (password_verify($confirmSenha, $senhaAtualHash)) {
-
-                if(!empty($_POST['senha'])){
-
-                  $nome = $_POST['nome'];
-                  $email = $_POST['email'];
-                  $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
-                  $nome = $_POST['nome'];
-                  $email = $_POST['email'];
-                  $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+                                $nome = $_POST['nome'];
+                                $email = $_POST['email'];
+                                $senhaInput = password_hash($_POST['senha'], PASSWORD_DEFAULT);
 
                     function validarSenha($senhaInput){
                       $senhaMaiuscula = preg_match('@[A-Z]@', $senhaInput); 
@@ -85,27 +60,11 @@ $_SESSION['LAST_ACTIVITY'] = time(); // atualiza tempo da última atividade
 
                     }
 
-                    if (validarSenha($senhaInput)) {
-                      $query = "UPDATE tb_usuario SET email_usuario = '$email', nome_usuario = '$nome', senha_usuario = '$senha' WHERE id_usuario = '$id_us'";
-                      $resultado = $oMysql->query($query);
-                    function validarSenha($senhaInput){
-                      $senhaMaiuscula = preg_match('@[A-Z]@', $senhaInput); 
-                      $senhaMinuscula = preg_match('@[a-z]@', $senhaInput);
-                      $senhaNumero = preg_match('@[0-9]@', $senhaInput);
-                      $senhaCaracter = preg_match('@[^\w]@', $senhaInput);
-                      $senhaTamanho = strlen($senhaInput) >= 8;
 
-                      return $senhaMaiuscula && $senhaMinuscula && $senhaNumero && $senhaCaracter && $senhaTamanho;
-
-                    }
-
-                    if (validarSenha($senhaInput)) {
-                      $query = "UPDATE tb_usuario SET email_usuario = '$email', nome_usuario = '$nome', senha_usuario = '$senha' WHERE id_usuario = '$id_us'";
+                    if (validarSenha($_POST['senha'])) {
+                      $query = "UPDATE tb_usuario SET email_usuario = '$email', nome_usuario = '$nome', senha_usuario = '$senhaInput' WHERE id_usuario = '$id_us'";
                       $resultado = $oMysql->query($query);
 
-                          $_SESSION['nome'] = $nome;
-                          $_SESSION['email'] = $email;
-                          $_SESSION['senha'] = $senha;
                           $_SESSION['nome'] = $nome;
                           $_SESSION['email'] = $email;
                           $_SESSION['senha'] = $senha;
@@ -131,37 +90,9 @@ $_SESSION['LAST_ACTIVITY'] = time(); // atualiza tempo da última atividade
 
           } else {
               $error = true;
-          }      
+          }    }      
           
-      } 
-    } else {
-      header('Location: index.php');
-      die();
-    }
-                          $atualizado = true;
-                    } else {
-                      $error = true;
-                      
-                    }
-                
-                } else {
-                  $nome = $_POST['nome'];
-                  $email = $_POST['email'];
-                  
-                  $query2 = "UPDATE tb_usuario SET email_usuario = '$email', nome_usuario = '$nome' WHERE id_usuario = '$id_us'";
-                  $resultado2 = $oMysql->query($query2);
 
-                  $_SESSION['nome'] = $nome;
-                  $_SESSION['email'] = $email;
-
-                  $atualizado = true;
-                }
-
-          } else {
-              $error = true;
-          }      
-          
-      } 
     } else {
       header('Location: index.php');
       die();
@@ -169,8 +100,7 @@ $_SESSION['LAST_ACTIVITY'] = time(); // atualiza tempo da última atividade
 ?>
 
 <!DOCTYPE html>
-<?php include 'gerenteHeader.php';?>
-<?php include 'gerenteHeader.php';?>
+<?php include 'gerenteHeader.php'; ?>
 <html lang="pt-br">
 <head>
   <title>Editar Perfil</title>
@@ -214,7 +144,6 @@ $_SESSION['LAST_ACTIVITY'] = time(); // atualiza tempo da última atividade
             <h2>Senha:</h2>
             <div class="panel panel-default">
               <div class="panel-body">
-                <input type="password" class="inputs" id="senha" placeholder="preencha apenas caso queira mudar de senha!!" name="senha">
                 <input type="password" class="inputs" id="senha" placeholder="preencha apenas caso queira mudar de senha!!" name="senha">
               </div>
             </div>
@@ -268,7 +197,7 @@ $_SESSION['LAST_ACTIVITY'] = time(); // atualiza tempo da última atividade
       icon: "success",
       confirmButtonText: "OK"
     }).then(() => {
-      window.location.href = "gerentePerfil.php";
+      window.location.href = "usuarioPerfil.php";
     });
   </script>
 <?php endif?>
@@ -282,7 +211,7 @@ $_SESSION['LAST_ACTIVITY'] = time(); // atualiza tempo da última atividade
       icon: "error",
       confirmButtonText: "OK"
     }).then(() => {
-      window.location.href = "gerentePerfil.php";
+      window.location.href = "usuarioPerfil.php";
     });
   </script>
 <?php endif; ?>

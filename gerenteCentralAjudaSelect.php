@@ -34,7 +34,7 @@ while ($row = $resultado2->fetch_assoc()) {
 
 //Executa a consulta das respostas e armazena todas em um array.
 
-//Retorna todos os dados em formato JSON para uso no JavaScript.
+//Retorna todos os dados em formato JSON para uso no JavaScript -> gerenteCentralajuda.php
 
 echo json_encode([
     'titulo' => $duvida['titulo_duvidas'],

@@ -41,11 +41,11 @@ if(!isset($_SESSION['id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/usuarioPerfil.css">
-
+    
     <title>Perfil</title>
 </head>
 <body>
-    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <section class="home">
         <section class="quadro-infos">
             <h3 class="titulo-caixa">Perfil</h3>
@@ -67,52 +67,14 @@ if(!isset($_SESSION['id'])) {
 
             <br>
             
-                <button type="button" class="edit " onclick="irParaEditar()">Editar</a></button>
-                <button type="submit" class="delete" id="Excluir" name="Excluir" onclick="confirmarExclusao()">Excluir</a></button>
-                <button type="submit" class="logout" id="Excluir" name="Excluir" onclick="confirmarLogout()">Sair</button>
+            <button type="button" class="edit " onclick="irParaEditar()">Editar</a></button>
+            <button type="submit" class="delete" id="Excluir" name="Excluir" onclick="confirmarExclusao()">Excluir</a></button>
+            <button type="submit" class="logout" id="Excluir" name="Excluir" onclick="confirmarLogout()">Sair</button>
 
 
-        </section>
     </section>
+</section>
 
-<script>
-function confirmarLogout() {
-    Swal.fire({
-        title: 'Tem certeza?',
-        text: "Você realmente quer finalizar a sessão?",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Sim, sair',
-        cancelButtonText: 'Cancelar'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            // Redireciona somente após confirmação
-            window.location.href = "sairsession.php?id_usuario=<?php echo $id_us; ?>";
-        }
-    });
-}
-
-function confirmarExclusao(){
-        Swal.fire({
-        title: 'Tem certeza?',
-        text: "Você realmente quer excluir seu perfil?",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Sim, excluir',
-        cancelButtonText: 'Cancelar'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            // Redireciona somente após confirmação
-            window.location.href = "usuarioExcluir.php";
-        }
-    });
-}
-
-function irParaEditar(){
-    window.location.href = "usuarioEditar.php";
-}
-
-</script>
 <script>
 function confirmarLogout() {
     Swal.fire({

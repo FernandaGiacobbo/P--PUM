@@ -61,8 +61,8 @@ $_SESSION['LAST_ACTIVITY'] = time(); // atualiza tempo da última atividade
                     }
 
 
-                    if (validarSenha($senhaInput)) {
-                      $query = "UPDATE tb_usuario SET email_usuario = '$email', nome_usuario = '$nome', senha_usuario = '$senha' WHERE id_usuario = '$id_us'";
+                    if (validarSenha($_POST['senha'])) {
+                      $query = "UPDATE tb_usuario SET email_usuario = '$email', nome_usuario = '$nome', senha_usuario = '$senhaInput' WHERE id_usuario = '$id_us'";
                       $resultado = $oMysql->query($query);
 
                           $_SESSION['nome'] = $nome;

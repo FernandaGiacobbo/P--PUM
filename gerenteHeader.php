@@ -15,13 +15,14 @@
             <br>
             <div class="img-text">
                 <span class="image">
-                    <img src="logo.png" alt="logo">
+                    <img src="img/logopapum.png" alt="logo">
                 </span>
 
                 <div class="text header-text">
-                    <span class="name"> PÁ-PUM </span>
-                    <span class="profession"> Agenda Clássica </span>
+                    <span class="name">PÁ-PUM</span>
+                    <span class="profession">Agenda Clássica</span>
                 </div>
+
             </div>
 
             <i class='bx bx-chevron-right toggle'></i>

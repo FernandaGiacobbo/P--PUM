@@ -15,7 +15,7 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
 }
 $_SESSION['LAST_ACTIVITY'] = time(); // atualiza tempo da última atividade
 
-    $id_us = $_SESSION['id'];
+      $id_us = $_SESSION['id'];
 
       $atualizado = false; // flag pra saber se deve mostrar o SweetAlert
       $error = false;
@@ -45,9 +45,9 @@ $_SESSION['LAST_ACTIVITY'] = time(); // atualiza tempo da última atividade
 
                 if(!empty($_POST['senha'])){
 
-                  $nome = $_POST['nome'];
-                  $email = $_POST['email'];
-                  $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+                                $nome = $_POST['nome'];
+                                $email = $_POST['email'];
+                                $senhaInput = password_hash($_POST['senha'], PASSWORD_DEFAULT);
 
                     function validarSenha($senhaInput){
                       $senhaMaiuscula = preg_match('@[A-Z]@', $senhaInput); 
@@ -60,8 +60,9 @@ $_SESSION['LAST_ACTIVITY'] = time(); // atualiza tempo da última atividade
 
                     }
 
-                    if (validarSenha($senhaInput)) {
-                      $query = "UPDATE tb_usuario SET email_usuario = '$email', nome_usuario = '$nome', senha_usuario = '$senha' WHERE id_usuario = '$id_us'";
+
+                    if (validarSenha($_POST['senha'])) {
+                      $query = "UPDATE tb_usuario SET email_usuario = '$email', nome_usuario = '$nome', senha_usuario = '$senhaInput' WHERE id_usuario = '$id_us'";
                       $resultado = $oMysql->query($query);
 
                           $_SESSION['nome'] = $nome;
@@ -89,9 +90,9 @@ $_SESSION['LAST_ACTIVITY'] = time(); // atualiza tempo da última atividade
 
           } else {
               $error = true;
-          }      
+          }    }      
           
-      } 
+
     } else {
       header('Location: index.php');
       die();
@@ -196,7 +197,7 @@ $_SESSION['LAST_ACTIVITY'] = time(); // atualiza tempo da última atividade
       icon: "success",
       confirmButtonText: "OK"
     }).then(() => {
-      window.location.href = "adminPerfil.php";
+      window.location.href = "usuarioPerfil.php";
     });
   </script>
 <?php endif?>
@@ -210,7 +211,7 @@ $_SESSION['LAST_ACTIVITY'] = time(); // atualiza tempo da última atividade
       icon: "error",
       confirmButtonText: "OK"
     }).then(() => {
-      window.location.href = "adminPerfil.php";
+      window.location.href = "usuarioPerfil.php";
     });
   </script>
 <?php endif; ?>

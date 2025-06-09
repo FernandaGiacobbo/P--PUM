@@ -49,7 +49,6 @@ include 'adminHeader.php';
                 <th class="td_dec">ID</th> 
                 <th class="td_dec">Nome</th> 
                 <th class="td_dec">E-mail</th> 
-                <th class="td_dec">Senha</th> 
                 <th class="td_dec">Excluir</th> 
                 <th class="td_dec">Editar</th>
             </tr>
@@ -69,8 +68,7 @@ include 'adminHeader.php';
                         $html = "<tr class-'corpo_tb'>";
                         $html .= "<td class='td_dec'>".$linha->id_usuario."</td>";
                         $html .= "<td class='td_dec'>".$linha->nome_usuario."</td>";
-                        $html .= "<td class='td_dec'>".$linha->email_usuario."</td>";
-                        $html .= "<td class='td_dec'>".$linha->senha_usuario."</td>";
+                        $html .= "<td class='td_dec '>".$linha->email_usuario."</td>";
                         $html .= "<td class='td_dec alingbtnex'>".$botaoExcluir."</td>";
                         $html .= "<td class='td_dec alingbtned'>".$botaoEditar."</td>";
                         $html .= "</tr>";
