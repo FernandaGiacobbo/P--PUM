@@ -34,7 +34,7 @@ CREATE TABLE tb_evento(
     descricao VARCHAR(100),
     id_estudante INT,
     hora_prazo TIME,
-    FOREIGN KEY tb_evento(id_estudante) REFERENCES tb_usuario(id_usuario)
+    FOREIGN KEY tb_evento(id_estudante) REFERENCES tb_usuario(id_usuario) ON DELETE CASCADE
 );
 
 create table tb_tarefa(
@@ -45,7 +45,7 @@ create table tb_tarefa(
     	prazo_tarefa DATE,
     	status_tarefa VARCHAR(50),
 		usuario_tarefa INT,
-	FOREIGN KEY  (usuario_tarefa) REFERENCES tb_usuario(id_usuario)
+	FOREIGN KEY  (usuario_tarefa) REFERENCES tb_usuario(id_usuario) ON DELETE CASCADE
 );
 
 CREATE TABLE tb_duvidas(
@@ -54,7 +54,7 @@ CREATE TABLE tb_duvidas(
 	texto_duvidas VARCHAR(500),
 	data_duvidas date,
 	usuario_duvidas INT,
-	FOREIGN KEY (usuario_duvidas) REFERENCES tb_usuario(id_usuario)
+	FOREIGN KEY (usuario_duvidas) REFERENCES tb_usuario(id_usuario) ON DELETE CASCADE
 );
 
 CREATE table tb_feedback(
@@ -80,7 +80,7 @@ CREATE TABLE tb_daily (
     conselho_para_si 	varchar(300),	    
     texto_livre 	varchar(300),	
     id_usuario 	int(11),
-    FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario)
+    FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario) ON DELETE CASCADE
 );
 
 CREATE TABLE tb_resDuvidas (
@@ -89,6 +89,6 @@ CREATE TABLE tb_resDuvidas (
     usuario_resposta INT,
     texto_resposta VARCHAR(500),
     data_resposta DATE, 
-    FOREIGN KEY (usuario_resposta) REFERENCES tb_usuario(id_usuario),
-    FOREIGN KEY (duvida_resposta) REFERENCES tb_duvidas(id_duvidas)
+    FOREIGN KEY (usuario_resposta) REFERENCES tb_usuario(id_usuario) ON DELETE CASCADE,
+    FOREIGN KEY (duvida_resposta) REFERENCES tb_duvidas(id_duvidas) ON DELETE CASCADE
 );
