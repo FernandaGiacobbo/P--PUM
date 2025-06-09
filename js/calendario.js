@@ -361,6 +361,8 @@ function setupEventListeners() {
   deleteBtn.addEventListener('click', deletarEvento);
 }
 
+
+//VIEW DO EVENTO
 // Clique em um dia do calendário
 datesContainer.addEventListener("click", async (e) => {
   // Verifica se o elemento clicado é uma div de dia válida
@@ -388,6 +390,7 @@ if (e.target.tagName === "DIV" && e.target.textContent.trim() !== "") { // Verif
           eventCard.className = 'event-card';
           eventCard.dataset.id = ev.id_evento;
 
+          //ONDE APARECEM AS INFORMAÇÕES
           // Preenche o conteúdo do cartão
           eventCard.innerHTML = `
             <h3>${ev.titulo_evento}</h3>
