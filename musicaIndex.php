@@ -81,8 +81,6 @@ if (isset($_SESSION['upload_status'])) {
 }
 
 
-session_start();
-
 include 'gerenteHeader.php';
 
 $id_us = $_SESSION['id'];
