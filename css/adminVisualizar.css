@@ -87,3 +87,13 @@ section h2{
     margin: 0 auto;
     padding: 20px;
 }
+
+.caminho{
+text-decoration: none;
+color: #E2B354;
+left: 50%;
+transform: translate(-50%);
+font-size: 13px;
+position: fixed;
+bottom: 0;
+}

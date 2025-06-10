@@ -16,6 +16,7 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
 }
 $_SESSION['LAST_ACTIVITY'] = time(); // atualiza tempo da última atividade
 
+$logado = $_SESSION['nome'];
 $id_us = $_SESSION['id'];
 if (!empty($id_us)) {
     require_once 'conecta_db.php';
@@ -114,5 +115,12 @@ if (!empty($id_us)) {
         <input id="caixaTexto" type="text" name="nome_musica" value="<?php echo htmlspecialchars($nomeMusica); ?>" required>
         <input id="botao" type="submit" name="salvar" value="Salvar Alterações">
     </form>
+
+            <div class="caminho">
+                <a href="adminPerfil.php"><?php echo $logado;?></a> /
+                <a href="gerentePrincipal.php">Home</a> / 
+                <a href="musicaIndex.php">Musica</a> / 
+                <a href=""><b>EditarMusica</b></a>
+            </div>
 </body>
 </html>

@@ -18,7 +18,7 @@ if (isset($_SESSION['sucesso'])) {
     echo '<div class="mensagem sucesso">'.$_SESSION['sucesso'].'</div>';
     unset($_SESSION['sucesso']);
 }
-
+$logado = $_SESSION['nome'];
 ?>
 
 <!DOCTYPE html>
@@ -107,6 +107,12 @@ include 'adminHeader.php';
         </form>
     </div>
 </div>
+
+    <div class="caminho">
+        <a href="adminPerfil.php"><?php echo $logado;?></a> /
+        <a href="adminMain.php">Home</a> / 
+        <a href="adminRegistro"><b>Registro</b></a>
+    </div>
 
 <script>
     // Pegar elementos

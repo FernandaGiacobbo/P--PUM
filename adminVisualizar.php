@@ -16,6 +16,7 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
 $_SESSION['LAST_ACTIVITY'] = time(); // atualiza tempo da última atividade
 
 $id_usuario = $_SESSION['id'];
+$logado = $_SESSION['nome'];
 
 if(!empty($id_usuario)){
 
@@ -69,6 +70,11 @@ $oMysql = conecta_db();
                 </tbody>
             </table>
         </div>
+              <div class="caminho">
+                <a href="adminPerfil.php"><?php echo $logado;?></a> /
+                <a href="adminMain.php">Home</a> / 
+                <a href="adminVisualizar.php"><b>Estudates</b></a>
+            </div>
     </section>
 </body>
 </html>

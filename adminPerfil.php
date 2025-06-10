@@ -47,32 +47,42 @@ if(!isset($_SESSION['id'])) {
 <body>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <section class="home">
-        <section class="quadro-infos">
-            <h3 class="titulo-caixa">Perfil</h3>
+ <div class='centro'>
+    <section class="quadro-infos">
+        <h3 class="titulo-caixa">Perfil</h3>
 
 
-            <div class="nome">
-                <div class="titulos-labels">
-                    <h1>Nome:</h1>
-                    <div class="placeholder"><?php echo $logado;?></div>
-                </div>
+        <div class="nome">
+            <div class="titulos-labels">
+                <h1>Nome:</h1>
+                <div class="placeholder"><?php echo $logado;?></div>
             </div>
+        </div>
 
-            <div class="email">
-                <div class="titulos-labels">
-                    <h1>E-mail:</h1>
-                    <div class="placeholder"><?php echo $email_log;?></div>
-                </div>
+        <div class="email">
+            <div class="titulos-labels">
+                <h1>E-mail:</h1>
+                <div class="placeholder"><?php echo $email_log;?></div>
             </div>
+        </div>
 
-            <br>
-            
+
+        <br>
+        
             <button type="button" class="edit " onclick="irParaEditar()">Editar</a></button>
             <button type="submit" class="delete" id="Excluir" name="Excluir" onclick="confirmarExclusao()">Excluir</a></button>
             <button type="submit" class="logout" id="Excluir" name="Excluir" onclick="confirmarLogout()">Sair</button>
 
 
     </section>
+
+    <div class="caminho">
+        <a href="adminPerfil.php"><?php echo $logado;?></a> /
+        <a href="adminMain.php">Home</a> / 
+        <a href="adminPerfil.php"><b>Perfil</b></a>
+    </div>
+
+</div>
 </section>
 
 <script>

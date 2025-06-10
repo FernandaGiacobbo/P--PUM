@@ -25,6 +25,8 @@
   
 
     <?php
+      session_start();
+      $logado = $_SESSION['nome'];
         $oMysql = conecta_db();
         $query1 = "SELECT status_tarefa FROM tb_tarefa where usuario_tarefa = $id_us";
         $resultado1 = $oMysql->query($query1);
@@ -210,9 +212,15 @@
                 </div>
                 
 
-        </form>                 
+        </form>        
+     
     </div>
   </dialog>
+          <div class="caminho">
+            <a href="usuarioPerfil.php"><?php echo $logado;?></a> /
+            <a href="mainVisualizar.php"><b>Home</b></a>
+          </div>    
+
 
 </section>
 

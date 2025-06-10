@@ -177,3 +177,10 @@ dialog input{
     background-color: #0D273D;
     transition: 3s;
 }
+
+.caminho{
+font-size: 13px;
+position: fixed;
+bottom: 0;
+margin-left: 5px;
+}

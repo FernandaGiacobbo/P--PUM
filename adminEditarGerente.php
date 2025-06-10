@@ -6,6 +6,8 @@ session_set_cookie_params($tempoExpiracao); //Controla quanto tempo o PHP manté
 
 session_start();
 
+$logado = $_SESSION['nome'];
+
 // Verifica se houve inatividade superior a 1 dia
 if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > $tempoExpiracao)) {
     session_unset();    
@@ -18,9 +20,6 @@ $_SESSION['LAST_ACTIVITY'] = time(); // atualiza tempo da última atividade
 include_once('conecta_db.php');
 $oMysql = conecta_db();
 
-$id_usuario = $_SESSION['id'];
-
-if(!empty($id_usuarioS)){
 
 // Verifica se o ID foi passado na URL
 if(isset($_GET['id_usuario']) && !empty($_GET['id_usuario'])) {
@@ -127,14 +126,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <button type="submit" class="btn-submit">Atualizar</button>
         </form>
     </div>
+        <div class="caminho">
+        <a href="adminPerfil.php"><?php echo $logado;?></a> /
+        <a href="principal.php">Home</a> / 
+        <a href="adminRegistro.php">GerenteAdicionar</a> / 
+        <a href="adminEditarGerente.php"><b>GerenteEditar</b></a>
+    </div>
+    
 </section>
 
 </body>
 </html>
 
-<?php
-    } else {
-        header('Location: index.php');
-        die();
-    }
-?>

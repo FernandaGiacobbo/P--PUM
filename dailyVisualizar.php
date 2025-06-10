@@ -22,6 +22,8 @@ if(!isset($_SESSION['id'])) {
     exit();
 }
 
+$logado = $_SESSION['nome'];
+
 include_once('conecta_db.php');
 $oMysql = conecta_db();
 
@@ -215,7 +217,14 @@ if ($resultado_verifica_daily && $resultado_verifica_daily->num_rows > 0) {
             </form>
         </dialog>
 
+     <div class="caminho">
+        <a href="usuarioPerfil.php"><?php echo $logado;?></a> /
+        <a href="principal.php">Home</a> / 
+        <a href="dailyVisualizar.php"><b>Daily</b></a>
     </div>
+
+    </div>
+
 
 </section>
 

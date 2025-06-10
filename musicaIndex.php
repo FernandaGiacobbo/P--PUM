@@ -86,7 +86,7 @@ session_start();
 include 'gerenteHeader.php';
 
 $id_us = $_SESSION['id'];
-
+$logado = $_SESSION['nome'];
 
 if (!empty($id_us)) {
     // importa o arquivo que possui a função para conectar o db
@@ -175,6 +175,12 @@ function confirmarExclusao(event) {
     });
 }
 </script>
+
+              <div class="caminho">
+                <a href="gerentePerfil.php"><?php echo $logado;?></a> /
+                <a href="gerentePrincipal.php">Home</a> / 
+                <a href="musicaIndex.php"><b>Musicas</b></a>
+            </div>
 
 </body>
 </html>

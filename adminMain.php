@@ -16,6 +16,7 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
 }
 $_SESSION['LAST_ACTIVITY'] = time(); // atualiza tempo da última atividade
 
+$logado = $_SESSION['nome'];
 $id_usuario = $_SESSION['id'];
 
 if(!empty($id_usuario)){
@@ -64,6 +65,10 @@ $totalGerentes = $resultadoGerentes->fetch_object()->total;
             
         </div>
 
+    </div>
+        <div class="caminho">
+        <a href="adminPerfil.php"><?php echo $logado;?></a> /
+        <a href="adminMain.php"><b>Home</b></a> 
     </div>
 </section>
 

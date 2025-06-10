@@ -347,3 +347,12 @@ form p {
     border: #3a4a68 solid 0.5px ;
     transition: 0.3s;
 }
+
+
+.caminho{
+font-size: 13px;
+position: fixed;
+bottom: 0;
+left: 50%;
+transform: translate(-50%);
+}

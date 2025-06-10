@@ -258,3 +258,12 @@ section h2{
     width: 200px;
     text-align: center;
 }
+.caminho{
+text-decoration: none;
+color: #E2B354;
+left: 50%;
+transform: translate(-50%);
+font-size: 13px;
+position: fixed;
+bottom: 0;
+}

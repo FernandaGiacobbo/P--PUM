@@ -15,7 +15,7 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
     exit();
 }
 $_SESSION['LAST_ACTIVITY'] = time(); // atualiza tempo da última atividade
-
+$logado = $_SESSION['nome'];
 
 if(!isset($_SESSION['id'])) {
     header('Location: index.php');
@@ -168,12 +168,25 @@ if (!empty($_GET['id_daily'])) {
                         <button type="button" id="botaocancelar">Cancelar</button>
                     </div>
                 
-                </form>
+ 
+          </form>
+
 </div>
 
+   
+
         </div>
+
+    <div class="caminho">
+        <a href="usuarioPerfil.php"><?php echo $logado;?></a> /
+        <a href="principal.php">Home</a> / 
+        <a href="dailyVisualizar.php">Daily</a> /
+        <a href=""><b>DailyEditar</b></a>
+    </div>
+
 </section>
 
+    
 
 <script>
         document.getElementById('botaocancelar').addEventListener('click', function (e) {

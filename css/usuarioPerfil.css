@@ -2,6 +2,7 @@
     min-height: 100vh;
     padding: 2rem 1rem;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -10,10 +11,18 @@
     position: relative;
 }
 
+.centro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    
+}
+
 .quadro-infos {
     background-color: #fff;
     border-radius: 1em;
-    width: 100%;
+    width: 50em;
     max-width: 992px; /* equivalente a 62em */
     padding: 2rem;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
@@ -143,3 +152,11 @@
         width: 100%;
     }
 }
+
+.caminho{
+
+font-size: 13px;
+position: fixed;
+bottom: 0;
+}
+

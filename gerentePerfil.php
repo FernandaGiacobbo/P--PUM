@@ -19,7 +19,7 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
     exit();
 }
 $_SESSION['LAST_ACTIVITY'] = time(); // atualiza tempo da última atividade
-
+$logado = $_SESSION['nome'];
 
 if(!isset($_SESSION['id'])) {
     header('Location: index.php');
@@ -76,6 +76,14 @@ if(!isset($_SESSION['id'])) {
 
 
     </section>
+        <div class="caminho">
+        <a href="gerentePerfil.php"><?php echo $logado;?></a> /
+        <a href="gerenteMain.php">Home</a> / 
+        <a href="gerentePerfil.php"><b>Perfil</b></a>
+    </div>
+
+</div>
+
 </section>
 
 <script>

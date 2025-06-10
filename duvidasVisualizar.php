@@ -33,7 +33,7 @@ if (!empty($id_usuario)) {
     die();
 }
 
-
+$logado = $_SESSION['nome'];
 
 ?>
 
@@ -114,7 +114,7 @@ if (!empty($id_usuario)) {
                 <div class="headerDuvida">
                     <a href="duvidaUpdate.php?id_duvidas=<?php echo $id_duvidas; ?>">Editar</a>
                     <p class="dataPostagem"> Publicado em: <?php echo $data;?> </p>
-                    </div>
+                </div>
 
                               <?php
                                     if($resposta2){
@@ -141,7 +141,13 @@ if (!empty($id_usuario)) {
         </div>
 
         <?php } }?>
-        
+
+    <div class="caminho">
+        <a href="usuarioPerfil.php"><?php echo $logado;?></a> /
+        <a href="principal.php">Home</a> / 
+        <a href="duvidasvisualizar.php"><b>Duvidas</b></a>
+    </div>
+
     </div>
 </section>
 

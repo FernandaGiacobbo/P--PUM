@@ -13,9 +13,11 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
     header('Location: index.php'); 
     exit();
 }
+$logado = $_SESSION['nome'];  
 $_SESSION['LAST_ACTIVITY'] = time(); // atualiza tempo da última atividade
 
   $id_usuario = $_SESSION['id'];
+  $logado = $_SESSION['nome'];
 
   if(!empty($id_usuario)){
 
@@ -46,7 +48,11 @@ $_SESSION['LAST_ACTIVITY'] = time(); // atualiza tempo da última atividade
   <audio id="audio" controls></audio>
 
 <script src="js/player.js"></script>
-
+    <div class="caminho">
+        <a href="usuarioPerfil.php"><?php echo $logado;?></a> /
+        <a href="mainVisualizar.php">Home</a> / 
+        <a href="calendario.php"><b>Musica</b></a>
+    </div>
 </body>
 </html>
 

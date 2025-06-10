@@ -251,3 +251,11 @@ dialog button {
     color: #f9d57f !important; 
     border-color: #f9d57f !important;
 }
+
+.caminho{
+font-size: 13px;
+position: fixed;
+bottom: 0;
+left: 50%;
+transform: translate(-50%);
+}

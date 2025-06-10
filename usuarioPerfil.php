@@ -52,6 +52,7 @@ if (!empty($id_us)) {
 <?php include 'header.php';?>
 
 <section class="home">
+<div class='centro'>
     <section class="quadro-infos">
         <h3 class="titulo-caixa">Perfil</h3>
 
@@ -79,6 +80,15 @@ if (!empty($id_us)) {
 
 
     </section>
+
+    <div class="caminho">
+        <a href="usuarioPerfil.php"><?php echo $logado;?></a> /
+        <a href="principal.php">Home</a> / 
+        <a href="usuarioPerfil.php"><b>Perfil</b></a>
+    </div>
+
+</div>
+
 </section>
 
 <script>

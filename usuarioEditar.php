@@ -168,6 +168,12 @@ $_SESSION['LAST_ACTIVITY'] = time(); // atualiza tempo da última atividade
       </form>
     </div>
   </section>
+
+    <div class="caminho">
+        <a href="usuarioPerfil.php"><?php echo $logado;?></a> /
+        <a href="principal.php">Home</a> / <a href="usuarioPerfil.php">Perfil</a> /
+        <a href="usuarioEditar.php"><b>EditarPerfil</b></a>
+    </div>
 </section>
 
 

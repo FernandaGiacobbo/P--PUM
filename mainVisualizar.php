@@ -118,6 +118,12 @@ if (!empty($id_us)) {
             </form>
         </div>
 
+            <div class="caminho">
+                <a href="adminPerfil.php"><?php echo $logado;?></a> /
+                <a href="adminMain.php">Home</a> / 
+                <a href="adminVisualizar.php"><b>Estudates</b></a>
+            </div>
+
     </div>
 
     <script>

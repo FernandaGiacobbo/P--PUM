@@ -18,6 +18,7 @@ $_SESSION['LAST_ACTIVITY'] = time(); // atualiza tempo da última atividade
 
 
 $id_usuario = $_SESSION['id'];
+$logado = $_SESSION['nome'];
 
 if(!empty($id_usuario)) {
 
@@ -66,7 +67,14 @@ if(!empty($id_usuario)) {
             </div>
             <button type="submit" class="btn"><i class="fa fa-paper-plane"></i>Enviar Feedback</button>
         </form>
+            
     </div>
+
+            <div class="caminho">
+                <a href="usuarioPerfil.php"><?php echo $logado;?></a> /
+                <a href="principal.php">Home</a> / 
+                <a href="feedbackGeral.php"><b>feedback</b></a>
+            </div>
 
     <script>
         // Definindo os limites de caracteres

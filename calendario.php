@@ -9,6 +9,8 @@ session_set_cookie_params($tempoExpiracao); //Controla quanto tempo o PHP manté
 
 session_start();
 
+
+
 // Verifica se houve inatividade superior a 1 dia
 if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > $tempoExpiracao)) {
     session_unset();    
@@ -18,6 +20,7 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
 }
 $_SESSION['LAST_ACTIVITY'] = time(); // atualiza tempo da última atividade
   $id_estudante = $_SESSION['id'];
+  $logado = $_SESSION['nome'];
 
 if(!isset($_SESSION['id'])) {
     header('Location: index.php');
@@ -180,7 +183,11 @@ if(!isset($_SESSION['id'])) {
       </div>
     </div>
 
-
+    <div class="caminho">
+        <a href="usuarioPerfil.php"><?php echo $logado;?></a> /
+        <a href="principal.php">Home</a> / 
+        <a href="calendario.php"><b>Calendario</b></a>
+    </div>
 
 
     </section>

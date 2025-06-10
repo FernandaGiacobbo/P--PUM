@@ -14,6 +14,7 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
     exit();
 }
 $_SESSION['LAST_ACTIVITY'] = time(); // atualiza tempo da última atividade
+$logado = $_SESSION['nome'];
 
 $id_us = $_SESSION['id'];
 if (!empty($id_us)) {
@@ -116,6 +117,12 @@ if (!empty($id_us)) {
         </form>
 
         <script src="postits.js"></script>
+
+    <div class="caminho">
+        <a href="usuarioPerfil.php"><?php echo $logado;?></a> /
+        <a href="principal.php">Home</a> / 
+        <a href="postits.php"><b>Postits</b></a>
+    </div>
     </section>
 
 </body>

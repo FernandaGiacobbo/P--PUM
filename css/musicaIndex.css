@@ -117,3 +117,13 @@ a:hover {
     background-color: #EDE5E0 !important; /* Um vermelho mais escuro para o hover */
     color: black !important;
 }
+
+.caminho{
+text-decoration: none;
+color: #E2B354;
+left: 50%;
+transform: translate(-50%);
+font-size: 13px;
+position: fixed;
+bottom: 0;
+}

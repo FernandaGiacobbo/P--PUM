@@ -126,3 +126,13 @@ body{
         transform: translateY(0);
     }
 }
+
+.caminho{
+text-decoration: none;
+color: #E2B354;
+left: 50%;
+transform: translate(-50%);
+font-size: 13px;
+position: fixed;
+bottom: 0;
+}

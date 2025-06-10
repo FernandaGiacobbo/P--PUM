@@ -21,7 +21,7 @@ $_SESSION['LAST_ACTIVITY'] = time(); // atualiza tempo da última atividade
     $oMysql = conecta_db();
 if (!empty($id_usuario)) {
 
-    
+$logado = $_SESSION['nome'];
 
 ?>
 
@@ -136,6 +136,12 @@ if (!empty($id_usuario)) {
             </div>
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
             <script src="js/gerenteCentralAjuda.js"></script>
+
+            <div class="caminho">
+                <a href="gerentePerfil.php"><?php echo $logado;?></a> /
+                <a href="gerenteMain.php">Home</a> / 
+                <a href="gerenteCentralAjuda.php"><b>Duvidas</b></a>
+            </div>
     </section>
 
 

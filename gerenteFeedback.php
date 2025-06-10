@@ -6,6 +6,8 @@ session_set_cookie_params($tempoExpiracao); //Controla quanto tempo o PHP manté
 
 session_start();
 
+$logado = $_SESSION['nome'];
+
 // Verifica se houve inatividade superior a 1 dia
 if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > $tempoExpiracao)) {
     session_unset();    
@@ -86,6 +88,13 @@ $_SESSION['LAST_ACTIVITY'] = time(); // atualiza tempo da última atividade
             <div class="action-buttons" id="actionButtons"></div>
         </div>
     </div>
+
+
+            <div class="caminho">
+                <a href="gerentePerfil.php"><?php echo $logado;?></a> /
+                <a href="gerenteMain.php">Home</a> / 
+                <a href="gerenteFeedback.php"><b>Feedback</b></a>
+            </div>
     
     <script>
         function openModal(feedbackId) {

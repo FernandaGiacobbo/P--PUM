@@ -65,6 +65,8 @@ if (isset($_POST['submit'])){
     } else {
         die("Dúvida não encontrada.");
     }
+
+    $logado = $_SESSION['nome'];
 }
 
 
@@ -109,6 +111,12 @@ if (isset($_POST['submit'])){
             </div>
             
         </div>
+    <div class="caminho">
+        <a href="usuarioPerfil.php"><?php echo $logado;?></a> /
+        <a href="principal.php">Home</a> / 
+        <a href="duvidasvisualizar.php">Duvidas</a> / 
+        <a href="duvidaUpdate.php"><b>DuvidasEditar</b></a>
+    </div>
 
     </section>
 

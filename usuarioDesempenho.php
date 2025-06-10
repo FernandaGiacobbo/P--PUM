@@ -23,6 +23,7 @@ if(!isset($_SESSION['id'])) {
 include_once('conecta_db.php');
 $oMysql = conecta_db();
 
+$logado = $_SESSION['nome'];
 $id_user = $_SESSION['id'];
 $data_inicio = date('Y-m-d', strtotime('-7 days'));
 $data_fim = date('Y-m-d');
@@ -122,6 +123,11 @@ $css_debug = realpath('css/usuarioDesempenho.css');
             </div>
             
         </div>
+            <div class="caminho">
+        <a href="usuarioPerfil.php"><?php echo $logado;?></a> /
+        <a href="principal.php">Home</a> / 
+        <a href="usuarioDesempenho  .php"><b>Desempenho</b></a>
+    </div>
     </section>
 </body>
 </html>

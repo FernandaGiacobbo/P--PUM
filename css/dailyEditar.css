@@ -196,3 +196,13 @@ dialog button {
 }
 
 
+.caminho{
+text-decoration: none;
+background-color: #E4E9F7;
+color: #E2B354;
+left: 50%;
+transform: translate(-50%);
+font-size: 13px;
+position: fixed;
+bottom: 0;
+}
