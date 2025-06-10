@@ -123,7 +123,6 @@ $logado = $_SESSION['nome'];
                     <p><strong>Usuário:</strong> </p>
                     </div>
 
-                    //no form você add o input 
 
                     <form id="respostaForm" action="gerenteCentralAjudaInsert.php" method="POST">
                         <br>
