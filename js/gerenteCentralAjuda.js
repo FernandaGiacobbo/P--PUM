@@ -1,9 +1,7 @@
 document.querySelectorAll('.caixaDuvidas').forEach(item => {
     item.addEventListener('click', () => {
         const id = item.dataset.id;
-        
-        // Requisição AJAX para obter detalhes da dúvida.
-        // Essa requisição é feita a partir do gerenteCentralajudaSelect.php
+
         fetch('gerenteCentralAjudaSelect.php?id=' + id)
             .then(response => response.json())
             .then(data => {
@@ -13,7 +11,9 @@ document.querySelectorAll('.caixaDuvidas').forEach(item => {
                 document.getElementById('modalData').innerText = data.data;
                 document.getElementById('excluirDuv').dataset.id = id;
 
-                // Cria a lista de respostas e seus botões de aditar e excluir 
+                document.getElementById('respostaDuvidaId').value = id;
+
+                
                 const lista = document.getElementById('respostasLista');
                 lista.innerHTML = '';
                 data.respostas.forEach(resp => {
@@ -26,11 +26,12 @@ document.querySelectorAll('.caixaDuvidas').forEach(item => {
                     `;
                     lista.appendChild(div);
                 });
-                //exibe o modal
+
                 document.getElementById('duvidamodal').style.display = 'block';
             });
     });
 });
+
 
 //fechar modal
 document.getElementById('closeModal').addEventListener('click', () => {
@@ -38,68 +39,7 @@ document.getElementById('closeModal').addEventListener('click', () => {
 });
 
 
-//enviar resposta a penas se cumprir os requisitos 
-document.getElementById('enviarResposta').addEventListener('click', () => {
-    const texto = document.getElementById('textoResposta').value.trim();
-    const id = document.getElementById('excluirDuv').dataset.id;
 
-    if (texto.length < 100) {
-        Swal.fire({
-            title: 'Tamanho da mensagem!',
-            text: 'A sua mensagem tem que ter no mínimo 100 caracteres.',
-            icon: 'warning',
-            confirmButtonText: 'OK',
-            customClass: {
-                popup: 'popup-personalizado',
-                confirmButton: 'botao-confirmar',
-                cancelButton: 'botao-cancelar'
-            }
-        }).then(() => {
-                location.reload();
-            });
-        return; // Interrompe o envio
-    }
-
-    else if (texto.length > 500) {
-        Swal.fire({
-            title: 'Tamanho da mensagem!',
-            text: 'A sua mensagem tem que ter no máximo 500 caracteres.',
-            icon: 'warning',
-            confirmButtonText: 'OK',
-            customClass: {
-                popup: 'popup-personalizado',
-                confirmButton: 'botao-confirmar',
-                cancelButton: 'botao-cancelar'
-            }
-           }).then(() => {
-                location.reload();
-            });
-        return; // Interrompe o envio
-    } else {
-            fetch('gerenteCentralAjudaInsert.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: `id=${id}&texto=${encodeURIComponent(texto)}`
-        }).then(response => response.text())
-        .then(resposta => {
-         Swal.fire({
-                title: 'Sucesso',
-                text: 'Resposta enviada com sucesso!',
-                icon: 'success',
-                confirmButtonText: 'OK',
-                customClass: {
-                    popup: 'popup-personalizado',
-                    confirmButton: 'botao-confirmar',
-                    cancelButton: 'botao-cancelar'
-                }
-            }).then(() => {
-                location.reload();
-            });
-        
-            }
-    )};  
-
-});
 let idRespostaEditando = null;
 
 //Editar Resposta

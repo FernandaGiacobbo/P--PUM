@@ -12,13 +12,28 @@ date_default_timezone_set('America/Sao_Paulo');
 $data_resposta = date('Y-m-d');
 
 if ($id_duvidas && $texto && $id_usuario) {
-    $query = "INSERT INTO tb_resDuvidas (duvida_resposta, usuario_resposta, texto_resposta, data_resposta) VALUES ($id_duvidas, $id_usuario, '$texto', '$data_resposta')";
 
-    $resultado = $oMysql->query($query);
+    if (strlen($_POST['texto']) < 100) {
+        header('Location: gerenteCentralAjuda.php?error=3');
+        die();
+    } elseif (strlen($_POST['texto']) > 500) {
+        header('Location: gerenteCentralAjuda.php?error=4');
+        die();
+    } else {
 
-    if (!$resultado) {
-        die("Erro ao inserir: " . $oMysql->error);
+            $query = "INSERT INTO tb_resDuvidas (duvida_resposta, usuario_resposta, texto_resposta, data_resposta) VALUES ($id_duvidas, $id_usuario, '$texto', '$data_resposta')";
+
+            $resultado = $oMysql->query($query);
+
+            if (!$resultado) {
+                die("Erro ao inserir: " . $oMysql->error);
+            } else {
+                header('Location: gerenteCentralAjuda.php?sucesso=1');
+            }
+
     }
+
+
 } else {
     die("erro");
 }

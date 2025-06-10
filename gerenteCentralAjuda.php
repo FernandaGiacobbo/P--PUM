@@ -123,14 +123,16 @@ $logado = $_SESSION['nome'];
                     <p><strong>Usuário:</strong> </p>
                     </div>
 
-                    <div id="respostaForm">
+                    <form id="respostaForm" action="gerenteCentralAjudaInsert.php" method="POST">
                         <br>
                         <p>Adicione sua resposta:</p>
-                        <textarea name="respostaTexto" id="textoResposta" placeholder="adicione sua resposta"></textarea>
-                        <button id="enviarResposta" class="btn2" require>Enviar</button>
-                        <button id="cancelarResposta" class="btn2">Cancelar</button>
-                        <button id="salvarEdicao" style="display:none;" class="btn2">Salvar</button>
-                    </div>
+                        <textarea name="texto" id="textoResposta" placeholder="adicione sua resposta" required></textarea>
+                        <input type="hidden" name="id" id="respostaDuvidaId">
+                        <button type="submit" id="enviarResposta" class="btn2">Enviar</button>
+                        <button type="button" id="cancelarResposta" class="btn2">Cancelar</button>
+                        <button type="button" id="salvarEdicao" style="display:none;" class="btn2">Salvar</button>
+                    </form>
+
                     </div>
                 </div>
             </div>
@@ -144,6 +146,72 @@ $logado = $_SESSION['nome'];
             </div>
     </section>
 
+<?php if (isset($_GET['error']) && $_GET['error'] == 3): ?>
+<script>
+Swal.fire({
+    title: 'Tamanho da mensagem!!',
+    text: 'A sua mensagem tem que ter no mínimo 100 caracteres.',
+    icon: 'warning',
+    confirmButtonText: 'OK',
+    customClass: {
+            popup: 'popup-personalizado',
+            confirmButton: 'botao-confirmar',
+            cancelButton: 'botao-cancelar'
+        }
+}).then(() => {
+    
+    const url = new URL(window.location.href);
+    url.searchParams.delete('error');
+    window.history.replaceState({}, document.title, url);
+});
+
+</script>
+<?php endif; ?>
+
+<?php if (isset($_GET['error']) && $_GET['error'] == 4): ?>
+<script>
+Swal.fire({
+    title: 'Tamanho da mensagem!!',
+    text: 'A sua mensagem tem que ter no máximo 500 caracteres.',
+    icon: 'warning',
+    confirmButtonText: 'OK',
+    customClass: {
+            popup: 'popup-personalizado',
+            confirmButton: 'botao-confirmar',
+            cancelButton: 'botao-cancelar'
+        }
+}).then(() => {
+    
+    const url = new URL(window.location.href);
+    url.searchParams.delete('error');
+    window.history.replaceState({}, document.title, url);
+});
+
+</script>
+<?php endif; ?>
+
+
+<?php if (isset($_GET['sucesso']) && $_GET['sucesso'] == 1): ?>
+<script>
+Swal.fire({
+    title: 'Dúvida enviada!',
+    text: 'Dúvida enviada com sucesso, aguarde sua resposta.',
+    icon: 'success',
+    confirmButtonText: 'OK',
+    customClass: {
+            popup: 'popup-personalizado',
+            confirmButton: 'botao-confirmar',
+            cancelButton: 'botao-cancelar'
+        }
+}).then(() => {
+    
+    const url = new URL(window.location.href);
+    url.searchParams.delete('sucesso');
+    window.history.replaceState({}, document.title, url);
+});
+
+</script>
+<?php endif; ?>
 
 </body>
 </html>
