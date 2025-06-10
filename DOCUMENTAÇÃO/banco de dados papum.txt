@@ -6,7 +6,7 @@ create table tb_usuario(
     id_usuario INT PRIMARY KEY AUTO_INCREMENT,	
     nome_usuario VARCHAR(100),	
     email_usuario VARCHAR(100),	
-    senha_usuario VARCHAR(30), 
+    senha_usuario VARCHAR(300), 
     cargo VARCHAR(20) NOT NULL DEFAULT 'estudante'
     
 );
