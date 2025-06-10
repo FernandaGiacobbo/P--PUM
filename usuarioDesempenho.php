@@ -113,7 +113,14 @@ $css_debug = realpath('css/usuarioDesempenho.css');
             <div class="metricas">
                 <p>Metas definidas: <?= $total_metas ?></p>
                 <p>Metas concluídas: <?= $total_concluidas ?></p>
-                <p>Taxa de sucesso: <?= round(($total_concluidas/$total_metas)*100, 2) ?>%</p>
+                <p>Taxa de sucesso:  <?php 
+                    if ($total_metas > 0) {
+                        echo round(($total_concluidas / $total_metas) * 100, 2) . '%';
+                    } else {
+                        echo 'Sem metas definidas';
+                    }
+                ?>
+                </p>
             </div>
             
             <!-- Análise da IA -->
