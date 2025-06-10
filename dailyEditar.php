@@ -186,15 +186,17 @@ if (!empty($_GET['id_daily'])) {
 </section>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         const modal = document.getElementById('modal');
         if (modal) {
-            modal.showModal(); // Esta linha fará o modal aparecer automaticamente
+            modal.showModal(); // Abre o dialog assim que a página carrega
         }
 
-        // Restante do seu código JavaScript para botões de cancelar e excluir
+        // CANCELAR
         document.getElementById('botaocancelar').addEventListener('click', function (e) {
             e.preventDefault();
+
+            modal.close(); // Fecha o dialog antes de abrir o SweetAlert
 
             Swal.fire({
                 title: 'Tem certeza?',
@@ -206,18 +208,24 @@ if (!empty($_GET['id_daily'])) {
                 confirmButtonText: 'Sim, sair',
                 cancelButtonText: 'Não',
                 customClass: {
+                    popup: 'custom-sweetalert-zindex',
                     confirmButton: 'swal2-styled swal2-confirm',
-                    cancelButton: 'swal2-styled swal2-cancel'
                 }
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = 'dailyVisualizar.php'; // ou outro destino apropriado
+                    window.location.href = 'dailyVisualizar.php';
+                } else {
+                    modal.showModal(); // Reabre o dialog se o usuário cancelar
                 }
             });
         });
 
+        // EXCLUIR
         document.getElementById('botaoexcluir').addEventListener('click', function (e) {
+            e.preventDefault();
+
             const id = this.getAttribute('data-id-daily');
+            modal.close(); // Fecha o dialog antes de abrir o SweetAlert
 
             Swal.fire({
                 title: 'Tem certeza?',
@@ -229,15 +237,19 @@ if (!empty($_GET['id_daily'])) {
                 confirmButtonText: 'Sim, excluir!',
                 cancelButtonText: 'Cancelar',
                 customClass: {
+                    popup: 'custom-sweetalert-zindex',
                     confirmButton: 'swal2-styled swal2-confirm',
                     cancelButton: 'swal2-styled swal2-cancel'
                 }
             }).then((result) => {
                 if (result.isConfirmed) {
                     window.location.href = 'dailyExcluir.php?id_daily=' + id;
+                } else {
+                    modal.showModal(); // Reabre o dialog se o usuário cancelar
                 }
             });
         });
+
     });
 </script>
 </body>

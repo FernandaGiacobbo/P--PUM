@@ -195,7 +195,26 @@ dialog button {
 }
 
 .swal2-styled.swal2-confirm:hover {
-    background-color: black !important;
+    background-color: #0D273D !important;
+    color: #fff !important;
+}
+
+.swal2-styled.swal2-cancel{
+    border: none;
+    width: 10em; 
+    height: 40px;
+    border-radius: 25em;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1rem; 
+    margin: 0.5em; 
+    background-color: #3E6985 !important; 
+    color: #000 !important;
+    transition: 0.3s ease-in-out; 
+    box-shadow: none !important; 
+}
+.swal2-styled.swal2-cancel:hover{
+    background-color: #0D273D !important;
     color: #fff !important;
 }
 
@@ -207,6 +226,10 @@ dialog button {
 .swal2-warning {
     color: #f9d57f !important; 
     border-color: #f9d57f !important;
+}
+
+.swal2-popup.custom-sweetalert-zindex {
+    z-index: 2147483647  !important;
 }
 
 .caminho{
