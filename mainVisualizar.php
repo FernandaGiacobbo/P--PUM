@@ -16,6 +16,7 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
 }
 $_SESSION['LAST_ACTIVITY'] = time(); // atualiza tempo da última atividade
 
+$logado = $_SESSION['nome'];
 $id_us = $_SESSION['id'];
 if (!empty($id_us)) {
 
