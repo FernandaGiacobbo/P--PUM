@@ -17,10 +17,10 @@ document.querySelectorAll('.caixaDuvidas').forEach(item => {
                 const lista = document.getElementById('respostasLista');
                 lista.innerHTML = '';
                 data.respostas.forEach(resp => {
-                    const div = document.createElement('div');
+                    const div = document.createElement('div');//Aqui a gente pega via AJAX as respstas enviadas para visualizar outro campo você pode collocar <p><strong>nome>:</strong> ${resp.nome}</p>
                     div.innerHTML = `
                         <hr>
-                        <p><strong>${resp.usuario}:</strong> ${resp.texto}</p>
+                        <p><strong>${resp.usuario}:</strong> ${resp.texto}</p> 
                         <button class="editarResposta" data-id="${resp.id}" data-texto="${resp.texto}">Editar</button>
                         <button class="excluirResposta" data-id="${resp.id}">Excluir</button>
                     `;

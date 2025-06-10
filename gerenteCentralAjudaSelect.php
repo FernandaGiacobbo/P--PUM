@@ -25,6 +25,7 @@ $query2 = "SELECT
                     JOIN tb_usuario u ON r.usuario_resposta = u.id_usuario
                     WHERE r.duvida_resposta = $id";
 
+//Para pegar as informações você precisa adicionar no join r.instagram AS instagram,  recomendação é deixar todos os nomes iguais 
 $resultado2 = $oMysql->query($query2);
 $respostas = [];
 
