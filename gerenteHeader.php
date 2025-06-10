@@ -34,7 +34,7 @@
 
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a href="gerentePrincipal.php">
+                        <a href="gerenteFeedback.php">
                             <i class='bx bx-home icon'></i>
                             <span class="text nav-text">Home</span>
                         </a>
@@ -58,13 +58,6 @@
                         <a href="gerenteCentralAjuda.php">
                             <i class='bx bx-help-circle icon'></i> 
                             <span class="text nav-text">Central de ajuda</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link"> 
-                        <a href="gerenteFeedback.php">
-                            <i class='bx bx-chat icon'></i>
-                            <span class="text nav-text">Feedback</span>
                         </a>
                     </li>
                     
