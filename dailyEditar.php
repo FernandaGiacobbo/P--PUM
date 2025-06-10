@@ -2,16 +2,16 @@
 
 $tempoExpiracao = 86400; //limita a 86400s = 1 dia a sessão do usuário caso não tenha nenhuma inatividade
 
-ini_set('session.gc_maxlifetime', $tempoExpiracao); // controla quanto tempo o php mantém os dados no servidor 
+ini_set('session.gc_maxlifetime', $tempoExpiracao); // controla quanto tempo o php mantém os dados no servidor
 session_set_cookie_params($tempoExpiracao); //Controla quanto tempo o PHP mantém os dados da sessão no servidor após inatividade.
 
 session_start();
 
 // Verifica se houve inatividade superior a 1 dia
 if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > $tempoExpiracao)) {
-    session_unset();    
+    session_unset();
     session_destroy();  // destrói a sessão
-    header('Location: index.php'); 
+    header('Location: index.php');
     exit();
 }
 $_SESSION['LAST_ACTIVITY'] = time(); // atualiza tempo da última atividade
@@ -32,7 +32,7 @@ if (!empty($_GET['id_daily'])) {
     $query = "SELECT * FROM tb_daily WHERE id_daily = $id_daily";
     $resultado = $oMysql->query($query);
 
-    if ($resultado->num_rows > 0) { 
+    if ($resultado->num_rows > 0) {
         while ($user_daily = mysqli_fetch_assoc($resultado)) {
             $id_da_daily = $user_daily['id_daily'];
             $data = $user_daily ['data_daily'];
@@ -48,7 +48,7 @@ if (!empty($_GET['id_daily'])) {
         }
     } else {
         header('Location: dailyVizualizar.php');
-    } 
+    }
 } else {
     echo "erro";
 }
@@ -68,13 +68,13 @@ if (!empty($_GET['id_daily'])) {
 
 <body>
 
-    <?php include 'header.php'; ?> 
+    <?php include 'header.php'; ?>
     <section class="home">
         <div class="main">
-            <div id="modal-editar" class="modal-padrao">
+            <dialog id="modal">
                 <form action="dailyEdicao.php" method="post">
                     <h2>Editar Daily</h2>
-                
+
                     <p>Como você se sentiu, de forma geral, em relação ao seu dia?</p>
                     <label>
                         <input type="radio" name="resumo_dia" value="Leve e equilibrado(a)" required <?php echo ($resumo_dia == 'Leve e equilibrado(a)') ? 'checked' : ''; ?>> Leve e equilibrado(a) <br>
@@ -94,7 +94,7 @@ if (!empty($_GET['id_daily'])) {
                     <label>
                         <input type="radio" name="resumo_dia" value="Frustrante ou abaixo do que eu esperava"<?php echo( $resumo_dia  == 'Frustrante ou abaixo do que eu esperava') ? 'checked' : ''; ?>> Frustrante ou abaixo do que eu esperava <br>
                     </label>
-                
+
                     <p>Você conseguiu iniciar o dia como havia planejado?</p>
                     <label>
                         <input type="radio" name="inicio_planejado" value="Sim, dentro do que imaginei" required <?php echo( $inicio_planejado  == 'Sim, dentro do que imaginei') ? 'checked' : '' ?>> Sim, dentro do que imaginei <br>
@@ -105,17 +105,17 @@ if (!empty($_GET['id_daily'])) {
                     <label>
                         <input type="radio" name="inicio_planejado" value="Não fiz um plano para hoje"<?php echo( $inicio_planejado  == 'Não fiz um plano para hoje') ? 'checked' : '' ?>> Não fiz um plano para hoje
                     </label>
-                
+
                     <p>Quantas metas ou intenções você definiu para hoje? Lembre-se de considerar tanto tarefas quanto atitudes ou hábitos.</p>
                     <label>
                         <input type="number" name="metas_definidas" min="0" value="<?php echo isset($metas_definidas) ? $metas_definidas : '' ?>" required>
                     </label>
-                
+
                     <p>E quantas dessas metas ou intenções você conseguiu concluir?</p>
                     <label>
                         <input type="number" name="metas_concluidas" min="0" value="<?php echo isset($metas_concluidas) ? $metas_concluidas : '' ?>" required>
                     </label>
-                
+
                     <p>Você adiantou ou resolveu algo que não estava nos seus planos para hoje?</p>
                     <label>
                         <input type="radio" name="adiantou_tarefa" value="1"<?php echo (isset($adiantou_tarefa)&& $adiantou_tarefa == 1) ? 'checked' : ''?> required> Sim, e isso foi positivo <br>
@@ -123,7 +123,7 @@ if (!empty($_GET['id_daily'])) {
                     <label>
                         <input type="radio" name="adiantou_tarefa" value="0"<?php echo (isset($adiantou_tarefa)&& $adiantou_tarefa == 0) ? 'checked' : ''?>> Não, mantive o foco no que já havia planejado
                     </label>
-                
+
                     <p>Como foi sua postura diante dos desafios e pendências do dia?</p>
                     <label>
                         <input type="radio" name="postura_pendencias" value="Evitei lidar com eles" required <?php echo( $postura_pendencias  == 'Evitei lidar com eles') ? 'checked' : '' ?>> Evitei lidar com eles <br>
@@ -159,84 +159,86 @@ if (!empty($_GET['id_daily'])) {
                         <textarea rows="6" cols="50" maxlength="300" name="texto_livre" required><?php echo $texto_livre;?></textarea>
                     </label>
                     <br>
-                    
+
                     <div class="botoes-conteiner">
                         <button type="submit" id="botaosalvar" name="salvar-edicao">Salvar</button>
 
                         <button type="button" id="botaoexcluir" data-id-daily="<?php echo $id_da_daily; ?>">Excluir</button>
-                        
+
                         <button type="button" id="botaocancelar">Cancelar</button>
                     </div>
-                
- 
-          </form>
 
-</div>
+                </form>
+            </dialog>
+        </div>
 
-   
+
 
         </div>
 
     <div class="caminho">
         <a href="usuarioPerfil.php"><?php echo $logado;?></a> /
-        <a href="principal.php">Home</a> / 
+        <a href="principal.php">Home</a> /
         <a href="dailyVisualizar.php">Daily</a> /
         <a href=""><b>DailyEditar</b></a>
     </div>
 
 </section>
 
-    
-
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const modal = document.getElementById('modal');
+        if (modal) {
+            modal.showModal(); // Esta linha fará o modal aparecer automaticamente
+        }
+
+        // Restante do seu código JavaScript para botões de cancelar e excluir
         document.getElementById('botaocancelar').addEventListener('click', function (e) {
-        e.preventDefault();
+            e.preventDefault();
 
-        Swal.fire({
-            title: 'Tem certeza?',
-            text: 'As informações preenchidas não serão salvas!',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#f9d57f',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Sim, sair',
-            cancelButtonText: 'Não',
-            customClass: {
-                confirmButton: 'swal2-styled swal2-confirm',
-                cancelButton: 'swal2-styled swal2-cancel'
-            }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = 'dailyVisualizar.php'; // ou outro destino apropriado
-            }
+            Swal.fire({
+                title: 'Tem certeza?',
+                text: 'As informações preenchidas não serão salvas!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#f9d57f',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sim, sair',
+                cancelButtonText: 'Não',
+                customClass: {
+                    confirmButton: 'swal2-styled swal2-confirm',
+                    cancelButton: 'swal2-styled swal2-cancel'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = 'dailyVisualizar.php'; // ou outro destino apropriado
+                }
+            });
+        });
+
+        document.getElementById('botaoexcluir').addEventListener('click', function (e) {
+            const id = this.getAttribute('data-id-daily');
+
+            Swal.fire({
+                title: 'Tem certeza?',
+                text: 'Você não poderá reverter esta ação!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#f9d57f',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sim, excluir!',
+                cancelButtonText: 'Cancelar',
+                customClass: {
+                    confirmButton: 'swal2-styled swal2-confirm',
+                    cancelButton: 'swal2-styled swal2-cancel'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = 'dailyExcluir.php?id_daily=' + id;
+                }
+            });
         });
     });
-
-    // Botão Excluir
-    document.getElementById('botaoexcluir').addEventListener('click', function (e) {
-        const id = this.getAttribute('data-id-daily');
-
-        Swal.fire({
-            title: 'Tem certeza?',
-            text: 'Você não poderá reverter esta ação!',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#f9d57f',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Sim, excluir!',
-            cancelButtonText: 'Cancelar',
-            customClass: {
-                confirmButton: 'swal2-styled swal2-confirm',
-                cancelButton: 'swal2-styled swal2-cancel'
-            }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                // Redireciona para um script que vai excluir
-                window.location.href = 'dailyExcluir.php?id_daily=' + id;
-            }
-        });
-    });
-
 </script>
 </body>
 </html>

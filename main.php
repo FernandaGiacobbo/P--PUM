@@ -25,7 +25,7 @@
   
 
     <?php
-      session_start();
+      
       $logado = $_SESSION['nome'];
         $oMysql = conecta_db();
         $query1 = "SELECT status_tarefa FROM tb_tarefa where usuario_tarefa = $id_us";
